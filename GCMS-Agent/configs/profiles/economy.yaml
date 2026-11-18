@@ -1,0 +1,35 @@
+# 默认 Agent run/resume 使用的覆盖配置；先加载四份基础 YAML，再按节更新字段。
+# 未列出的字段继承基础配置；重复列出的值用于明确固定本 profile 的选择。
+runtime:
+  # 人民币记账；总金额上限继承 runtime.yaml，单 case 不设金额上限。
+  budget_currency: CNY
+  case_budget_cny: null
+
+  # 同一谱图最多并发两批；不是同时处理两条谱图。
+  batch_concurrency: 2
+  max_sessions_per_case: 8  # 已知零用量且无工具执行的明确连接失败可豁免，另受失败次数上限约束。
+  offpeak_only: true  # 高峰停止新会话，需在允许时段显式 resume；不会定时自动恢复。
+
+  # SDK turn、提交预留与分析工具调用上限。
+  max_tool_turns: 6
+  reserve_submit_turns: 1
+  max_trial_batches: 4
+
+  # 输出额度与每会话费用预留估算。
+  max_output_tokens: null  # 使用 CLI/服务端默认值。
+  reservation_output_tokens: 8192  # 仅记账估算，不是输出上限。
+  reservation_input_tokens: 40000
+  session_timeout_seconds: 0  # 关闭会话超时；候选累计时间限制仍生效。
+
+  # 流式监测保留启用，但以下时间、字符、响应数阈值以 0 关闭。
+  pre_tool_watchdog_enabled: true
+  stop_on_output_limit: false  # 不因单独出现 max_tokens 立即由宿主中断。
+  pre_tool_max_responses: 0
+  pre_tool_timeout_seconds: 0
+  pre_tool_max_output_chars: 0
+  session_max_output_chars: 0
+  pre_tool_interrupt_grace_seconds: 5  # 触发中断后的等待时间（秒）；必须大于 0。
+
+model:
+  thinking: true
+  effort: low

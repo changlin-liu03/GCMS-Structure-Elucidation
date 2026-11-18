@@ -1,0 +1,19 @@
+# Publish only the reviewed modules and repository entry points.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/README.zh-CN.md
+!/DiffGCMS/
+!/GCMS-Agent/
+# Each module retains its own reviewed data and artifact exclusions.
+**/.env
+**/.env.*
+!**/.env.example
+**/.venv/
+**/__pycache__/
+**/*.py[cod]
+**/*.egg-info/
+**/.pytest_cache/
+**/.DS_Store
+**/Thumbs.db

@@ -1,0 +1,65 @@
+{
+  "version": "ei-conservative-1.3",
+  "max_steps": 2,
+  "max_paths": 10000,
+  "enabled": [
+    "molecular_ion",
+    "alkyl_sigma",
+    "carbonyl_alpha",
+    "heteroatom_alpha",
+    "benzylic",
+    "allylic",
+    "halogen_radical_loss",
+    "hydrogen_radical_loss",
+    "hydrogen_molecule_loss",
+    "alcohol_dehydration",
+    "mclafferty",
+    "acylium_co_loss",
+    "vinyl_nitrile_hcn_loss",
+    "aryl_nitrile_cn_loss",
+    "tms_methyl_radical_loss",
+    "tms_cation_cleavage"
+  ],
+  "scope": "Finite structural templates with atom, hydrogen, charge and electron-parity bookkeeping. Rule support is not measured mechanism or intensity probability.",
+  "not_implemented": [
+    "arbitrary ring double cleavage",
+    "generic HCN-loss chains",
+    "unrestricted hydrogen transfer",
+    "M-H or M-H2 outside the ethane motif",
+    "fragment intensity prediction",
+    "non-TMS silicon, Si-H/Si-halogen/Si-Si cleavage",
+    "silicon hydrogen transfer and 59/75/147 rearrangement templates"
+  ],
+  "references": [
+    {
+      "title": "IUPAC Gold Book: allylic groups",
+      "url": "https://goldbook.iupac.org/terms/view/A00245",
+      "role": "Allylic site is the saturated carbon adjacent to C=C; the template excludes retention sites already participating in double or triple bonds."
+    },
+    {
+      "title": "Computational Prediction of Electron Ionization Mass Spectra to Assist in GC/MS Compound Identification",
+      "url": "https://doi.org/10.1021/acs.analchem.6b01622",
+      "role": "Background; this implementation does not reproduce trained CFM-EI"
+    },
+    {
+      "title": "Mass Spectrometry of Some Common Functional Groups, OpenStax Organic Chemistry",
+      "url": "https://openstax.org/books/organic-chemistry/pages/12-3-mass-spectrometry-of-some-common-functional-groups",
+      "role": "Qualitative alpha-cleavage and McLafferty structural requirements"
+    },
+    {
+      "title": "Does the ion-molecule reaction between HCCH+ and HCN lead to CH2CH-CN+? A computational and experimental study of the reverse process",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0009261407015680",
+      "role": "Acrylonitrile HCN elimination; beta-H transfer mapping and substituted vinyl-nitrile extension are explicit template hypotheses, not confirmed pathways for each analog."
+    },
+    {
+      "title": "Fingerprinting fragments of fragile interstellar molecules: dissociation chemistry of pyridine and benzonitrile revealed by infrared spectroscopy and theory",
+      "url": "https://doi.org/10.1039/D3FD00015J",
+      "role": "Benzonitrile CN radical loss; local aryl-nitrile extension does not assert unique product connectivity or abundance."
+    },
+    {
+      "title": "Quantum Chemical Prediction of Electron Ionization Mass Spectra of Trimethylsilylated Metabolites",
+      "url": "https://doi.org/10.1021/acs.analchem.1c02838",
+      "role": "O-TMS methyl radical loss and Si-O cleavage. N/S/saturated-C local motif extensions are hypotheses; no abundance or mechanism confirmation."
+    }
+  ]
+}

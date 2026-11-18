@@ -1,0 +1,61 @@
+.venv/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+runs/
+# Private datasets and all derived inputs, labels and manifests stay local.
+# Only the reviewed documentation and independently authored examples are public.
+/data/*
+!/data/README.md
+!/data/README.en.md
+!/data/examples/
+/data/examples/*
+!/data/examples/README.md
+!/data/examples/README.en.md
+!/data/examples/inference.json
+!/data/examples/labels.json
+
+# Local historical figures and private case assets are not published.
+/figures/
+
+# Generated outputs and historical prompt snapshots stay local.
+/output/
+
+# Only the three reviewed case-study bundles are public; raw runs stay ignored.
+/case_studies/*
+!/case_studies/README.md
+!/case_studies/README.en.md
+!/case_studies/case84/
+/case_studies/case84/*
+!/case_studies/case84/README.md
+!/case_studies/case84/README.en.md
+!/case_studies/case84/input.json
+!/case_studies/case84/reference.json
+!/case_studies/case84/trajectory.json
+!/case_studies/case84/result.json
+!/case_studies/case84/provenance.json
+!/case_studies/case84/trajectory.png
+!/case_studies/case1055/
+/case_studies/case1055/*
+!/case_studies/case1055/README.md
+!/case_studies/case1055/README.en.md
+!/case_studies/case1055/input.json
+!/case_studies/case1055/reference.json
+!/case_studies/case1055/trajectory.json
+!/case_studies/case1055/result.json
+!/case_studies/case1055/provenance.json
+!/case_studies/case1055/trajectory.png
+!/case_studies/case1062/
+/case_studies/case1062/*
+!/case_studies/case1062/README.md
+!/case_studies/case1062/README.en.md
+!/case_studies/case1062/input.json
+!/case_studies/case1062/reference.json
+!/case_studies/case1062/trajectory.json
+!/case_studies/case1062/result.json
+!/case_studies/case1062/provenance.json
+!/case_studies/case1062/trajectory.png

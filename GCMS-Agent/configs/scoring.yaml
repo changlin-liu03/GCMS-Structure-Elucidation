@@ -1,0 +1,7 @@
+# 当前版本的兼容性声明；加载器只接受 raw_linear 和深度 2。
+intensity_encoding: raw_linear
+fragmentation_depth: 2
+
+# 实际碎裂模板及枚举步数读取 resources/ei_rules/rules.json 的 enabled / max_steps。
+# fragmentation_depth 不会覆盖规则文件；修改规则需同步核对源码、说明和验证结果。
+# 分数为规则支持峰的原始强度覆盖率，不是结构正确概率；见 ../docs/scoring.md。

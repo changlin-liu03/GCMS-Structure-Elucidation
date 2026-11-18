@@ -1,0 +1,53 @@
+{
+  "source_materials": {
+    "molecode_skill": {
+      "path": "..\\MoleCode-main\\.claude\\skills\\molecode\\SKILL.md",
+      "sha256": "afd4e6a6797e0297dd680e3df290d6ff01ed1c498c725421194ecf5272c7f1ca"
+    },
+    "molecode_forward": {
+      "path": "..\\MoleCode-main\\molecode\\molecule\\rdkit_to_mermaid.py",
+      "sha256": "195a65e84fd77bb20f0aae61b256620b2489a68d146aa0b9f0909e1e94f37299"
+    },
+    "molecode_reverse": {
+      "path": "..\\MoleCode-main\\molecode\\molecule\\mermaid_to_rdkit.py",
+      "sha256": "561ce966ba1195ed750ed66fc4023d9f501a9e580a509f4723506a270789b12c"
+    },
+    "molecode_syntax_compact": {
+      "path": "../MoleCode-main/.claude/skills/molecode/references/molecode-syntax.md",
+      "sha256": "53cff2856cd8570b2ffd997bdcc4778e27cc40c718c1b01c32f836330e15f145"
+    },
+    "molecode_syntax_full": {
+      "path": "../MoleCode-main/.claude/skills/molecode/references/molecode-syntax-full.md",
+      "sha256": "bc29c5d8199d22eaab7160ecf545095063840bdd812d0b0aaa7fe0cfd9ed146f"
+    },
+    "molecode_system_prompt": {
+      "path": "../MoleCode-main/molecode/prompts/molecule_system_prompt.py",
+      "sha256": "ed4c654143c1802153377ec6de6f77c3d2d4845b4e107d1d0cf239cd34322e8e"
+    },
+    "molecode_understanding_example": {
+      "path": "../MoleCode-main/examples/04_understanding.py",
+      "sha256": "d5964dc1649cbbffaab44af696d2631a7aff203802b1d5c244a373e6fe943b5d"
+    },
+    "molecode_editing_example": {
+      "path": "../MoleCode-main/examples/06_editing.py",
+      "sha256": "ba53d9ff94fcc70ea7f7244e573ebc02679d81641acb4cd54ef7674f45428dbd"
+    },
+    "molecode_reasoning_example": {
+      "path": "../MoleCode-main/examples/07_reasoning.py",
+      "sha256": "8e277762bc5ce8302fa45cd8a28c54bd3ea6bcec16d3e9ecf4110d766a55dbb5"
+    },
+    "molecode_syntax_document": {
+      "path": "../MoleCode-main/docs/02-syntax.md",
+      "sha256": "d19eb81eb981f46ff01ee041e66c893cf5d57ffa2654dc9b3052d8724ba5a1ab"
+    }
+  },
+  "rdkit": "2022.09.5",
+  "claude_agent_sdk": "0.2.176",
+  "claude_cli": "2.1.316",
+  "score_version": "weighted-coverage-1.0",
+  "molecode_skill_revision": "graph-reading-3-batch",
+  "review_protocol": "case-batch-trial-ref-6-concurrent-wave",
+  "ranking_reporting_revision": "evidence-ambiguity-2",
+  "thinking_transport_revision": "explicit-disabled-3-progress-watchdog",
+  "execution_revision": "economy-1-case-budget-concurrency"
+}

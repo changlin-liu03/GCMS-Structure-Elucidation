@@ -1,0 +1,32 @@
+# DiffGCMS training run configuration
+name: 'DiffGCMS_medium'
+parent_dir: '..'
+
+wandb: 'disabled'                 # Set to online to enable W&B
+wandb_name: 'DiffGCMS'
+gpus: 1
+
+encoder: checkpoints/spectus_encoder
+decoder: null
+resume: null                      # Resume training: specify the checkpoint path
+test_only: null
+load_weights: null                 # Load weights only, without optimizer state; use this instead of resume to initialize last-four-layer fine-tuning
+
+encoder_finetune_strategy: freeze  # freeze | last4 | lastN | last_n | full
+encoder_unfreeze_last_n: 0
+decoder_finetune_strategy: null
+
+check_val_every_n_epochs: 1
+sample_every_val: 0               # Disable validation sampling during training; a positive integer sets the interval in validation epochs
+val_samples_to_generate: 10
+val_sampling_fraction: 0.04       # Only used when sample_every_val > 0
+test_samples_to_generate: 10
+log_every_steps: 50
+
+fit: true                           # true=training and validation; false=test only (requires test_only)
+run_test_after_fit: false           # Do not test automatically after training; use config_test.yaml
+
+evaluate_all_checkpoints: false
+checkpoint_strategy: 'best'
+save_top_k: 2                     # Keep the 2 best checkpoints by val/NLL
+save_last: true                    # Save last.ckpt for resuming training

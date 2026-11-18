@@ -1,0 +1,69 @@
+# Python environments, build products, and tool caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+/build/
+/dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Local data and dataset indexes (small public examples may be committed)
+/data/
+/dataset/
+/datasets/
+*.jsonl
+!examples/**/*.jsonl
+!tests/fixtures/**/*.jsonl
+*.offsets.npz
+
+# Model weights; retain the checkpoint directory and its documentation
+/checkpoints/*
+!/checkpoints/.gitkeep
+!/checkpoints/README.md
+/weights/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.onnx
+pytorch_model*.bin
+
+# Training, evaluation, and visualization output
+outputs/
+logs/
+preds/
+wandb/
+lightning_logs/
+/graphs/
+.hydra/
+*.log
+events.out.tfevents.*
+*.pkl
+*.pickle
+/tmp/
+
+# Local configuration and credentials; retain safe example templates
+.env
+.env.*
+!.env.example
+!.env.template
+/.aws/
+/.codex/
+/.agents/
+/.vscode/
+/.idea/
+
+# Operating-system and editor temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~

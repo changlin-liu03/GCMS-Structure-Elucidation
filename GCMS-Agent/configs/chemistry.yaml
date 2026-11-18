@@ -1,0 +1,13 @@
+# 本版本的固定化学约束。加载器要求以下四项均为 true，不能用 false 放宽验证。
+preserve_heavy_atom_composition: true
+require_connected: true
+require_neutral: true
+require_closed_shell: true
+
+# 实验条件描述，不是输入覆盖开关。
+# 当前程序不会从此文件向样本注入这些字段；实际条件取自输入的 conditions。
+# data.prepare 在源数据未提供相应条件时使用 EI / 70 eV（假定）/ nominal 默认值。
+ionization: EI
+energy_ev: 70
+energy_is_assumed: true
+resolution: nominal

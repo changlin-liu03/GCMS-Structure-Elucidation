@@ -1,0 +1,32 @@
+# Last-four-layer fine-tuning: freeze embeddings and layers[0:8]; train layers[8:12], projector, and decoder
+name: 'DiffGCMS_last4'
+parent_dir: '..'
+
+wandb: 'disabled'
+wandb_name: 'DiffGCMS'
+gpus: 1
+
+encoder: checkpoints/spectus_encoder
+decoder: null
+resume: null                      # Do not use resume for stage initialization: it restores the frozen-stage optimizer state
+test_only: null
+load_weights: null                # scripts/train_last4.sh supplies the frozen-stage checkpoint
+
+encoder_finetune_strategy: last4
+encoder_unfreeze_last_n: 4
+decoder_finetune_strategy: null
+
+check_val_every_n_epochs: 1
+sample_every_val: 0
+val_samples_to_generate: 10
+val_sampling_fraction: 0.04
+test_samples_to_generate: 10
+log_every_steps: 50
+
+fit: true
+run_test_after_fit: false
+
+evaluate_all_checkpoints: false
+checkpoint_strategy: 'best'
+save_top_k: 2
+save_last: true

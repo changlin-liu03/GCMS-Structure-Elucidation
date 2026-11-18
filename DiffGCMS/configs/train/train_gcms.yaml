@@ -1,0 +1,25 @@
+# DiffGCMS training hyperparameters (32 GB RTX 5090)
+# A previous DiffGCMS Medium run (trainable 5 x 512 encoder, batch=32) used approximately 4.8 GB / 32 GB.
+# The encoder is frozen; GraphTransformer remains the main GPU memory consumer. Use batch=128 with headroom for variable graph sizes and validation sampling.
+n_epochs: 30
+batch_size: 128
+eval_batch_size: 64
+gradient_accumulation: 1          # effective batch size = 128
+
+lr: 0.0008
+weight_decay: 0.0001
+optimizer: adamw
+scheduler: one_cycle
+pct_start: 0.1
+
+clip_grad: null
+save_model: true
+num_workers: 4
+pin_memory: true
+ema_decay: 0
+progress_bar: true
+seed: 123
+
+precision: bf16-mixed
+limit_train_batches: 1.0
+limit_val_batches: 1.0

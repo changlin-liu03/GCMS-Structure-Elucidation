@@ -1,0 +1,38 @@
+# 基础运行配置；standard 直接使用，economy 在此基础上覆盖部分字段。
+# 具体加载顺序、参数范围与特殊值见 README.md。
+
+# 候选探索与停止条件。
+max_rounds: 3
+proposals_per_round: 3  # 当前版本固定为 3；批审工具的提案上限也由工具协议约束。
+stagnation_rounds: 2
+candidate_timeout_seconds: 900  # 每候选累计处理时间上限（秒）。
+
+# 调用失败与格式错误处理。
+network_retries: 2
+max_transport_failures_per_case: 3  # 每 case 已豁免的明确连接失败达到此值后停止新请求。
+format_retries: 2
+
+# 候选与批次调度。不同谱图当前依次处理。
+concurrency: 3  # 旧单候选流程/基线的候选并发；不控制默认批审并发。
+review_strategy: case_batch
+batch_size: 4  # 每批唯一候选数量上限。
+max_batch_chars: 10000  # 紧凑候选 JSON 字符合计的分批阈值；单个超长候选仍单独成批。
+# batch_concurrency 未设置时，批审默认同一 case 一批；economy 将其设为 2。
+
+# 会话工具预算与超时。SDK turn、工具调用和提案数量不是同一计数。
+max_tool_turns: 8
+reserve_submit_turns: 2  # 为正式提交预留 SDK turn。
+max_trial_batches: 2  # 每会话分析工具调用上限，不是原子编辑操作项数。
+session_timeout_seconds: 300  # 会话超时（秒）；覆盖 model.request_timeout_seconds。
+
+# 输出控制与费用预留。预留估算不直接限制模型生成。
+max_output_tokens: null  # 使用 CLI/服务端默认值，不表示无限输出。
+reservation_output_tokens: 65536  # 无显式输出上限时使用的每会话输出 token 预留估算。
+reservation_input_tokens: 80000  # 每会话输入 token 预留估算。
+case_output_token_target: 25000  # 仅报告诊断目标；超出不会截断或停止。
+
+# 金额限制与调度。null 表示不设对应金额上限，用量与费用仍记录。
+budget_currency: CNY
+budget_usd: null
+budget_cny: null
+offpeak_only: false  # true 时，高峰不启动新会话；记录 offpeak_wait，之后需显式恢复。

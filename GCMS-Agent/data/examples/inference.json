@@ -1,0 +1,74 @@
+[
+  {
+    "sample_id": "synthetic_ethanol_demo",
+    "input_ids": [
+      15,
+      29,
+      31,
+      45,
+      46
+    ],
+    "intensity": [
+      7,
+      3,
+      40,
+      11,
+      19
+    ],
+    "generated": [
+      "CCO",
+      "COC",
+      "OCC",
+      "CCO",
+      "COC",
+      "OCC",
+      "CCO",
+      "COC",
+      "OCC",
+      "CCO"
+    ],
+    "conditions": {
+      "ionization": "EI",
+      "energy_ev": 70,
+      "energy_is_assumed": true,
+      "resolution": "nominal",
+      "intensity_encoding": "raw_linear"
+    }
+  },
+  {
+    "sample_id": "synthetic_acetone_demo",
+    "input_ids": [
+      15,
+      27,
+      29,
+      43,
+      58
+    ],
+    "intensity": [
+      9,
+      4,
+      13,
+      37,
+      21
+    ],
+    "generated": [
+      "CC(=O)C",
+      "CCC=O",
+      "C=CCO",
+      "CC1CO1",
+      "C1COC1",
+      "CC(=O)C",
+      "CCC=O",
+      "C=CCO",
+      "CC1CO1",
+      "C1COC1"
+    ],
+    "conditions": {
+      "ionization": "EI",
+      "energy_ev": 70,
+      "energy_is_assumed": true,
+      "resolution": "nominal",
+      "intensity_encoding": "raw_linear"
+    }
+  }
+]

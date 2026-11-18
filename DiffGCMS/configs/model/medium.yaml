@@ -1,0 +1,18 @@
+transition: marginal
+model: graph_tf
+diffusion_steps: 500
+diffusion_noise_schedule: cosine
+n_layers: 4
+extra_features: all
+
+encoder_layers: 12
+encoder_d_model: 1024
+encoder_heads: 16
+encoder_ffn: 4096
+encoder_dropout: 0.2
+y_dim: 1024
+projector_hidden: 4096
+
+hidden_mlp_dims: {X: 256, E: 128, y: 1024}
+hidden_dims: {dx: 256, de: 64, dy: 512, n_head: 8, dim_ffX: 256, dim_ffE: 128, dim_ffy: 1024}
+lambda_train: [0, 1, 0]

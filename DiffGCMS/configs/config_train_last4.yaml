@@ -1,0 +1,17 @@
+# DiffGCMS: fine-tune the last 4 encoder layers from the best frozen-stage checkpoint
+# Run: bash scripts/train_last4.sh
+# Or:   PYTHONPATH=. python src/gcms_main.py --config-name=config_train_last4 \
+#         general.load_weights=/path/to/frozen_checkpoint.ckpt
+
+defaults:
+  - _self_
+  - general: general_train_last4
+  - model: medium
+  - train: train_gcms_last4
+  - dataset: gcms_train
+
+hydra:
+  job:
+    chdir: true
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}-${general.name}

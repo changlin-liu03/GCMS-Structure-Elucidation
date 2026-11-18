@@ -1,0 +1,24 @@
+# DiffGCMS test entry point (no training or validation; initialization requires all three data splits)
+# Example commands:
+#   PYTHONPATH=. python src/gcms_main.py --config-name=config_test \
+#     general.test_only=/path/to/finetuned_checkpoint.ckpt
+# Or:
+#   bash scripts/test.sh /path/to/frozen_checkpoint.ckpt
+#   bash scripts/test.sh /path/to/finetuned_checkpoint.ckpt
+
+defaults:
+  - _self_
+  - general: general_test
+  - model: medium
+  - train: train_gcms
+  - dataset: gcms_train
+
+train:
+  save_model: false
+  eval_batch_size: 128
+
+hydra:
+  job:
+    chdir: true
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}-${general.name}

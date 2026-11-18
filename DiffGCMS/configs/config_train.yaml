@@ -1,0 +1,16 @@
+# DiffGCMS training and validation entry point (no testing)
+# Run: PYTHONPATH=. python src/gcms_main.py --config-name=config_train
+# Or:   bash scripts/train.sh
+
+defaults:
+  - _self_
+  - general: general_train
+  - model: medium
+  - train: train_gcms
+  - dataset: gcms_train
+
+hydra:
+  job:
+    chdir: true
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}-${general.name}

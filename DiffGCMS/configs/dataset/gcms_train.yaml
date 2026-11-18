@@ -1,0 +1,23 @@
+# Training dataset configuration (use precomputed statistics to avoid rescanning the full dataset)
+name: gcms
+datadir: 'dataset/split_90_5_5'
+train_file: train.jsonl
+valid_file: valid.jsonl
+test_file: test.jsonl
+stats_dir: 'dataset/split_90_5_5/stats'
+recompute_statistics: false       # Run scripts/compute_stats.py first
+
+max_mz: 500
+max_log_id: 29
+max_num_peaks: 300
+max_nodes: 50
+remove_h: true
+denoise_nodes: false
+validate_formula: false
+
+atom_decoder: ['C', 'N', 'O', 'F', 'Cl', 'S', 'P', 'Si', 'Br', 'I']
+
+# Use null for the full dataset; set an integer for debugging, e.g. max_train_samples: 1000
+max_train_samples: null
+max_val_samples: null
+max_test_samples: null

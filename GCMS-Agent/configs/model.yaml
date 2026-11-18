@@ -1,0 +1,29 @@
+# 模型接入。API 密钥由环境变量或项目根目录 .env 提供，不写入此文件。
+api_base: https://api.deepseek.com/anthropic
+model: deepseek-flash[1m]
+thinking: true
+effort: low
+
+# Harness 会话超时（秒）；正常 run/resume 工作流由 runtime.session_timeout_seconds 覆盖。
+# 此值不是独立的 HTTP 连接超时。
+request_timeout_seconds: 300
+
+# 历史美元估算价格：每百万 token，快照日期 2026-11-02。
+# 仅 budget_currency=USD 时使用；不是实时获取的供应商价格。
+prices:
+  input: 0.30
+  cache: 0.006
+  output: 1.20
+
+# 历史人民币估算价格：每百万 token，快照日期 2026-11-03。
+# 来源记录：https://api-docs.deepseek.com/zh-cn/quick_start/pricing/
+# 本次目录整理未核验现价；峰谷划分由 workflow/budget.py 实现，见 README.md。
+prices_cny:
+  peak:
+    input: 2.0
+    cache: 0.04
+    output: 8.0
+  offpeak:
+    input: 1.0
+    cache: 0.02
+    output: 4.0

@@ -1,0 +1,26 @@
+# Normalize text to LF across platforms, including Bash scripts.
+* text=auto eol=lf
+
+# Windows command scripts require CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Keep binary artifacts byte-for-byte if explicitly included in a release.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.npz binary
+*.npy binary
+*.pt binary
+*.pth binary
+*.ckpt binary
+*.safetensors binary
+*.onnx binary
+*.bin binary
+*.pkl binary
+*.pickle binary

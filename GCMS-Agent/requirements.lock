@@ -1,0 +1,51 @@
+# Pinned research environment: Windows x86-64 / CPython 3.10.
+# Includes runtime, test and historical environment packages; not a minimal lock.
+# Retained versions; no cross-platform or newer-Python compatibility guarantee.
+# Install from the complete repository (PowerShell):
+#   python -m pip install -r requirements.lock
+#   python -m pip install -c requirements.lock -e ".[test]"
+# Editable installation is required for repository-relative configs/skills/resources.
+# Build tools are resolved separately; artifacts are not hash-locked.
+annotated-types==0.7.0
+anyio==4.13.0
+attrs==26.1.0
+cffi==2.1.1
+claude-agent-sdk==0.2.176
+click==8.5.0
+colorama==0.4.6
+cryptography==50.0.2
+exceptiongroup==1.3.1
+h11==0.16.0
+httpcore2==2.14.0
+httpx2==2.14.0
+idna==3.20
+iniconfig==2.3.1
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+mcp==2.3.0
+mcp-types==2.3.0
+networkx==3.4.2
+numpy==1.26.4
+opentelemetry-api==1.45.2
+packaging==25.0
+pillow==12.1.1
+pluggy==1.7.0
+pycparser==3.11
+pydantic==2.13.4
+pydantic_core==2.46.4
+PyJWT==2.15.1
+pytest==8.3.5
+python-multipart==0.0.32
+pywin32==312
+PyYAML==6.0.3
+rdkit-pypi==2022.9.5
+referencing==0.37.0
+rpds-py==0.30.0
+sniffio==1.3.1
+sse-starlette==3.5.1
+starlette==1.7.0
+tomli==2.5.0
+truststore==0.10.5
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+uvicorn==0.54.0

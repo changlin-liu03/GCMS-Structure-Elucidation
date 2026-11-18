@@ -1,0 +1,5890 @@
+{
+  "schema_version": "case_study_v1",
+  "main_stage": "agent",
+  "stages": {
+    "agent": {
+      "sample_id": "s00084_b561c4feb886",
+      "mode": "agent",
+      "status": "ranked",
+      "ranking_complete": false,
+      "ranking_status": "provisional/incomplete",
+      "ranking_diagnostics": {
+        "top_score_candidate_count": 1,
+        "display_top1_is_unique_score_leader": true,
+        "comparison_scope": "Returned scored unique structures only",
+        "identity_confirmed": false,
+        "tie_display_policy": "Canonical SMILES order is display order, not structural evidence",
+        "interval_competitors": [],
+        "same_supported_peak_set_competitors": [],
+        "point_score_gap_to_next": 0.27483502770272117,
+        "robust_score_gap_to_next": 0.16801708813335703
+      },
+      "explanation_quality": {
+        "workflow_complete": false,
+        "provisional": true,
+        "identity_confirmed": false,
+        "mechanism_experimentally_confirmed": false,
+        "model_narrative_verification": "not_verified",
+        "host_verification_scope": "Rule applicability, chemical bookkeeping and observed nominal-mass matching only",
+        "claims_not_validated": [
+          "unique_molecular_identity",
+          "fragment_abundance_or_dominant_pathway",
+          "isotope_intensity_ratio",
+          "chemical_names_or_conjugation_in_model_prose"
+        ],
+        "limitations": [
+          "workflow_incomplete",
+          "majority_intensity_unassigned_at_point_estimate"
+        ],
+        "evidence_profile": {
+          "rule_supported_intensity_fraction": 0.4964009108921085,
+          "unassigned_intensity_fraction": 0.5035990891078914,
+          "majority_intensity_unassigned_at_point_estimate": true,
+          "majority_intensity_unassigned_across_quantization_bounds": false,
+          "verified_path_count": 3,
+          "supported_peaks": [
+            77,
+            104
+          ],
+          "molecular_ion_peaks": [
+            104
+          ],
+          "fragment_peaks": [
+            77
+          ],
+          "bond_cleavage_peaks": [
+            77
+          ],
+          "molecular_ion_only": false,
+          "fragment_intensity_coverage": 0.30825623575107286,
+          "bond_cleavage_intensity_coverage": 0.30825623575107286,
+          "evidence_complete": true,
+          "scored_peak_set_known": true,
+          "all_scored_peaks_have_verified_paths": true,
+          "categories_may_overlap": true,
+          "identity_confirmed": false,
+          "isotope_ratio_verified": false,
+          "fragment_abundance_predicted": false
+        },
+        "top_score_candidate_smiles": [
+          "N#CC=CC=CC#N"
+        ],
+        "display_top1_selection_basis": "highest_rule_support_score",
+        "same_supported_peak_set_competitors": []
+      },
+      "resource_usage": {
+        "input_tokens": 96501,
+        "cache_read_input_tokens": 584448,
+        "output_tokens": 176403,
+        "sessions": 8,
+        "unknown_usage_sessions": 0,
+        "currency": "CNY",
+        "cost_cny": 0.8138019599999999,
+        "output_token_target": 25000,
+        "output_token_target_exceeded": true,
+        "target_policy": "diagnostic only; never truncate edits or explanations",
+        "workflow_wall_seconds": 674.655999999999,
+        "wall_time_scope": "current invocation: initialization through ranking; excludes report rendering"
+      },
+      "summary": {
+        "requested_samples": 1,
+        "processed_samples": 1,
+        "complete_samples": 0,
+        "spent_cny": 0.8138019599999999,
+        "currency": "CNY",
+        "mode": "agent",
+        "review_strategy": "case_batch"
+      },
+      "evaluation": {
+        "processed": {
+          "samples": 1,
+          "acc_at_1": 1.0,
+          "acc_at_10": 1.0,
+          "mrr": 1.0,
+          "valid_candidate_fraction": 1.0,
+          "output_smiles_validity": 1.0,
+          "repair_success_rate": 1.0,
+          "damaged_correct_candidates": 0,
+          "original_correct_candidates": 0,
+          "tie_policy": "canonical SMILES lexicographic display order; no optimistic tie credit",
+          "total_candidate_slots": 10
+        },
+        "complete_only": {
+          "samples": 0,
+          "acc_at_1": null,
+          "acc_at_10": null,
+          "mrr": null,
+          "valid_candidate_fraction": null,
+          "output_smiles_validity": null,
+          "repair_success_rate": null,
+          "damaged_correct_candidates": 0,
+          "original_correct_candidates": 0,
+          "tie_policy": "canonical SMILES lexicographic display order; no optimistic tie credit",
+          "total_candidate_slots": 0
+        },
+        "incomplete_samples": 1,
+        "requested_set": {
+          "samples": 1,
+          "acc_at_1": 1.0,
+          "acc_at_10": 1.0,
+          "mrr": 1.0,
+          "valid_candidate_fraction": 1.0,
+          "output_smiles_validity": 1.0,
+          "repair_success_rate": 1.0,
+          "damaged_correct_candidates": 0,
+          "original_correct_candidates": 0,
+          "tie_policy": "canonical SMILES lexicographic display order; no optimistic tie credit",
+          "total_candidate_slots": 10
+        },
+        "strict_end_to_end_requested_set": {
+          "samples": 1,
+          "acc_at_1": 0.0,
+          "acc_at_10": 0.0,
+          "mrr": 0.0,
+          "valid_candidate_fraction": 1.0,
+          "output_smiles_validity": 1.0,
+          "repair_success_rate": 1.0,
+          "damaged_correct_candidates": 0,
+          "original_correct_candidates": 0,
+          "tie_policy": "canonical SMILES lexicographic display order; no optimistic tie credit",
+          "total_candidate_slots": 10
+        },
+        "accuracy_policy": "requested_set includes provisional rankings; strict_end_to_end_requested_set counts incomplete/unprocessed cases as misses; null top1 is abstention",
+        "requested_samples": 1,
+        "unprocessed_samples": 0,
+        "original_diffusion_order": {
+          "samples": 1,
+          "acc_at_1": 0.0,
+          "acc_at_10": 0.0,
+          "mrr": 0.0,
+          "policy": "Original ten slots, including invalid candidates and duplicates; no validity filtering"
+        }
+      },
+      "accounting": {
+        "currency": "CNY",
+        "recorded_spend_cny": 0.8138019599999999,
+        "known_cost_cny": 0.8138019599999999,
+        "estimated_cost_cny": 0,
+        "known_requests": 8,
+        "unknown_requests": 0,
+        "pending_reservation_cny": 0,
+        "usage": {
+          "input_tokens": 96501,
+          "cache_read_input_tokens": 584448,
+          "output_tokens": 176403
+        },
+        "note": "Historical ledger estimates, not a provider invoice; unknown use is not zero cost."
+      },
+      "peaks_as_recorded": [
+        {
+          "mz": 12,
+          "intensity_bin": 2,
+          "lower": 0.0009956824444577821,
+          "upper": 0.001274473528905961,
+          "intensity": 0.001126486093415193
+        },
+        {
+          "mz": 24,
+          "intensity_bin": 2,
+          "lower": 0.0009956824444577821,
+          "upper": 0.001274473528905961,
+          "intensity": 0.001126486093415193
+        },
+        {
+          "mz": 25,
+          "intensity_bin": 8,
+          "lower": 0.004379057701015051,
+          "upper": 0.005605193857299266,
+          "intensity": 0.004954338232951865
+        },
+        {
+          "mz": 26,
+          "intensity_bin": 18,
+          "lower": 0.051698788284564215,
+          "upper": 0.0661744490042422,
+          "intensity": 0.05849050204022879
+        },
+        {
+          "mz": 27,
+          "intensity_bin": 12,
+          "lower": 0.01175494350822287,
+          "upper": 0.015046327690525274,
+          "intensity": 0.013299200427406682
+        },
+        {
+          "mz": 28,
+          "intensity_bin": 4,
+          "lower": 0.0016313261169996303,
+          "upper": 0.0020880974297595267,
+          "intensity": 0.0018456348154514523
+        },
+        {
+          "mz": 36,
+          "intensity_bin": 9,
+          "lower": 0.005605193857299266,
+          "upper": 0.00717464813734306,
+          "intensity": 0.006341552938178388
+        },
+        {
+          "mz": 37,
+          "intensity_bin": 18,
+          "lower": 0.051698788284564215,
+          "upper": 0.0661744490042422,
+          "intensity": 0.05849050204022879
+        },
+        {
+          "mz": 38,
+          "intensity_bin": 17,
+          "lower": 0.04038967834731579,
+          "upper": 0.051698788284564215,
+          "intensity": 0.04569570471892875
+        },
+        {
+          "mz": 39,
+          "intensity_bin": 16,
+          "lower": 0.031554436208840464,
+          "upper": 0.04038967834731579,
+          "intensity": 0.035699769311663083
+        },
+        {
+          "mz": 40,
+          "intensity_bin": 10,
+          "lower": 0.00717464813734306,
+          "upper": 0.009183549615799117,
+          "intensity": 0.008117187760868337
+        },
+        {
+          "mz": 41,
+          "intensity_bin": 4,
+          "lower": 0.0016313261169996303,
+          "upper": 0.0020880974297595267,
+          "intensity": 0.0018456348154514523
+        },
+        {
+          "mz": 48,
+          "intensity_bin": 9,
+          "lower": 0.005605193857299266,
+          "upper": 0.00717464813734306,
+          "intensity": 0.006341552938178388
+        },
+        {
+          "mz": 49,
+          "intensity_bin": 15,
+          "lower": 0.024651903288156612,
+          "upper": 0.031554436208840464,
+          "intensity": 0.027890444774736782
+        },
+        {
+          "mz": 50,
+          "intensity_bin": 22,
+          "lower": 0.13877787807814454,
+          "upper": 0.17763568394002502,
+          "intensity": 0.15700924586837747
+        },
+        {
+          "mz": 51,
+          "intensity_bin": 21,
+          "lower": 0.10842021724855043,
+          "upper": 0.13877787807814454,
+          "intensity": 0.12266347333466991
+        },
+        {
+          "mz": 52,
+          "intensity_bin": 22,
+          "lower": 0.13877787807814454,
+          "upper": 0.17763568394002502,
+          "intensity": 0.15700924586837747
+        },
+        {
+          "mz": 53,
+          "intensity_bin": 21,
+          "lower": 0.10842021724855043,
+          "upper": 0.13877787807814454,
+          "intensity": 0.12266347333466991
+        },
+        {
+          "mz": 54,
+          "intensity_bin": 7,
+          "lower": 0.0034211388289180087,
+          "upper": 0.004379057701015051,
+          "intensity": 0.0038705767444936444
+        },
+        {
+          "mz": 57,
+          "intensity_bin": 2,
+          "lower": 0.0009956824444577821,
+          "upper": 0.001274473528905961,
+          "intensity": 0.001126486093415193
+        },
+        {
+          "mz": 60,
+          "intensity_bin": 7,
+          "lower": 0.0034211388289180087,
+          "upper": 0.004379057701015051,
+          "intensity": 0.0038705767444936444
+        },
+        {
+          "mz": 61,
+          "intensity_bin": 10,
+          "lower": 0.00717464813734306,
+          "upper": 0.009183549615799117,
+          "intensity": 0.008117187760868337
+        },
+        {
+          "mz": 62,
+          "intensity_bin": 11,
+          "lower": 0.009183549615799117,
+          "upper": 0.01175494350822287,
+          "intensity": 0.010390000333911471
+        },
+        {
+          "mz": 63,
+          "intensity_bin": 13,
+          "lower": 0.015046327690525274,
+          "upper": 0.019259299443872353,
+          "intensity": 0.017022976547080557
+        },
+        {
+          "mz": 64,
+          "intensity_bin": 22,
+          "lower": 0.13877787807814454,
+          "upper": 0.17763568394002502,
+          "intensity": 0.15700924586837747
+        },
+        {
+          "mz": 65,
+          "intensity_bin": 10,
+          "lower": 0.00717464813734306,
+          "upper": 0.009183549615799117,
+          "intensity": 0.008117187760868337
+        },
+        {
+          "mz": 74,
+          "intensity_bin": 12,
+          "lower": 0.01175494350822287,
+          "upper": 0.015046327690525274,
+          "intensity": 0.013299200427406682
+        },
+        {
+          "mz": 75,
+          "intensity_bin": 19,
+          "lower": 0.0661744490042422,
+          "upper": 0.08470329472543002,
+          "intensity": 0.07486784261149286
+        },
+        {
+          "mz": 76,
+          "intensity_bin": 21,
+          "lower": 0.10842021724855043,
+          "upper": 0.13877787807814454,
+          "intensity": 0.12266347333466991
+        },
+        {
+          "mz": 77,
+          "intensity_bin": 29,
+          "lower": 0.78125,
+          "upper": 1.0,
+          "intensity": 0.8838834764831844
+        },
+        {
+          "mz": 78,
+          "intensity_bin": 20,
+          "lower": 0.08470329472543002,
+          "upper": 0.10842021724855043,
+          "intensity": 0.09583083854271086
+        },
+        {
+          "mz": 79,
+          "intensity_bin": 7,
+          "lower": 0.0034211388289180087,
+          "upper": 0.004379057701015051,
+          "intensity": 0.0038705767444936444
+        },
+        {
+          "mz": 86,
+          "intensity_bin": 2,
+          "lower": 0.0009956824444577821,
+          "upper": 0.001274473528905961,
+          "intensity": 0.001126486093415193
+        },
+        {
+          "mz": 87,
+          "intensity_bin": 2,
+          "lower": 0.0009956824444577821,
+          "upper": 0.001274473528905961,
+          "intensity": 0.001126486093415193
+        },
+        {
+          "mz": 88,
+          "intensity_bin": 2,
+          "lower": 0.0009956824444577821,
+          "upper": 0.001274473528905961,
+          "intensity": 0.001126486093415193
+        },
+        {
+          "mz": 89,
+          "intensity_bin": 4,
+          "lower": 0.0016313261169996303,
+          "upper": 0.0020880974297595267,
+          "intensity": 0.0018456348154514523
+        },
+        {
+          "mz": 100,
+          "intensity_bin": 10,
+          "lower": 0.00717464813734306,
+          "upper": 0.009183549615799117,
+          "intensity": 0.008117187760868337
+        },
+        {
+          "mz": 101,
+          "intensity_bin": 9,
+          "lower": 0.005605193857299266,
+          "upper": 0.00717464813734306,
+          "intensity": 0.006341552938178388
+        },
+        {
+          "mz": 102,
+          "intensity_bin": 2,
+          "lower": 0.0009956824444577821,
+          "upper": 0.001274473528905961,
+          "intensity": 0.001126486093415193
+        },
+        {
+          "mz": 103,
+          "intensity_bin": 16,
+          "lower": 0.031554436208840464,
+          "upper": 0.04038967834731579,
+          "intensity": 0.035699769311663083
+        },
+        {
+          "mz": 104,
+          "intensity_bin": 27,
+          "lower": 0.47683715820312494,
+          "upper": 0.6103515625,
+          "intensity": 0.5394796609394436
+        },
+        {
+          "mz": 105,
+          "intensity_bin": 16,
+          "lower": 0.031554436208840464,
+          "upper": 0.04038967834731579,
+          "intensity": 0.035699769311663083
+        },
+        {
+          "mz": 106,
+          "intensity_bin": 2,
+          "lower": 0.0009956824444577821,
+          "upper": 0.001274473528905961,
+          "intensity": 0.001126486093415193
+        }
+      ],
+      "source_slots": [
+        {
+          "candidate_id": "c01",
+          "original_smiles": "N#Cc1cccnc1",
+          "final_smiles": "N#Cc1cccnc1",
+          "rank": 2,
+          "tied": true,
+          "stop_reason": "review_complete",
+          "result_status": "kept",
+          "accepted_edits": 0,
+          "computed_candidate_id": "c01",
+          "initial_valid": true,
+          "final_valid": true,
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "candidate_id": "c02",
+          "original_smiles": "N#Cc1ccccn1",
+          "final_smiles": "N#Cc1ccccn1",
+          "rank": 2,
+          "tied": true,
+          "stop_reason": "review_complete",
+          "result_status": "kept",
+          "accepted_edits": 0,
+          "computed_candidate_id": "c02",
+          "initial_valid": true,
+          "final_valid": true,
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "candidate_id": "c03",
+          "original_smiles": "C1=CCC=1.N#CC#N",
+          "final_smiles": "N#CC=CC=CC#N",
+          "rank": 1,
+          "tied": false,
+          "stop_reason": "max_rounds",
+          "result_status": "corrected",
+          "accepted_edits": 3,
+          "computed_candidate_id": "c03",
+          "initial_valid": false,
+          "final_valid": true,
+          "score": {
+            "score": 0.4964009108921085,
+            "confidence_score": 49.640091089210856,
+            "score_lower": 0.43505481280827746,
+            "score_upper": 0.5578555632181387,
+            "supported_peaks": [
+              77,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              78,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": true,
+                "contribution": 0.30825623575107286
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "candidate_id": "c04",
+          "original_smiles": "N#CCc1cccn1",
+          "final_smiles": "N#Cc1ccncc1",
+          "rank": 2,
+          "tied": true,
+          "stop_reason": "review_complete",
+          "result_status": "corrected",
+          "accepted_edits": 1,
+          "computed_candidate_id": "c04",
+          "initial_valid": false,
+          "final_valid": true,
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "candidate_id": "c05",
+          "original_smiles": "N#Cc1cccnc1",
+          "final_smiles": "N#Cc1cccnc1",
+          "rank": 2,
+          "tied": true,
+          "stop_reason": "review_complete",
+          "result_status": "kept",
+          "accepted_edits": 0,
+          "computed_candidate_id": "c01",
+          "initial_valid": true,
+          "final_valid": true,
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "candidate_id": "c06",
+          "original_smiles": "N#Cc1cccnc1",
+          "final_smiles": "N#Cc1cccnc1",
+          "rank": 2,
+          "tied": true,
+          "stop_reason": "review_complete",
+          "result_status": "kept",
+          "accepted_edits": 0,
+          "computed_candidate_id": "c01",
+          "initial_valid": true,
+          "final_valid": true,
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "candidate_id": "c07",
+          "original_smiles": "N#Cc1cc(C#N)c1",
+          "final_smiles": "N#CC=CC=CC#N",
+          "rank": 1,
+          "tied": false,
+          "stop_reason": "review_complete",
+          "result_status": "corrected",
+          "accepted_edits": 2,
+          "computed_candidate_id": "c07",
+          "initial_valid": true,
+          "final_valid": true,
+          "score": {
+            "score": 0.4964009108921085,
+            "confidence_score": 49.640091089210856,
+            "score_lower": 0.43505481280827746,
+            "score_upper": 0.5578555632181387,
+            "supported_peaks": [
+              77,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              78,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": true,
+                "contribution": 0.30825623575107286
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "candidate_id": "c08",
+          "original_smiles": "Cc1cc(C#N)cn1",
+          "final_smiles": "N#CC=CC=CC#N",
+          "rank": 1,
+          "tied": false,
+          "stop_reason": "case_session_limit",
+          "result_status": "corrected",
+          "accepted_edits": 2,
+          "computed_candidate_id": "c08",
+          "initial_valid": false,
+          "final_valid": true,
+          "score": {
+            "score": 0.4964009108921085,
+            "confidence_score": 49.640091089210856,
+            "score_lower": 0.43505481280827746,
+            "score_upper": 0.5578555632181387,
+            "supported_peaks": [
+              77,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              78,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": true,
+                "contribution": 0.30825623575107286
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "candidate_id": "c09",
+          "original_smiles": "N#Cc1cccnc1",
+          "final_smiles": "N#Cc1cccnc1",
+          "rank": 2,
+          "tied": true,
+          "stop_reason": "review_complete",
+          "result_status": "kept",
+          "accepted_edits": 0,
+          "computed_candidate_id": "c01",
+          "initial_valid": true,
+          "final_valid": true,
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "candidate_id": "c10",
+          "original_smiles": "N#CCc1ccnc1",
+          "final_smiles": "N#Cc1cccnc1",
+          "rank": 2,
+          "tied": true,
+          "stop_reason": "case_session_limit",
+          "result_status": "corrected",
+          "accepted_edits": 2,
+          "computed_candidate_id": "c10",
+          "initial_valid": false,
+          "final_valid": true,
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          }
+        }
+      ],
+      "ranking": [
+        {
+          "final_smiles": "N#CC=CC=CC#N",
+          "score": {
+            "score": 0.4964009108921085,
+            "confidence_score": 49.640091089210856,
+            "score_lower": 0.43505481280827746,
+            "score_upper": 0.5578555632181387,
+            "supported_peaks": [
+              77,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              78,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": true,
+                "contribution": 0.30825623575107286
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          },
+          "rank": 1,
+          "tied": false,
+          "source_candidate_ids": [
+            "c03",
+            "c07",
+            "c08"
+          ],
+          "evidence_profile": {
+            "rule_supported_intensity_fraction": 0.4964009108921085,
+            "unassigned_intensity_fraction": 0.5035990891078914,
+            "majority_intensity_unassigned_at_point_estimate": true,
+            "majority_intensity_unassigned_across_quantization_bounds": false,
+            "verified_path_count": 3,
+            "supported_peaks": [
+              77,
+              104
+            ],
+            "molecular_ion_peaks": [
+              104
+            ],
+            "fragment_peaks": [
+              77
+            ],
+            "bond_cleavage_peaks": [
+              77
+            ],
+            "molecular_ion_only": false,
+            "fragment_intensity_coverage": 0.30825623575107286,
+            "bond_cleavage_intensity_coverage": 0.30825623575107286,
+            "evidence_complete": true,
+            "scored_peak_set_known": true,
+            "all_scored_peaks_have_verified_paths": true,
+            "categories_may_overlap": true,
+            "identity_confirmed": false,
+            "isotope_ratio_verified": false,
+            "fragment_abundance_predicted": false
+          },
+          "quantization_sensitive": false,
+          "identity_confirmed": false,
+          "selection_basis": "highest_rule_support_score"
+        },
+        {
+          "final_smiles": "N#Cc1ccccn1",
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          },
+          "rank": 2,
+          "tied": true,
+          "source_candidate_ids": [
+            "c02"
+          ],
+          "evidence_profile": {
+            "rule_supported_intensity_fraction": 0.22156588318938736,
+            "unassigned_intensity_fraction": 0.7784341168106126,
+            "majority_intensity_unassigned_at_point_estimate": true,
+            "majority_intensity_unassigned_across_quantization_bounds": true,
+            "verified_path_count": 2,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "molecular_ion_peaks": [
+              104
+            ],
+            "fragment_peaks": [
+              78
+            ],
+            "bond_cleavage_peaks": [
+              78
+            ],
+            "molecular_ion_only": false,
+            "fragment_intensity_coverage": 0.03342120804835169,
+            "bond_cleavage_intensity_coverage": 0.03342120804835169,
+            "evidence_complete": true,
+            "scored_peak_set_known": true,
+            "all_scored_peaks_have_verified_paths": true,
+            "categories_may_overlap": true,
+            "identity_confirmed": false,
+            "isotope_ratio_verified": false,
+            "fragment_abundance_predicted": false
+          }
+        },
+        {
+          "final_smiles": "N#Cc1cccnc1",
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          },
+          "rank": 2,
+          "tied": true,
+          "source_candidate_ids": [
+            "c01",
+            "c05",
+            "c06",
+            "c09",
+            "c10"
+          ],
+          "evidence_profile": {
+            "rule_supported_intensity_fraction": 0.22156588318938736,
+            "unassigned_intensity_fraction": 0.7784341168106126,
+            "majority_intensity_unassigned_at_point_estimate": true,
+            "majority_intensity_unassigned_across_quantization_bounds": true,
+            "verified_path_count": 2,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "molecular_ion_peaks": [
+              104
+            ],
+            "fragment_peaks": [
+              78
+            ],
+            "bond_cleavage_peaks": [
+              78
+            ],
+            "molecular_ion_only": false,
+            "fragment_intensity_coverage": 0.03342120804835169,
+            "bond_cleavage_intensity_coverage": 0.03342120804835169,
+            "evidence_complete": true,
+            "scored_peak_set_known": true,
+            "all_scored_peaks_have_verified_paths": true,
+            "categories_may_overlap": true,
+            "identity_confirmed": false,
+            "isotope_ratio_verified": false,
+            "fragment_abundance_predicted": false
+          }
+        },
+        {
+          "final_smiles": "N#Cc1ccncc1",
+          "score": {
+            "score": 0.22156588318938736,
+            "confidence_score": 22.156588318938734,
+            "score_lower": 0.18191533443477553,
+            "score_upper": 0.26703772467492043,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              77,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": true,
+                "contribution": 0.03342120804835169
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          },
+          "rank": 2,
+          "tied": true,
+          "source_candidate_ids": [
+            "c04"
+          ],
+          "evidence_profile": {
+            "rule_supported_intensity_fraction": 0.22156588318938736,
+            "unassigned_intensity_fraction": 0.7784341168106126,
+            "majority_intensity_unassigned_at_point_estimate": true,
+            "majority_intensity_unassigned_across_quantization_bounds": true,
+            "verified_path_count": 2,
+            "supported_peaks": [
+              78,
+              104
+            ],
+            "molecular_ion_peaks": [
+              104
+            ],
+            "fragment_peaks": [
+              78
+            ],
+            "bond_cleavage_peaks": [
+              78
+            ],
+            "molecular_ion_only": false,
+            "fragment_intensity_coverage": 0.03342120804835169,
+            "bond_cleavage_intensity_coverage": 0.03342120804835169,
+            "evidence_complete": true,
+            "scored_peak_set_known": true,
+            "all_scored_peaks_have_verified_paths": true,
+            "categories_may_overlap": true,
+            "identity_confirmed": false,
+            "isotope_ratio_verified": false,
+            "fragment_abundance_predicted": false
+          }
+        }
+      ],
+      "top1": {
+        "final_smiles": "N#CC=CC=CC#N",
+        "score": {
+          "score": 0.4964009108921085,
+          "confidence_score": 49.640091089210856,
+          "score_lower": 0.43505481280827746,
+          "score_upper": 0.5578555632181387,
+          "supported_peaks": [
+            77,
+            104
+          ],
+          "unassigned_peaks": [
+            12,
+            24,
+            25,
+            26,
+            27,
+            28,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            57,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            74,
+            75,
+            76,
+            78,
+            79,
+            86,
+            87,
+            88,
+            89,
+            100,
+            101,
+            102,
+            103,
+            105,
+            106
+          ],
+          "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+          "peak_contributions": [
+            {
+              "mz": 12,
+              "weight": 0.00039286441258493766,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 24,
+              "weight": 0.00039286441258493766,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 25,
+              "weight": 0.0017278359591061077,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 26,
+              "weight": 0.02039868655294903,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 27,
+              "weight": 0.0046381243357584544,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 28,
+              "weight": 0.0006436690535791619,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 36,
+              "weight": 0.002211630027655818,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 37,
+              "weight": 0.02039868655294903,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 38,
+              "weight": 0.01593647386949143,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 39,
+              "weight": 0.01245037021054018,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 40,
+              "weight": 0.0028308864353994473,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 41,
+              "weight": 0.0006436690535791619,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 48,
+              "weight": 0.002211630027655818,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 49,
+              "weight": 0.009726851726984516,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 50,
+              "weight": 0.05475730726641941,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 51,
+              "weight": 0.04277914630189017,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 52,
+              "weight": 0.05475730726641941,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 53,
+              "weight": 0.04277914630189017,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 54,
+              "weight": 0.0013498718430516466,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 57,
+              "weight": 0.00039286441258493766,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 60,
+              "weight": 0.0013498718430516466,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 61,
+              "weight": 0.0028308864353994473,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 62,
+              "weight": 0.0036235346373112926,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 63,
+              "weight": 0.005936799149770823,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 64,
+              "weight": 0.05475730726641941,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 65,
+              "weight": 0.0028308864353994473,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 74,
+              "weight": 0.0046381243357584544,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 75,
+              "weight": 0.02611031878777476,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 76,
+              "weight": 0.04277914630189017,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 77,
+              "weight": 0.30825623575107286,
+              "supported": true,
+              "contribution": 0.30825623575107286
+            },
+            {
+              "mz": 78,
+              "weight": 0.03342120804835169,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 79,
+              "weight": 0.0013498718430516466,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 86,
+              "weight": 0.00039286441258493766,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 87,
+              "weight": 0.00039286441258493766,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 88,
+              "weight": 0.00039286441258493766,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 89,
+              "weight": 0.0006436690535791619,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 100,
+              "weight": 0.0028308864353994473,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 101,
+              "weight": 0.002211630027655818,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 102,
+              "weight": 0.00039286441258493766,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 103,
+              "weight": 0.01245037021054018,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 104,
+              "weight": 0.18814467514103567,
+              "supported": true,
+              "contribution": 0.18814467514103567
+            },
+            {
+              "mz": 105,
+              "weight": 0.01245037021054018,
+              "supported": false,
+              "contribution": 0.0
+            },
+            {
+              "mz": 106,
+              "weight": 0.00039286441258493766,
+              "supported": false,
+              "contribution": 0.0
+            }
+          ]
+        },
+        "rank": 1,
+        "tied": false,
+        "source_candidate_ids": [
+          "c03",
+          "c07",
+          "c08"
+        ],
+        "evidence_profile": {
+          "rule_supported_intensity_fraction": 0.4964009108921085,
+          "unassigned_intensity_fraction": 0.5035990891078914,
+          "majority_intensity_unassigned_at_point_estimate": true,
+          "majority_intensity_unassigned_across_quantization_bounds": false,
+          "verified_path_count": 3,
+          "supported_peaks": [
+            77,
+            104
+          ],
+          "molecular_ion_peaks": [
+            104
+          ],
+          "fragment_peaks": [
+            77
+          ],
+          "bond_cleavage_peaks": [
+            77
+          ],
+          "molecular_ion_only": false,
+          "fragment_intensity_coverage": 0.30825623575107286,
+          "bond_cleavage_intensity_coverage": 0.30825623575107286,
+          "evidence_complete": true,
+          "scored_peak_set_known": true,
+          "all_scored_peaks_have_verified_paths": true,
+          "categories_may_overlap": true,
+          "identity_confirmed": false,
+          "isotope_ratio_verified": false,
+          "fragment_abundance_predicted": false
+        },
+        "quantization_sensitive": false,
+        "identity_confirmed": false,
+        "selection_basis": "highest_rule_support_score"
+      },
+      "top1_candidates": [
+        {
+          "final_smiles": "N#CC=CC=CC#N",
+          "score": {
+            "score": 0.4964009108921085,
+            "confidence_score": 49.640091089210856,
+            "score_lower": 0.43505481280827746,
+            "score_upper": 0.5578555632181387,
+            "supported_peaks": [
+              77,
+              104
+            ],
+            "unassigned_peaks": [
+              12,
+              24,
+              25,
+              26,
+              27,
+              28,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              57,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              74,
+              75,
+              76,
+              78,
+              79,
+              86,
+              87,
+              88,
+              89,
+              100,
+              101,
+              102,
+              103,
+              105,
+              106
+            ],
+            "score_semantics": "Uncalibrated rule-supported intensity coverage; not probability of correct identity",
+            "peak_contributions": [
+              {
+                "mz": 12,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 24,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 25,
+                "weight": 0.0017278359591061077,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 26,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 27,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 28,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 36,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 37,
+                "weight": 0.02039868655294903,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 38,
+                "weight": 0.01593647386949143,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 39,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 40,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 41,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 48,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 49,
+                "weight": 0.009726851726984516,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 50,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 51,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 52,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 53,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 54,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 57,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 60,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 61,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 62,
+                "weight": 0.0036235346373112926,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 63,
+                "weight": 0.005936799149770823,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 64,
+                "weight": 0.05475730726641941,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 65,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 74,
+                "weight": 0.0046381243357584544,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 75,
+                "weight": 0.02611031878777476,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 76,
+                "weight": 0.04277914630189017,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 77,
+                "weight": 0.30825623575107286,
+                "supported": true,
+                "contribution": 0.30825623575107286
+              },
+              {
+                "mz": 78,
+                "weight": 0.03342120804835169,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 79,
+                "weight": 0.0013498718430516466,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 86,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 87,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 88,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 89,
+                "weight": 0.0006436690535791619,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 100,
+                "weight": 0.0028308864353994473,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 101,
+                "weight": 0.002211630027655818,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 102,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 103,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 104,
+                "weight": 0.18814467514103567,
+                "supported": true,
+                "contribution": 0.18814467514103567
+              },
+              {
+                "mz": 105,
+                "weight": 0.01245037021054018,
+                "supported": false,
+                "contribution": 0.0
+              },
+              {
+                "mz": 106,
+                "weight": 0.00039286441258493766,
+                "supported": false,
+                "contribution": 0.0
+              }
+            ]
+          },
+          "rank": 1,
+          "tied": false,
+          "source_candidate_ids": [
+            "c03",
+            "c07",
+            "c08"
+          ],
+          "evidence_profile": {
+            "rule_supported_intensity_fraction": 0.4964009108921085,
+            "unassigned_intensity_fraction": 0.5035990891078914,
+            "majority_intensity_unassigned_at_point_estimate": true,
+            "majority_intensity_unassigned_across_quantization_bounds": false,
+            "verified_path_count": 3,
+            "supported_peaks": [
+              77,
+              104
+            ],
+            "molecular_ion_peaks": [
+              104
+            ],
+            "fragment_peaks": [
+              77
+            ],
+            "bond_cleavage_peaks": [
+              77
+            ],
+            "molecular_ion_only": false,
+            "fragment_intensity_coverage": 0.30825623575107286,
+            "bond_cleavage_intensity_coverage": 0.30825623575107286,
+            "evidence_complete": true,
+            "scored_peak_set_known": true,
+            "all_scored_peaks_have_verified_paths": true,
+            "categories_may_overlap": true,
+            "identity_confirmed": false,
+            "isotope_ratio_verified": false,
+            "fragment_abundance_predicted": false
+          },
+          "quantization_sensitive": false,
+          "identity_confirmed": false,
+          "selection_basis": "highest_rule_support_score"
+        }
+      ]
+    }
+  }
+}

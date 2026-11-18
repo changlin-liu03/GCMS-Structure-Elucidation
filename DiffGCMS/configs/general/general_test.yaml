@@ -1,0 +1,29 @@
+# DiffGCMS test run configuration
+name: 'DiffGCMS_test'
+parent_dir: '..'
+
+fit: false                          # Test only; no training
+wandb: 'disabled'
+wandb_name: 'DiffGCMS'
+gpus: 1
+
+encoder: checkpoints/spectus_encoder
+decoder: null
+resume: null
+test_only: null                    # Required: general.test_only=path/to.ckpt
+load_weights: null
+
+encoder_finetune_strategy: freeze
+encoder_unfreeze_last_n: 0
+decoder_finetune_strategy: null
+
+check_val_every_n_epochs: 1
+sample_every_val: 1
+val_samples_to_generate: 10
+val_sampling_fraction: 1.0
+test_samples_to_generate: 10
+log_every_steps: 50
+
+run_test_after_fit: false
+save_top_k: 0
+save_last: false

@@ -1,0 +1,25 @@
+# Last-four-layer fine-tuning hyperparameters. Initialize from the selected frozen-stage checkpoint with lower learning rates.
+# Last 4 encoder layers: encoder_lr=5e-5; projector and decoder: lr=1e-4.
+n_epochs: 15
+batch_size: 128
+eval_batch_size: 64
+gradient_accumulation: 1
+
+lr: 0.0001
+encoder_lr: 0.00005
+weight_decay: 0.0001
+optimizer: adamw
+scheduler: one_cycle
+pct_start: 0.1
+
+clip_grad: 1.0
+save_model: true
+num_workers: 4
+pin_memory: true
+ema_decay: 0
+progress_bar: true
+seed: 123
+
+precision: bf16-mixed
+limit_train_batches: 1.0
+limit_val_batches: 1.0

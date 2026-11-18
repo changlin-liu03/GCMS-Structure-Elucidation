@@ -1,0 +1,10 @@
+[
+  {
+    "sample_id": "synthetic_ethanol_demo",
+    "true_smiles": "CCO"
+  },
+  {
+    "sample_id": "synthetic_acetone_demo",
+    "true_smiles": "CC(=O)C"
+  }
+]

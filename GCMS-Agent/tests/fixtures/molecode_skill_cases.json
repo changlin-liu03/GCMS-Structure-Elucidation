@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "purpose": "Synthetic skill teaching cases; no experimental spectra, no evaluation labels and no LLM-derived expected answers.",
+  "cases": [
+    {
+      "id": "branched_alcohol",
+      "source_smiles": "CC(C)O",
+      "document": "topology.md",
+      "title": "邻接分叉：不要把氧接在链尾",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH3]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[CH]\n        %%@atom Mol_C_3 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_3[CH3]\n        %%@atom Mol_O_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_O_1[OH]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n        %%@bond Mol_C_2 Mol_C_3 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 --- Mol_C_3\n        %%@bond Mol_C_2 Mol_O_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 --- Mol_O_1\n    end\n",
+      "initial_valid": true,
+      "facts": {
+        "composition": {
+          "C": 3,
+          "O": 1
+        },
+        "formula": "C3H8O",
+        "neighbors": {
+          "Mol_C_2": {
+            "Mol_C_1": 1,
+            "Mol_C_3": 1,
+            "Mol_O_1": 1
+          }
+        },
+        "atom_attributes": {
+          "Mol_C_2": {
+            "hydrogens": 1
+          }
+        },
+        "rings": []
+      },
+      "trials": [],
+      "explanation": "先找连接三条重原子边的 Mol_C_2：邻居是 Mol_C_1、Mol_C_3、Mol_O_1，三条均为单键。Mol_C_2 的标签是 CH，另两个碳是 CH3；这是羟基接在中间碳上的仲醇。三碳骨架 C1–C2–C3 本身是直链，包含氧的重原子图在 C2 处分叉；不能把 C1–C2–C3–O1 当作链。共 3 个碳，分子式 C3H8O。"
+    },
+    {
+      "id": "substituted_aromatic",
+      "source_smiles": "Cc1ccc(O)cc1",
+      "document": "topology.md",
+      "title": "芳香取代：从闭合路径找取代位点",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH3]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[C]\n        %%@atom Mol_C_3 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_3[CH]\n        %%@atom Mol_C_4 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_4[CH]\n        %%@atom Mol_C_5 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_5[C]\n        %%@atom Mol_O_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_O_1[OH]\n        %%@atom Mol_C_6 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_6[CH]\n        %%@atom Mol_C_7 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_7[CH]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n        %%@bond Mol_C_2 Mol_C_3 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 === Mol_C_3\n        %%@bond Mol_C_3 Mol_C_4 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_3 --- Mol_C_4\n        %%@bond Mol_C_4 Mol_C_5 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_4 === Mol_C_5\n        %%@bond Mol_C_5 Mol_O_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_5 --- Mol_O_1\n        %%@bond Mol_C_5 Mol_C_6 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_5 --- Mol_C_6\n        %%@bond Mol_C_6 Mol_C_7 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_6 === Mol_C_7\n        %%@bond Mol_C_7 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_7 --- Mol_C_2\n    end\n",
+      "initial_valid": true,
+      "facts": {
+        "composition": {
+          "C": 7,
+          "O": 1
+        },
+        "formula": "C7H8O",
+        "neighbors": {
+          "Mol_C_2": {
+            "Mol_C_1": 1,
+            "Mol_C_3": 2,
+            "Mol_C_7": 1
+          },
+          "Mol_C_5": {
+            "Mol_C_4": 2,
+            "Mol_C_6": 1,
+            "Mol_O_1": 1
+          }
+        },
+        "atom_attributes": {
+          "Mol_C_2": {
+            "hydrogens": 0
+          },
+          "Mol_C_5": {
+            "hydrogens": 0
+          }
+        },
+        "rings": [
+          [
+            "Mol_C_2",
+            "Mol_C_3",
+            "Mol_C_4",
+            "Mol_C_5",
+            "Mol_C_6",
+            "Mol_C_7"
+          ]
+        ],
+        "substructures": [
+          {
+            "name": "phenol",
+            "smarts": "[c][OX2H]",
+            "atom_sets": [
+              [
+                "Mol_C_5",
+                "Mol_O_1"
+              ]
+            ]
+          }
+        ]
+      },
+      "trials": [],
+      "explanation": "闭合路径是 C2–C3–C4–C5–C6–C7–C2（这里的 Cn 均指 Mol_C_n）。C1 是接在 C2 上的环外甲基，O1 接在 C5 上且带一个氢，是酚羟基。两个取代位置沿环相隔三条边；C2、C5 均为 [C]，不能再补一个氢。正常输入在本适配器中显示为 Kekulé 单双键；交替单双键本身不能代替芳香性验证。"
+    },
+    {
+      "id": "fused_rings",
+      "source_smiles": "c1ccc2ccccc2c1",
+      "document": "topology.md",
+      "title": "稠环：共享原子只数一次",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[CH]\n        %%@atom Mol_C_3 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_3[CH]\n        %%@atom Mol_C_4 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_4[C]\n        %%@atom Mol_C_5 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_5[CH]\n        %%@atom Mol_C_6 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_6[CH]\n        %%@atom Mol_C_7 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_7[CH]\n        %%@atom Mol_C_8 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_8[CH]\n        %%@atom Mol_C_9 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_9[C]\n        %%@atom Mol_C_10 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_10[CH]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 === Mol_C_2\n        %%@bond Mol_C_2 Mol_C_3 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 --- Mol_C_3\n        %%@bond Mol_C_3 Mol_C_4 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_3 === Mol_C_4\n        %%@bond Mol_C_4 Mol_C_5 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_4 --- Mol_C_5\n        %%@bond Mol_C_5 Mol_C_6 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_5 === Mol_C_6\n        %%@bond Mol_C_6 Mol_C_7 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_6 --- Mol_C_7\n        %%@bond Mol_C_7 Mol_C_8 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_7 === Mol_C_8\n        %%@bond Mol_C_8 Mol_C_9 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_8 --- Mol_C_9\n        %%@bond Mol_C_9 Mol_C_10 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_9 === Mol_C_10\n        %%@bond Mol_C_10 Mol_C_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_10 --- Mol_C_1\n        %%@bond Mol_C_9 Mol_C_4 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_9 --- Mol_C_4\n    end\n",
+      "initial_valid": true,
+      "facts": {
+        "composition": {
+          "C": 10
+        },
+        "formula": "C10H8",
+        "neighbors": {
+          "Mol_C_4": {
+            "Mol_C_3": 2,
+            "Mol_C_5": 1,
+            "Mol_C_9": 1
+          },
+          "Mol_C_9": {
+            "Mol_C_8": 1,
+            "Mol_C_10": 2,
+            "Mol_C_4": 1
+          }
+        },
+        "atom_attributes": {
+          "Mol_C_4": {
+            "hydrogens": 0
+          },
+          "Mol_C_9": {
+            "hydrogens": 0
+          }
+        },
+        "rings": [
+          [
+            "Mol_C_1",
+            "Mol_C_2",
+            "Mol_C_3",
+            "Mol_C_4",
+            "Mol_C_9",
+            "Mol_C_10"
+          ],
+          [
+            "Mol_C_4",
+            "Mol_C_5",
+            "Mol_C_6",
+            "Mol_C_7",
+            "Mol_C_8",
+            "Mol_C_9"
+          ]
+        ],
+        "shared_ring_atoms": [
+          "Mol_C_4",
+          "Mol_C_9"
+        ]
+      },
+      "trials": [],
+      "explanation": "两个六元闭合路径为 C1–C2–C3–C4–C9–C10–C1 与 C4–C5–C6–C7–C8–C9–C4。它们共用 C4、C9 和 C4–C9 这条边；重原子总数是 6+6−2=10，不是 12。共享的 C4、C9 各连三个碳且没有氢。这里列的是可核对的两个环路径；不能由任意图的所有闭合路径数量直接定义化学环数。"
+    },
+    {
+      "id": "carbonyl_context",
+      "source_smiles": "CC(=O)NCC(=O)OC",
+      "document": "topology.md",
+      "title": "官能团：羰基相邻原子决定名称",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH3]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[C]\n        %%@atom Mol_O_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_O_1[O]\n        %%@atom Mol_N_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_N_1[NH]\n        %%@atom Mol_C_3 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_3[CH2]\n        %%@atom Mol_C_4 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_4[C]\n        %%@atom Mol_O_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_O_2[O]\n        %%@atom Mol_O_3 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_O_3[O]\n        %%@atom Mol_C_5 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_5[CH3]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n        %%@bond Mol_C_2 Mol_O_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 === Mol_O_1\n        %%@bond Mol_C_2 Mol_N_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 --- Mol_N_1\n        %%@bond Mol_N_1 Mol_C_3 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_N_1 --- Mol_C_3\n        %%@bond Mol_C_3 Mol_C_4 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_3 --- Mol_C_4\n        %%@bond Mol_C_4 Mol_O_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_4 === Mol_O_2\n        %%@bond Mol_C_4 Mol_O_3 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_4 --- Mol_O_3\n        %%@bond Mol_O_3 Mol_C_5 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_O_3 --- Mol_C_5\n    end\n",
+      "initial_valid": true,
+      "facts": {
+        "composition": {
+          "C": 5,
+          "N": 1,
+          "O": 3
+        },
+        "formula": "C5H9NO3",
+        "neighbors": {
+          "Mol_C_2": {
+            "Mol_C_1": 1,
+            "Mol_O_1": 2,
+            "Mol_N_1": 1
+          },
+          "Mol_C_4": {
+            "Mol_C_3": 1,
+            "Mol_O_2": 2,
+            "Mol_O_3": 1
+          },
+          "Mol_O_3": {
+            "Mol_C_4": 1,
+            "Mol_C_5": 1
+          }
+        },
+        "atom_attributes": {
+          "Mol_O_3": {
+            "hydrogens": 0
+          },
+          "Mol_N_1": {
+            "hydrogens": 1
+          }
+        },
+        "substructures": [
+          {
+            "name": "amide",
+            "smarts": "[CX3](=[OX1])[NX3]",
+            "atom_sets": [
+              [
+                "Mol_C_2",
+                "Mol_O_1",
+                "Mol_N_1"
+              ]
+            ]
+          },
+          {
+            "name": "ester",
+            "smarts": "[CX3](=[OX1])[OX2][#6]",
+            "atom_sets": [
+              [
+                "Mol_C_4",
+                "Mol_O_2",
+                "Mol_O_3",
+                "Mol_C_5"
+              ]
+            ]
+          }
+        ]
+      },
+      "trials": [],
+      "explanation": "C2===O1 且 C2---N1，构成酰胺局部结构；N1 不是可脱离羰基环境单独解释的普通胺。C4===O2 且 C4---O3---C5，构成酯。O3 没有氢，是连接两个碳的酯氧，不是醇羟基。两个羰基氧均为 [O]，不能把零氢误解为未知氢。"
+    },
+    {
+      "id": "isotope_ez",
+      "source_smiles": "[13CH3]/C=C/C",
+      "document": "topology.md",
+      "title": "同位素与 E/Z：保留身份和参考原子",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[13CH3]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[CH]\n        %%@atom Mol_C_3 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_3[CH]\n        %%@atom Mol_C_4 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_4[CH3]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n        %%@bond Mol_C_2 Mol_C_3 {\"stereo\":3,\"stereo_atoms\":[\"Mol_C_1\",\"Mol_C_4\"]}\n        Mol_C_2 ===|E| Mol_C_3\n        %%@bond Mol_C_3 Mol_C_4 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_3 --- Mol_C_4\n    end\n",
+      "initial_valid": true,
+      "facts": {
+        "composition": {
+          "C": 4
+        },
+        "neighbors": {
+          "Mol_C_2": {
+            "Mol_C_1": 1,
+            "Mol_C_3": 2
+          }
+        },
+        "atom_attributes": {
+          "Mol_C_1": {
+            "isotope": 13,
+            "hydrogens": 3
+          }
+        },
+        "bond_attributes": [
+          {
+            "a": "Mol_C_2",
+            "b": "Mol_C_3",
+            "stereo": 3,
+            "stereo_atoms": [
+              "Mol_C_1",
+              "Mol_C_4"
+            ]
+          }
+        ]
+      },
+      "trials": [],
+      "explanation": "[13CH3] 是一个 13C 原子带三个氢，不是 13 个碳。C2===|E|C3 的 E 标记与 %%@bond 中的 stereo=3 及按两端对应排列的参考原子 [C1,C4] 一起保存。不得删去元数据后仅凭裸 E 标记重建结构；也不能把这两个参考原子重新编号。该例只是读取/保留已有构型，MCP 编辑接口没有重新设置 stereo/stereo_atoms 的字段。"
+    },
+    {
+      "id": "alcohol_to_aldehyde",
+      "source_smiles": "CCO",
+      "document": "transaction.md",
+      "title": "键级和氢数要作为一个事务修改",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH3]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[CH2]\n        %%@atom Mol_O_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_O_1[OH]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n        %%@bond Mol_C_2 Mol_O_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 --- Mol_O_1\n    end\n",
+      "initial_valid": true,
+      "facts": {
+        "composition": {
+          "C": 2,
+          "O": 1
+        },
+        "formula": "C2H6O",
+        "neighbors": {
+          "Mol_C_2": {
+            "Mol_C_1": 1,
+            "Mol_O_1": 1
+          }
+        }
+      },
+      "trials": [
+        {
+          "request": {
+            "base_version": 0,
+            "operations": [
+              {
+                "op": "set_bond",
+                "a": "Mol_C_2",
+                "b": "Mol_O_1",
+                "order": 2
+              },
+              {
+                "op": "set_atom",
+                "id": "Mol_C_2",
+                "hydrogens": 1
+              },
+              {
+                "op": "set_atom",
+                "id": "Mol_O_1",
+                "hydrogens": 0
+              }
+            ]
+          },
+          "valid": true,
+          "expected_smiles": "CC=O"
+        },
+        {
+          "request": {
+            "base_version": 0,
+            "operations": [
+              {
+                "op": "set_bond",
+                "a": "Mol_C_2",
+                "b": "Mol_O_1",
+                "order": 2
+              }
+            ]
+          },
+          "valid": false
+        }
+      ],
+      "explanation": "若另外已有证据支持醛假说，C2–O1 从单键改双键时，C2 的 CH2 要变 CH，O1 的 OH 要变 O。第一段 JSON 是可通过化学验证的完整试验；第二段只改键级，会因保留过多氢被拒绝。重原子保持 C2O，但分子式从 C2H6O 变 C2H4O，必须重算谱图证据。合法性通过不代表宿主会接受这次合法→合法优化。"
+    },
+    {
+      "id": "unknown_hydrogen",
+      "source_smiles": "CCO",
+      "document": "transaction.md",
+      "title": "未知氢不是零氢",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH3]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[C;H=?]\n        %%@atom Mol_O_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_O_1[OH]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n        %%@bond Mol_C_2 Mol_O_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 --- Mol_O_1\n    end\n",
+      "initial_valid": false,
+      "facts": {
+        "composition": {
+          "C": 2,
+          "O": 1
+        },
+        "neighbors": {
+          "Mol_C_2": {
+            "Mol_C_1": 1,
+            "Mol_O_1": 1
+          }
+        },
+        "atom_attributes": {
+          "Mol_C_2": {
+            "hydrogens": null
+          }
+        }
+      },
+      "trials": [
+        {
+          "request": {
+            "base_version": 0,
+            "operations": [
+              {
+                "op": "set_atom",
+                "id": "Mol_C_2",
+                "hydrogens": 2
+              }
+            ]
+          },
+          "valid": true,
+          "expected_smiles": "CCO"
+        }
+      ],
+      "explanation": "[C;H=?] 表示氢数尚未确定，`graph.atoms` 中该原子的 `hydrogens` 为 null；它不同于 [C]（已知零氢）。此例 C2 只连 C1 和 O1 两条单键，且已知其为中性、无自由基碳；因此提出 hydrogens=2 的候选修复，再由工具验收。不要把这个补氢结论套到芳香碳、带电原子或自由基上。"
+    },
+    {
+      "id": "overvalent_carbon",
+      "source_smiles": "[CH4]C",
+      "document": "transaction.md",
+      "title": "过价碳：保留连接，修正明确的氢状态",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH4]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[CH3]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n    end\n",
+      "initial_valid": false,
+      "facts": {
+        "composition": {
+          "C": 2
+        },
+        "neighbors": {
+          "Mol_C_1": {
+            "Mol_C_2": 1
+          }
+        },
+        "atom_attributes": {
+          "Mol_C_1": {
+            "hydrogens": 4
+          }
+        }
+      },
+      "trials": [
+        {
+          "request": {
+            "base_version": 0,
+            "operations": [
+              {
+                "op": "set_atom",
+                "id": "Mol_C_1",
+                "hydrogens": 3
+              }
+            ]
+          },
+          "valid": true,
+          "expected_smiles": "CC"
+        }
+      ],
+      "explanation": "C1 的 [CH4] 再连 C2 一条单键，相当于五个普通共价键价，输入图可读但不合法。此教学修复把 C1 的氢数改为 3，保留两个碳及其连接，产物为 C2H6。这里只展示一种化学修复；没有观测谱峰，不声称它是实验正确结构。"
+    },
+    {
+      "id": "nonring_aromatic",
+      "source_smiles": "CC",
+      "document": "repair.md",
+      "title": "芳香标记错误：检查标记与实际拓扑",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":true,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH3]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[CH3]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n    end\n",
+      "initial_valid": false,
+      "facts": {
+        "composition": {
+          "C": 2
+        },
+        "neighbors": {
+          "Mol_C_1": {
+            "Mol_C_2": 1
+          }
+        },
+        "atom_attributes": {
+          "Mol_C_1": {
+            "aromatic": true
+          }
+        },
+        "rings": []
+      },
+      "trials": [
+        {
+          "request": {
+            "base_version": 0,
+            "operations": [
+              {
+                "op": "set_atom",
+                "id": "Mol_C_1",
+                "aromatic": false
+              }
+            ]
+          },
+          "valid": true,
+          "expected_smiles": "CC"
+        }
+      ],
+      "explanation": "C1 被 %%@atom 标记 aromatic=true，但全图只有一条普通单键、没有任何环；不能把这个标记当成合法芳香性的证明。保留 CH3–CH3 拓扑与氢数，明确把这个错误标记改为 false 后再验证。此例是非环原子的标记错误；真正的芳香环异常还要逐项核对环连接、各键级、原子标记和氢数，不能统一清空芳香性。"
+    },
+    {
+      "id": "ring_rewire",
+      "source_smiles": "C1CCC1",
+      "document": "repair.md",
+      "title": "环重连：同一批次改变拓扑与氢数",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH2]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_2[CH2]\n        %%@atom Mol_C_3 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_3[CH2]\n        %%@atom Mol_C_4 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_4[CH2]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n        %%@bond Mol_C_2 Mol_C_3 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 --- Mol_C_3\n        %%@bond Mol_C_3 Mol_C_4 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_3 --- Mol_C_4\n        %%@bond Mol_C_4 Mol_C_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_4 --- Mol_C_1\n    end\n",
+      "initial_valid": true,
+      "facts": {
+        "composition": {
+          "C": 4
+        },
+        "formula": "C4H8",
+        "rings": [
+          [
+            "Mol_C_1",
+            "Mol_C_2",
+            "Mol_C_3",
+            "Mol_C_4"
+          ]
+        ]
+      },
+      "trials": [
+        {
+          "request": {
+            "base_version": 0,
+            "operations": [
+              {
+                "op": "remove_bond",
+                "a": "Mol_C_1",
+                "b": "Mol_C_4"
+              },
+              {
+                "op": "set_bond",
+                "a": "Mol_C_1",
+                "b": "Mol_C_3",
+                "order": 1
+              },
+              {
+                "op": "set_atom",
+                "id": "Mol_C_3",
+                "hydrogens": 1
+              },
+              {
+                "op": "set_atom",
+                "id": "Mol_C_4",
+                "hydrogens": 3
+              }
+            ]
+          },
+          "valid": true,
+          "expected_smiles": "CC1CC1"
+        }
+      ],
+      "explanation": "初始环是 C1–C2–C3–C4–C1。删除 C1–C4 后，C1 与 C4 仍通过 C2、C3 连通，所以断掉一条环键不一定产生两个片段。再增加 C1–C3 后形成三元环 C1–C2–C3–C1，C4 成为 C3 上的甲基。C3 从 CH2 变 CH，C4 从 CH2 变 CH3；C1 的连接数先减后增，最终仍是 CH2。四项操作整体校验，重原子和 C4H8 分子式均保持；这种教学结构重排不自带谱图支持。"
+    },
+    {
+      "id": "specified_stereo_rejection",
+      "source_smiles": "C[C@H](O)F",
+      "document": "repair.md",
+      "title": "已指定手性中心：识别工具能力边界",
+      "molecode": "graph TB\n    %%@codec gcms-molecode-1\n    subgraph Molecule[\"Candidate\"]\n        %%@atom Mol_C_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_C_1[CH3]\n        %%@atom Mol_C_2 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":2,\"atom_map\":0}\n        Mol_C_2[CH]\n        %%@atom Mol_O_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_O_1[OH]\n        %%@atom Mol_F_1 {\"aromatic\":false,\"radicals\":0,\"chiral_tag\":0,\"atom_map\":0}\n        Mol_F_1[F]\n        %%@bond Mol_C_1 Mol_C_2 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_1 --- Mol_C_2\n        %%@bond Mol_C_2 Mol_O_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 --- Mol_O_1\n        %%@bond Mol_C_2 Mol_F_1 {\"stereo\":0,\"stereo_atoms\":[]}\n        Mol_C_2 --- Mol_F_1\n    end\n",
+      "initial_valid": true,
+      "facts": {
+        "composition": {
+          "C": 2,
+          "O": 1,
+          "F": 1
+        },
+        "formula": "C2H5FO",
+        "atom_attributes": {
+          "Mol_C_2": {
+            "chiral_tag": 2
+          }
+        },
+        "neighbors": {
+          "Mol_C_2": {
+            "Mol_C_1": 1,
+            "Mol_O_1": 1,
+            "Mol_F_1": 1
+          }
+        }
+      },
+      "trials": [
+        {
+          "request": {
+            "base_version": 0,
+            "operations": [
+              {
+                "op": "remove_bond",
+                "a": "Mol_C_2",
+                "b": "Mol_O_1"
+              },
+              {
+                "op": "set_bond",
+                "a": "Mol_C_1",
+                "b": "Mol_O_1",
+                "order": 1
+              },
+              {
+                "op": "set_atom",
+                "id": "Mol_C_1",
+                "hydrogens": 2
+              },
+              {
+                "op": "set_atom",
+                "id": "Mol_C_2",
+                "hydrogens": 2
+              }
+            ]
+          },
+          "valid": false,
+          "error_contains": "specified stereocenter"
+        }
+      ],
+      "explanation": "C2 的非零 chiral_tag 是相对于邻接顺序的构型记录，不能把整数 2 直接称为 R 或 S。下面试验把 OH 从 C2 移到 C1；虽然也配套改了氢数，却改变了已指定手性中心 C2 的邻接，当前工具必须拒绝。收到这种错误后应保留构型并说明不支持，而不是删除 chiral_tag、改写为 _R/_S 或不断重试同一方案。"
+    }
+  ]
+}
