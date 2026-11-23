@@ -222,7 +222,7 @@
   },
   "exporter": {
     "path": "scripts/export_case_studies.py",
-    "sha256": "3a465274f8ab29d8476729f10b2f212323384ddfbf72e07bced3ecfeff86eb3b",
+    "sha256": "bbbaa1d9141984e58539b024c01d519574340de1557f88fb2472394cadb118e7",
     "python": "3.10.19",
     "rdkit": "2022.09.5",
     "pillow": "12.1.1"
