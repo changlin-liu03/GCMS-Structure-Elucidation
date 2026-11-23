@@ -1,4 +1,4 @@
-# case1055: Service failure, retry, and generation of the reference structure
+# Butyl butanoate: Service failure, retry, and generation of the reference structure
 
 **English** | [简体中文](README.md)
 

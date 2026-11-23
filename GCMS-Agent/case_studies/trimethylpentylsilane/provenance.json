@@ -419,7 +419,7 @@
   },
   "exporter": {
     "path": "scripts/export_case_studies.py",
-    "sha256": "247ae947d92bf926f3130d7872e8e1bc4aff93903593d008c835b1c4bcba072f",
+    "sha256": "fc35e9b08ce2df8598ffa2db35c0188210a292cad1d711a7f8895b71e15ca8a0",
     "python": "3.10.19",
     "rdkit": "2022.09.5",
     "pillow": "12.1.1"
@@ -432,13 +432,13 @@
     "Provide Chinese and English editorial narratives; retain model-authored text in its original language."
   ],
   "exported_files_sha256": {
-    "README.en.md": "b0ea9ac169ced46e1b79cf0ce50c2523ead3034785ea2d355b471297ce56387a",
-    "README.md": "453429d85576f3bcb4f9ec5b33f313df034ef30345d3257349eaf9f696941cd8",
+    "README.en.md": "2356ad8f4646424c629e8a5a137a7220001ef2f136d40bd83cbda3ba02063585",
+    "README.md": "0a0053de6e93a9ff2f1e5a2a668553cd2b6ea26ccc09398af5296b4936cf152f",
     "input.json": "8ff8acf9ee2307912fe26fec0fac72603c0b6e388fa1052359a854997c11fe82",
     "reference.json": "26f6b041ab0c86e09beb763dc95a45fba87164b6885e0937edeb207b1c9ab5cd",
     "result.json": "a1e5ba9367a88082562d0a7de3fbb7560f174c165a34d043343ce3114db96969",
     "trajectory.json": "271064c4d7a1a3ad076797a64132991ce4764138d868dcd0aa8e73c2b3355487",
-    "trajectory.png": "58f8d5568755e718a645e3b087b1945df53824d0bda14f5370db621055ec55ce"
+    "trajectory.png": "a753a1d4c26538a0920ca52b33a6ae2f519c66ad2fba2167952f6e10bb5dbfd8"
   },
   "checksum_scope": "All other files in this case directory; provenance.json excludes itself to avoid recursive hashing.",
   "reproduction_limit": "A source fingerprint is not a source snapshot. Historical model results are not promised reproducible with current code."

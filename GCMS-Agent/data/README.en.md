@@ -6,9 +6,9 @@ The full research dataset is private and is not distributed with the GitHub repo
 
 ## Three authorized real-case exceptions
 
-The data holder explicitly authorized publication of spectra, candidate structures, reference answers, and edit histories for [case84, case1055, and case1062](../case_studies/README.en.md). Field-selected materials are stored separately in `case_studies/`. This does not remove ignore rules for `data/raw_linear_v1/`, raw `runs/`, or other data, and does not authorize distribution of the full dataset.
+The data holder explicitly authorized publication of spectra, candidate structures, reference answers, and edit histories for [Hexa-2,4-dienedinitrile, Butyl butanoate, and Trimethylpentylsilane](../case_studies/README.en.md). Field-selected materials are stored separately in `case_studies/`. This does not remove ignore rules for `data/raw_linear_v1/`, raw `runs/`, or other data, and does not authorize distribution of the full dataset.
 
-Case84 comes from a legacy binned-intensity experiment and retains its original `position_ids`; it is not relabeled as current `raw_linear` input. The other two cases retain their raw linear inputs. The main Agent run in each case is incomplete; the bundles retain that status and failures/retries. The synthetic `data/examples/` files serve a different purpose from these real historical cases.
+All three display inputs use raw linear intensities. The values for hexa-2,4-dienedinitrile come from `Agent-Harness/test.json`. Its trajectory, scores, and ranking come from the historical binned-intensity run. The main Agent run in each case is incomplete; the bundles retain that status and failures/retries. The synthetic `data/examples/` files serve a different purpose from these real historical cases.
 
 ## Directory roles
 

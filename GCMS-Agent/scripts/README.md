@@ -68,7 +68,7 @@ $env:PYTHONIOENCODING = 'utf-8'
 
 ## 公开案例导出
 
-[export_case_studies.py](export_case_studies.py)仅处理已获准公开的三个固定案例，从本地冻结记录生成 [case_studies/](../case_studies/README.md)。原始 `runs/` 必须存在；脚本先核对冻结哈希，按字段选择材料，去重科学对象并保留所有已记录试验和未完成状态。不调用模型、不重新评分，也不读取整个私有数据集或会话工作区。
+[export_case_studies.py](export_case_studies.py)仅处理已获准公开的三个固定案例，从本地冻结记录生成 [case_studies/](../case_studies/README.md)。需要原始 `runs/` 和提供 2,4-己二烯二腈原始强度的 `Agent-Harness/test.json`（可用 `--raw-source` 指定位置）；脚本先核对冻结哈希，按字段选择材料，去重科学对象并保留所有已记录试验和未完成状态。不调用模型、不重新评分，也不读取整个私有数据集或会话工作区。
 
 需要项目 Python 环境、RDKit 和 Pillow。首次导出要求目标目录不存在；`--check` 在内存中重建并与现有公开文件逐字节比较，不覆盖文件。跨平台字体/绘图依赖可能改变图片字节，严格比较适用于相同导出环境。
 

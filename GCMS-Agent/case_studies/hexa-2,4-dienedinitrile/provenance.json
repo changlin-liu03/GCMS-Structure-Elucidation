@@ -222,7 +222,7 @@
   },
   "exporter": {
     "path": "scripts/export_case_studies.py",
-    "sha256": "247ae947d92bf926f3130d7872e8e1bc4aff93903593d008c835b1c4bcba072f",
+    "sha256": "3a465274f8ab29d8476729f10b2f212323384ddfbf72e07bced3ecfeff86eb3b",
     "python": "3.10.19",
     "rdkit": "2022.09.5",
     "pillow": "12.1.1"
@@ -230,19 +230,29 @@
   "transforms": [
     "Field projection; exclude local paths, endpoints, workspace/cache/credential contents and raw session streams.",
     "Intern graphs, full score objects and individual evidence paths by canonical-JSON SHA-256.",
-    "Preserve old encoding, original scores, ordering, trial decisions and incomplete status; no inference or rescoring.",
+    "Copy the matched raw linear intensities into the display input. Historical trajectories, scores and rankings retain the binned-input run.",
     "Render focus structures from recorded SMILES; no new experimental claim.",
     "Provide Chinese and English editorial narratives; retain model-authored text in its original language."
   ],
   "exported_files_sha256": {
-    "README.en.md": "da46c5a1bf468ba7b1bf49634de3bbd706ce18756093ac399880b01c8b0b8466",
-    "README.md": "e568936cb694da94f818f11999b232355f2a8ea52a77f6cfa32fa1012be90f5f",
-    "input.json": "948a3246c0deb6b193758e665ab55393a12c5df0d567167a99d6da8eee035664",
+    "README.en.md": "91653cff5de1a3f5ec5f1706586c12fcbc7cb80f88cee56bbcebc6d2d8983123",
+    "README.md": "7daed5602f12767d03fb9b96e87539e4b6a7d60dd8b33e8198a27098da014ec1",
+    "input.json": "2df0ef807b7bb816b5452c8cab6c4ade70510d30da34d431909dfb8e8a354912",
     "reference.json": "a5b7a61d0029858d07ebddf274d44074ff5ce14d2373245e602713f58dcba232",
     "result.json": "dfc53847c366c989e28d11162de24a4435d9290af3f7b694b56ec8250754b7b9",
     "trajectory.json": "a1aed04f7d1e5c1ed854289fd621a7f55be5aba831fd5e5442958114b8362bf2",
-    "trajectory.png": "b5a37c29826ffcee438fe63e2c4e047b3b7a9e3aa956dc7762d5b529a4c6056d"
+    "trajectory.png": "8e1ee57641389968c6ce1dc3c60b2c1261847d8ca468b5790f9963b9794f4f25"
   },
   "checksum_scope": "All other files in this case directory; provenance.json excludes itself to avoid recursive hashing.",
-  "reproduction_limit": "A source fingerprint is not a source snapshot. Historical model results are not promised reproducible with current code."
+  "reproduction_limit": "A source fingerprint is not a source snapshot. Historical model results are not promised reproducible with current code.",
+  "display_intensity_source": {
+    "source": "Agent-Harness/test.json",
+    "file_sha256": "8ce56d1a8f8e71e7d6080b09cce180eaeddb1a5a05676d389577efd9c45f82e0",
+    "matched_by": [
+      "true_smiles",
+      "input_ids"
+    ],
+    "field": "intensity",
+    "peak_count": 43
+  }
 }

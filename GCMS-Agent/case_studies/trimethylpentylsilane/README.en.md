@@ -1,4 +1,4 @@
-# case1062: Silicon-containing structure edits and tied rankings
+# Trimethylpentylsilane: Silicon-containing structure edits and tied rankings
 
 **English** | [简体中文](README.md)
 

@@ -3,7 +3,7 @@
 Default: create case_studies/ only if absent. --check: regenerate in memory and
 compare every byte with the published bundle. Requires the private source runs
 locally; readers of the public bundle do not need them. Never reads workspaces,
-.env, CLI caches, raw console logs, or the full research dataset.
+.env, CLI caches, raw console logs, or other private sources beyond the specified spectrum file and case runs.
 """
 from __future__ import annotations
 
@@ -19,19 +19,23 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 CASES = (
-    {"id": "case84", "source": "heavy8_10_miss_20261111_no_response_cap",
+    {"id": "hexa-2,4-dienedinitrile", "name_en": "Hexa-2,4-dienedinitrile", "name_zh": "2,4-己二烯二腈", "source": "heavy8_10_miss_20261111_no_response_cap",
      "stages": (("agent", "agent"),), "main": "agent", "focus": "c03", "trials": 20,
      "title": "多轮探索与历史最佳保留", "legacy": True},
-    {"id": "case1055", "source": "case1055_oxygen_20261116",
+    {"id": "butyl-butanoate", "name_en": "Butyl butanoate", "name_zh": "丁酸正丁酯", "source": "case1055_oxygen_20261116",
      "stages": (("initial_baseline", "baseline"), ("initial_agent", "agent"),
                 ("retry_baseline", "retry/baseline"), ("agent", "retry/agent")),
      "main": "agent", "focus": "c03", "trials": 26,
      "title": "服务失败、重试与参考结构生成", "legacy": False},
-    {"id": "case1062", "source": "case1062_silyl_20261116",
+    {"id": "trimethylpentylsilane", "name_en": "Trimethylpentylsilane", "name_zh": "三甲基正戊基硅烷", "source": "case1062_silyl_20261116",
      "stages": (("baseline", "baseline"), ("agent", "agent")),
      "main": "agent", "focus": "c01", "trials": 16,
      "title": "含硅结构编辑与并列排名", "legacy": False},
 )
+ORIGINAL_PROVENANCE_SHA256 = {
+    "butyl-butanoate": "e2c625ad194dfe62e7a4d56202a48fe5dac4181316c3575d03ceb53929b36a46",
+    "trimethylpentylsilane": "6a8b42a719cf616bc1c3fa76443cfb5006010817dcc22fe22f0531048b2c413b",
+}
 FILES = ("README.md", "README.en.md", "input.json", "reference.json", "trajectory.json",
          "result.json", "provenance.json", "trajectory.png")
 VALIDATION_FIELDS = ("valid", "errors", "canonical_smiles", "formula", "exact_mass",
@@ -232,7 +236,7 @@ def render_figure(case, steps, pool):
     width = 350 * len(steps)
     canvas = Image.new("RGB", (width, 420), "white")
     draw = ImageDraw.Draw(canvas)
-    draw.text((22, 16), f"{case['id']} | {case['focus']} | recorded committed structures", font=font(23), fill="#12283b")
+    draw.text((22, 16), f"{case['name_en']} | {case['focus']} | recorded committed structures", font=font(23), fill="#12283b")
     for index, (label, smiles, assessment) in enumerate(steps):
         x = index * 350
         draw.text((x + 15, 62), label, font=font(17), fill="#126c70")
@@ -277,21 +281,21 @@ def score_text(score, *, english=False):
 
 
 NOTES = {
- "case84": "c03 从断开的初始图开始，先形成合法环状结构，再得到参考结构，随后仍探索了更低分结构。最终恢复较早的历史最佳，而不是直接输出最后探索图。旧版保存排名中参考结构位于第 1，但整例仍未完成。这里使用旧分箱编码与旧评分区间，不进行线性强度转换，也不按当前来源计票规则重排。",
- "case1055": "初次 Agent 尝试因服务错误中止；重试使用相同输入和参考标签。关键候选 c03 在第一轮正式提交参考结构，但另一结构覆盖分略高，因此参考结构在保存的展示排名中位于第 2。所有来源槽位最终合法，仍因会话额度结束而未完成。初次失败的未知用量估算与重试费用分开保存，不能仅统计重试后宣称一次完整成功。",
- "case1062": "关键候选 c01 在第一轮正式提交参考含硅结构。保存结果中六个不同结构同分，参考结构位于展示顺序第 6，证据排名仍为并列第 1。当前展示顺序不等于独立谱学区分；生成参考结构并未让它成为 Top1。整体在会话额度耗尽后结束，严格端到端口径仍记未完成。",
+ "hexa-2,4-dienedinitrile": "c03 从断开的初始图开始，先形成合法环状结构，再得到参考结构，随后仍探索了更低分结构。最终恢复较早的历史最佳，而不是直接输出最后探索图。旧版保存排名中参考结构位于第 1，但整例仍未完成。历史运行使用分箱强度，轨迹、评分区间和排名均取自该次运行。",
+ "butyl-butanoate": "初次 Agent 尝试因服务错误中止；重试使用相同输入和参考标签。关键候选 c03 在第一轮正式提交参考结构，但另一结构覆盖分略高，因此参考结构在保存的展示排名中位于第 2。所有来源槽位最终合法，仍因会话额度结束而未完成。初次失败的未知用量估算与重试费用分开保存，不能仅统计重试后宣称一次完整成功。",
+ "trimethylpentylsilane": "关键候选 c01 在第一轮正式提交参考含硅结构。保存结果中六个不同结构同分，参考结构位于展示顺序第 6，证据排名仍为并列第 1。当前展示顺序不等于独立谱学区分；生成参考结构并未让它成为 Top1。整体在会话额度耗尽后结束，严格端到端口径仍记未完成。",
 }
 
 
 TITLES_EN = {
-    "case84": "Multi-round exploration and retention of the historical best",
-    "case1055": "Service failure, retry, and generation of the reference structure",
-    "case1062": "Silicon-containing structure edits and tied rankings",
+    "hexa-2,4-dienedinitrile": "Multi-round exploration and retention of the historical best",
+    "butyl-butanoate": "Service failure, retry, and generation of the reference structure",
+    "trimethylpentylsilane": "Silicon-containing structure edits and tied rankings",
 }
 NOTES_EN = {
-    "case84": "Candidate c03 starts from a disconnected graph, first forms a valid cyclic structure, then reaches the reference structure, and subsequently explores a lower-scoring structure. The final output restores the earlier historical best rather than returning the last explored graph. The reference is first in the saved historical ranking, but the case remains incomplete. Legacy binned intensities and the historical scoring range are preserved: no linear-intensity conversion or reranking under current source-vote rules is applied.",
-    "case1055": "The first Agent attempt stops because of a service error; the retry uses the same input and reference label. Focus candidate c03 commits the reference structure in its first round, but another structure has a slightly higher coverage score, placing the reference second in the saved display order. All source slots end with valid structures, yet the review remains incomplete when its session allowance is exhausted. Estimated costs for unknown usage in the initial failure remain separate from retry costs; counting only the retry does not establish a complete successful run.",
-    "case1062": "Focus candidate c01 commits the silicon-containing reference structure in its first round. Six distinct saved structures have the same score. The reference is sixth in display order but tied for first by evidence rank. Display order does not establish independent spectroscopic discrimination; generating the reference does not make it Top1. The run ends when its session allowance is exhausted and remains incomplete under strict end-to-end evaluation.",
+    "hexa-2,4-dienedinitrile": "Candidate c03 starts from a disconnected graph, first forms a valid cyclic structure, then reaches the reference structure, and subsequently explores a lower-scoring structure. The final output restores the earlier historical best rather than returning the last explored graph. The reference is first in the saved historical ranking, but the case remains incomplete. The trajectory, score range, and ranking come from the historical run with binned intensities.",
+    "butyl-butanoate": "The first Agent attempt stops because of a service error; the retry uses the same input and reference label. Focus candidate c03 commits the reference structure in its first round, but another structure has a slightly higher coverage score, placing the reference second in the saved display order. All source slots end with valid structures, yet the review remains incomplete when its session allowance is exhausted. Estimated costs for unknown usage in the initial failure remain separate from retry costs; counting only the retry does not establish a complete successful run.",
+    "trimethylpentylsilane": "Focus candidate c01 commits the silicon-containing reference structure in its first round. Six distinct saved structures have the same score. The reference is sixth in display order but tied for first by evidence rank. Display order does not establish independent spectroscopic discrimination; generating the reference does not make it Top1. The run ends when its session allowance is exhausted and remains incomplete under strict end-to-end evaluation.",
 }
 
 
@@ -301,7 +305,7 @@ def case_markdown(case, inputs, reference, results, trace, pool, *, english=Fals
     main = results[case["main"]]
     main_trace = trace[case["main"]]
     focus = main_trace["candidates"][case["focus"]]
-    lines = [f"# {case['id']}: {TITLES_EN[case['id']]}" if english else f"# {case['id']}：{case['title']}", "",
+    lines = [f"# {case['name_en']}: {TITLES_EN[case['id']]}" if english else f"# {case['name_zh']}：{case['title']}", "",
       t("[English](README.en.md) | **简体中文**", "**English** | [简体中文](README.md)"), "",
       t(NOTES[case["id"]], NOTES_EN[case["id"]]), "",
       t("这是获准公开的历史开发案例，不是随机测试集或当前版本的新实验。模型文字按原记录保留，为模型提出的解释，不代表实验确认的机理。未重新运行模型、验证化学路径或重算分数。", "This is an authorized historical development case, not a random test set or a new experiment with the current version. Model summaries, reasons, and operation explanations below remain in their original language (mostly Chinese), with only Markdown escaping applied. They are model-proposed explanations, not experimentally confirmed mechanisms. No model was rerun, chemical pathway revalidated, or score recalculated."), "",
@@ -313,7 +317,7 @@ def case_markdown(case, inputs, reference, results, trace, pool, *, english=Fals
       t("5. [来源与校验](provenance.json)：历史配置/源码指纹、原冻结清单验证与公开文件 SHA-256。", "5. [Provenance and checksums](provenance.json): historical configuration/source fingerprints, verification of the original frozen inventories, and SHA-256 checksums of public files."), "",
       t("## 输入与版本", "## Input and version"), "",
       t(f"样本 `{inputs[0]['sample_id']}`，{len(inputs[0]['input_ids'])} 个谱峰，10 个候选来源槽位。参考结构：`{reference[0]['true_smiles']}`。", f"Sample `{inputs[0]['sample_id']}`, {len(inputs[0]['input_ids'])} spectral peaks, and 10 candidate source slots. Reference structure: `{reference[0]['true_smiles']}`."),
-      t("**旧分箱输入**：`position_ids` 保留历史编码；当前 CLI 明确不支持，不能改字段名后直接运行。", "**Legacy binned input**: `position_ids` retains its historical encoding. The current CLI explicitly rejects this format; renaming the field does not make it runnable.") if case["legacy"] else t("输入为 `raw_linear`；当前加载器可校验其格式，但历史代码/技能版本与当前不同，重跑结果不保证一致。", "The input uses `raw_linear`. The current loader can validate its format, but historical code and skill versions differ from the current ones; reruns are not guaranteed to produce the same results."),
+      t("展示输入的 `input_ids` 和 `intensity` 按位置一一对应。43 个峰的原始线性强度取自 `Agent-Harness/test.json`，保留源文件尺度（基峰 m/z 77 为 999，m/z 104 为 538）。历史运行使用 `position_ids` 分箱强度。", "The display input pairs each m/z in `input_ids` with its `intensity` at the same index. All 43 raw linear intensities come from `Agent-Harness/test.json` on its original scale (base peak m/z 77 at 999, m/z 104 at 538). The historical run used binned `position_ids`.") if case["legacy"] else t("输入为 `raw_linear`；当前加载器可校验其格式，但历史代码/技能版本与当前不同，重跑结果不保证一致。", "The input uses `raw_linear`. The current loader can validate its format, but historical code and skill versions differ from the current ones; reruns are not guaranteed to produce the same results."),
       t("本材料展示已保存的历史过程，不是可恢复检查点或完整会话逐字记录。", "These materials present the saved historical process. They are neither a resumable checkpoint nor a complete verbatim session transcript."), "",
       t("## 十个来源槽位", "## Ten source slots"), "", t("| 来源 | 独立计算候选 | 初始 SMILES | 最终 SMILES | 结束原因 |", "| Source | Independently computed candidate | Initial SMILES | Final SMILES | Stop reason |"), "|---|---|---|---|---|"]
     for row in main["source_slots"]:
@@ -355,7 +359,25 @@ def case_markdown(case, inputs, reference, results, trace, pool, *, english=Fals
     return "\n".join(lines).encode("utf-8")
 
 
-def export_case(root, case):
+def raw_display_input(row, smiles, path):
+    from gcms_agent.data.loader import validate_input
+    raw = path.read_bytes()
+    records = json.loads(raw.decode("utf-8-sig"))
+    matches = [r for r in records if r["true_smiles"] == smiles and r["input_ids"] == row["input_ids"]]
+    require(len(matches) == 1, "Expected one raw record matching reference SMILES and ordered m/z")
+    record = matches[0]
+    require(record["generated"] == row["generated"], "Raw record candidate slots differ")
+    display = {key: value for key, value in row.items() if key != "position_ids"}
+    display["intensity"] = record["intensity"]
+    display["conditions"] = {**row["conditions"], "intensity_encoding": "raw_linear"}
+    validate_input(display)
+    source_info = {"source": "Agent-Harness/test.json", "file_sha256": digest(raw),
+                   "matched_by": ["true_smiles", "input_ids"], "field": "intensity",
+                   "peak_count": len(display["intensity"])}
+    return display, source_info
+
+
+def export_case(root, case, raw_source=None):
     from rdkit import rdBase
     import PIL
     source = Source(Path(root) / "runs" / case["source"])
@@ -366,8 +388,11 @@ def export_case(root, case):
         reference = [{"sample_id": inputs[0]["sample_id"], "true_smiles": original["true_smiles"]}]
     else:
         reference = source.read("labels.json")
-    if case["id"] == "case1055":
+    if case["id"] == "butyl-butanoate":
         require(source.read("retry/input.json") == inputs and source.read("retry/labels.json") == reference, "Retry inputs differ")
+    if case["legacy"]:
+        path = Path(raw_source) if raw_source else Path(root).parents[2] / "Agent-Harness" / "test.json"
+        inputs[0], intensity_source = raw_display_input(inputs[0], reference[0]["true_smiles"], path)
     pool = Pool()
     results, traces, versions = {}, {}, {}
     for name, relative in case["stages"]:
@@ -401,6 +426,16 @@ def export_case(root, case):
         "exported_files_sha256": {name: digest(raw) for name, raw in sorted(contents.items())},
         "checksum_scope": "All other files in this case directory; provenance.json excludes itself to avoid recursive hashing.",
         "reproduction_limit": "A source fingerprint is not a source snapshot. Historical model results are not promised reproducible with current code."}
+    if case["legacy"]:
+        provenance["display_intensity_source"] = intensity_source
+        provenance["transforms"][2] = ("Copy the matched raw linear intensities into the display input. "
+            "Historical trajectories, scores and rankings retain the binned-input run.")
+    else:
+        # Attribute an exact reproduction of an existing release to its original exporter.
+        actual_exporter = provenance["exporter"]["sha256"]
+        provenance["exporter"]["sha256"] = "fc35e9b08ce2df8598ffa2db35c0188210a292cad1d711a7f8895b71e15ca8a0"
+        if digest(encode(provenance)) != ORIGINAL_PROVENANCE_SHA256.get(case["id"]):
+            provenance["exporter"]["sha256"] = actual_exporter
     contents["provenance.json"] = encode(provenance)
     for name, raw in contents.items():
         if name.endswith(".json"): check_public(json.loads(raw))
@@ -416,11 +451,11 @@ INDEX = """# 公开案例展示
 
 | 案例 | 看点 | 历史结果边界 |
 |---|---|---|
-| [case84](case84/README.md) | 多轮编辑、同分/降分探索、恢复历史最佳 | 旧分箱强度；保存 Top1 命中，但未完成 |
-| [case1055](case1055/README.md) | 初次服务失败与重试、生成参考结构 | 参考结构展示第 2；重试也未完成 |
-| [case1062](case1062/README.md) | 含硅结构编辑、同分结构与来源排序 | 参考结构展示第 6、证据并列第 1；未完成 |
+| [2,4-己二烯二腈](hexa-2,4-dienedinitrile/README.md) | 多轮编辑、同分/降分探索、恢复历史最佳 | 历史评分使用分箱强度；保存 Top1 命中，但未完成 |
+| [丁酸正丁酯](butyl-butanoate/README.md) | 初次服务失败与重试、生成参考结构 | 参考结构展示第 2；重试也未完成 |
+| [三甲基正戊基硅烷](trimethylpentylsilane/README.md) | 含硅结构编辑、同分结构与来源排序 | 参考结构展示第 6、证据并列第 1；未完成 |
 
-先阅读每例中英文 README，再查看结构图和 JSON。英文版翻译编写者的流程说明；模型摘要、理由和逐项操作说明保留原语言，并标为原文记录。三个主要 Agent 阶段合计 24 个有审阅回执的模型会话、62 条工具试验；case1055 初次服务失败另列。全部试验保留，包括拒绝和未选中项，等价来源槽位共用一次计算的历史。
+先阅读每例中英文 README，再查看结构图和 JSON。英文版翻译编写者的流程说明；模型摘要、理由和逐项操作说明保留原语言，并标为原文记录。三个主要 Agent 阶段合计 24 个有审阅回执的模型会话、62 条工具试验；丁酸正丁酯 初次服务失败另列。全部试验保留，包括拒绝和未选中项，等价来源槽位共用一次计算的历史。
 
 材料是从冻结记录提取的公开展示包，不是可恢复检查点。初始图、操作、逐项说明、正式提交、证据、评分、最终排名、失败和用量都有对应记录。模型说明不是机制确证，不展示或重建隐藏思考正文。当前代码和历史版本可能不同，未为展示重新运行模型或重算分数。
 
@@ -428,11 +463,11 @@ INDEX = """# 公开案例展示
 
 每例包含 README.md、README.en.md、input.json、reference.json、trajectory.json、result.json、provenance.json 和 trajectory.png。轨迹以 SHA-256 为键共享图、评分和证据路径；所有引用均在同一 JSON 的 objects 中。每例 provenance 包含其他七个公开文件的字节校验和、原来源哈希和冻结核验记录；它不证明未公开原始文件可由读者独立取得。
 
-旧 case84 保留 position_ids，不可作为当前 raw_linear CLI 的输入。case1055/1062 的格式可被当前输入加载器读取，但只说明格式兼容，不保证当前运行重现旧评分或模型行为。评估标签独立保存在 reference.json。
+三个案例的展示输入均使用原始线性强度。2,4-己二烯二腈的展示强度来自 `Agent-Harness/test.json`，其历史轨迹、评分和排名来自分箱强度实验。评估标签独立保存在 reference.json。
 
 ## 本地重新导出
 
-导出仅供拥有相应原始 runs 的维护者使用。需要项目 Python 依赖及 Pillow；不会读取整个私有数据集、凭据、工作区缓存或调用模型。
+导出仅供拥有相应原始 runs 的维护者使用。需要项目 Python 依赖、Pillow 和原始强度文件。脚本默认在项目根目录的 `../../../Agent-Harness/test.json` 查找该文件，也可用 `--raw-source` 指定位置。
 
 ```powershell
 # 首次生成：目标目录必须不存在。
@@ -453,11 +488,11 @@ The data holder explicitly authorized publication of these three real historical
 
 | Case | What it illustrates | Historical result boundaries |
 |---|---|---|
-| [case84](case84/README.en.md) | Multi-round edits, equal/lower-score exploration, and restoration of the historical best | Legacy binned intensities; saved Top1 matches, but the run is incomplete |
-| [case1055](case1055/README.en.md) | Initial service failure, retry, and generation of the reference structure | Reference is second in display order; the retry is also incomplete |
-| [case1062](case1062/README.en.md) | Silicon-containing structure edits, tied scores, and source ordering | Reference is sixth in display order and tied for first by evidence rank; the run is incomplete |
+| [Hexa-2,4-dienedinitrile](hexa-2,4-dienedinitrile/README.en.md) | Multi-round edits, equal/lower-score exploration, and restoration of the historical best | Historical scoring used binned intensities; saved Top1 matches, but the run is incomplete |
+| [Butyl butanoate](butyl-butanoate/README.en.md) | Initial service failure, retry, and generation of the reference structure | Reference is second in display order; the retry is also incomplete |
+| [Trimethylpentylsilane](trimethylpentylsilane/README.en.md) | Silicon-containing structure edits, tied scores, and source ordering | Reference is sixth in display order and tied for first by evidence rank; the run is incomplete |
 
-Start with each case's Chinese or English README, then inspect its figure and JSON files. English versions translate the editorial process description; model summaries, reasons, and operation explanations remain in their original language and are labeled as original records. Across the three main Agent stages there are 24 model sessions with review receipts and 62 tool trials. The initial service failure in case1055 is recorded separately. Every trial is retained, including rejected and unselected trials; equivalent source slots share one computation history.
+Start with each case's Chinese or English README, then inspect its figure and JSON files. English versions translate the editorial process description; model summaries, reasons, and operation explanations remain in their original language and are labeled as original records. Across the three main Agent stages there are 24 model sessions with review receipts and 62 tool trials. The initial service failure in Butyl butanoate is recorded separately. Every trial is retained, including rejected and unselected trials; equivalent source slots share one computation history.
 
 These public bundles are extracted from frozen records, not resumable checkpoints. Records cover initial graphs, operations, individual explanations, committed changes, evidence, scores, final rankings, failures, and usage. Model explanations are not confirmed mechanisms; hidden reasoning text is neither displayed nor reconstructed. Current code may differ from historical versions. No model was rerun and no score was recalculated for this presentation.
 
@@ -465,11 +500,11 @@ These public bundles are extracted from frozen records, not resumable checkpoint
 
 Each case contains README.md, README.en.md, input.json, reference.json, trajectory.json, result.json, provenance.json, and trajectory.png. The trajectory shares graphs, scores, and evidence paths by SHA-256; every reference resolves within the same JSON file's objects pool. Each provenance file contains byte checksums for the other seven public files, source hashes, and frozen-inventory verification records. It does not establish that unpublished source files are independently available to readers.
 
-Legacy case84 retains position_ids and cannot be used as input to the current raw_linear CLI. The current input loader can read the format of case1055/1062, but format compatibility does not guarantee reproduction of historical scores or model behavior. Evaluation labels are stored separately in reference.json.
+All three display inputs use raw linear intensities. For hexa-2,4-dienedinitrile, these values come from `Agent-Harness/test.json`. Its trajectory, scores, and ranking come from the historical binned-intensity run. Evaluation labels are stored separately in reference.json.
 
 ## Local re-export
 
-Export is for maintainers who possess the corresponding original runs. It requires the project Python dependencies and Pillow. It does not read the full private dataset, credentials, or workspace caches, and does not call a model.
+Export is for maintainers who possess the corresponding original runs. Export requires the project Python dependencies, Pillow, and the raw intensity source. The default source path is `../../../Agent-Harness/test.json` relative to the project root. Use `--raw-source` to specify another location.
 
 ```powershell
 # First export: the destination directory must not exist.
@@ -482,10 +517,10 @@ Figures use local RDKit/Pillow versions and fonts; rendered bytes may differ acr
 """
 
 
-def build(root):
+def build(root, raw_source=None):
     bundle = {"README.md": INDEX.encode("utf-8"), "README.en.md": INDEX_EN.encode("utf-8")}
     for case in CASES:
-        for name, raw in export_case(root, case).items():
+        for name, raw in export_case(root, case, raw_source).items():
             bundle[f"{case['id']}/{name}"] = raw
     return bundle
 
@@ -493,10 +528,11 @@ def build(root):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Rebuild in memory and verify existing public files; no writes")
+    parser.add_argument("--raw-source", type=Path, help="Path to the Agent-Harness test.json spectrum source")
     args = parser.parse_args()
     destination = ROOT / "case_studies"
     require(args.check or not destination.exists(), "case_studies already exists; use --check (no overwrite)")
-    bundle = build(ROOT)
+    bundle = build(ROOT, args.raw_source)
     if args.check:
         actual = {p.relative_to(destination).as_posix() for p in destination.rglob("*") if p.is_file()}
         require(actual == set(bundle), "Public file inventory differs")

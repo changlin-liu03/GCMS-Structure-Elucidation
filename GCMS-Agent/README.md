@@ -23,11 +23,11 @@ Browse the [case-study index](case_studies/README.en.md) without installing the 
 
 | Case | What it illustrates | Limits of the recorded result |
 |---|---|---|
-| [case84](case_studies/case84/README.en.md) | Multi-round exploration and restoration of the historical best structure | Legacy binned intensities; recorded Top1 matches the reference, but the run is incomplete |
-| [case1055](case_studies/case1055/README.en.md) | Service failure, retry, and generation of the reference structure | Reference structure is second in the displayed ranking; the retry is also incomplete |
-| [case1062](case_studies/case1062/README.en.md) | Silicon-containing structure edits and tied scores | Reference structure is sixth in display order and tied for first by evidence score; the run is incomplete |
+| [Hexa-2,4-dienedinitrile](case_studies/hexa-2,4-dienedinitrile/README.en.md) | Multi-round exploration and restoration of the historical best structure | Historical scoring used binned intensities; recorded Top1 matches the reference, but the run is incomplete |
+| [Butyl butanoate](case_studies/butyl-butanoate/README.en.md) | Service failure, retry, and generation of the reference structure | Reference structure is second in the displayed ranking; the retry is also incomplete |
+| [Trimethylpentylsilane](case_studies/trimethylpentylsilane/README.en.md) | Silicon-containing structure edits and tied scores | Reference structure is sixth in display order and tied for first by evidence score; the run is incomplete |
 
-The three main Agent stages preserve **62 trials**, including rejected and unselected trials; the initial service failures are documented separately. These are historical development cases explicitly authorized for public release. They retain their original scores and incomplete status and do not establish the current version's accuracy. The legacy input for case84 cannot be passed directly to the current CLI.
+The three main Agent stages preserve **62 trials**, including rejected and unselected trials; the initial service failures are documented separately. These are historical development cases explicitly authorized for public release. They retain their original scores and incomplete status and do not establish the current version's accuracy. The hexa-2,4-dienedinitrile display input uses raw intensities from `Agent-Harness/test.json`. Its trajectory and ranking come from the historical binned-intensity run.
 
 ## Installation and quick start
 

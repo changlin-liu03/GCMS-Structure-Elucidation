@@ -58,7 +58,7 @@ The Agent's data preparation utility expects an already compatible source schema
 ## Examples and validation scope
 
 - [Synthetic examples](GCMS-Agent/data/examples/README.en.md) demonstrate the offline Agent workflow without private data or model calls.
-- [Three public historical case studies](GCMS-Agent/case_studies/README.en.md) preserve inputs, structure edits, results and provenance. Their main Agent runs were incomplete; they illustrate development trajectories, not current-version accuracy. The legacy case84 input is not compatible with the current raw-linear input schema.
+- [Three public historical case studies](GCMS-Agent/case_studies/README.en.md) preserve inputs, structure edits, results and provenance. Their main Agent runs were incomplete; they illustrate development trajectories, not current-version accuracy. The hexa-2,4-dienedinitrile display input uses raw linear intensities. Its trajectory, scores, and ranking come from the historical run with binned intensities.
 - The existing GCMS-Agent release audit records 398 passing offline tests and successful baseline runs on two synthetic examples in its documented environment. This is a recorded module validation, not a new end-to-end validation of the two-stage workflow.
 - Full DiffGCMS training and inference require external data and weights. They were not rerun for this combined repository publication.
 

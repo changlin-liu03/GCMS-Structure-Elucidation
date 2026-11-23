@@ -68,7 +68,7 @@ The latter two support `--data-root` and `--ask-key` and reject destinations alr
 
 ## Public case-study export
 
-[export_case_studies.py](export_case_studies.py) handles only the three fixed cases authorized for publication, producing [case_studies/](../case_studies/README.en.md) from local frozen records. Original `runs/` must be available. The script verifies frozen hashes, selects fields, deduplicates scientific objects, and retains every recorded trial and incomplete status. It makes no model calls, does not rescore results, and does not read the full private dataset or session workspaces.
+[export_case_studies.py](export_case_studies.py) handles only the three fixed cases authorized for publication, producing [case_studies/](../case_studies/README.en.md) from local frozen records. Export requires the original `runs/` and `Agent-Harness/test.json` for the raw hexa-2,4-dienedinitrile spectrum. Use `--raw-source` to specify its location. The script verifies frozen hashes, selects fields, deduplicates scientific objects, and retains every recorded trial and incomplete status. It makes no model calls, does not rescore results, and does not read the full private dataset or session workspaces.
 
 The project Python environment, RDKit, and Pillow are required. Initial export requires an absent destination. `--check` rebuilds in memory and compares existing public files byte for byte without overwriting them. Cross-platform fonts and drawing dependencies may change image bytes; strict comparison applies to the same export environment.
 

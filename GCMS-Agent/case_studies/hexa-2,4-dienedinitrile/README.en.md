@@ -1,8 +1,8 @@
-# case84: Multi-round exploration and retention of the historical best
+# Hexa-2,4-dienedinitrile: Multi-round exploration and retention of the historical best
 
 **English** | [简体中文](README.md)
 
-Candidate c03 starts from a disconnected graph, first forms a valid cyclic structure, then reaches the reference structure, and subsequently explores a lower-scoring structure. The final output restores the earlier historical best rather than returning the last explored graph. The reference is first in the saved historical ranking, but the case remains incomplete. Legacy binned intensities and the historical scoring range are preserved: no linear-intensity conversion or reranking under current source-vote rules is applied.
+Candidate c03 starts from a disconnected graph, first forms a valid cyclic structure, then reaches the reference structure, and subsequently explores a lower-scoring structure. The final output restores the earlier historical best rather than returning the last explored graph. The reference is first in the saved historical ranking, but the case remains incomplete. The trajectory, score range, and ranking come from the historical run with binned intensities.
 
 This is an authorized historical development case, not a random test set or a new experiment with the current version. Model summaries, reasons, and operation explanations below remain in their original language (mostly Chinese), with only Markdown escaping applied. They are model-proposed explanations, not experimentally confirmed mechanisms. No model was rerun, chemical pathway revalidated, or score recalculated.
 
@@ -17,7 +17,7 @@ This is an authorized historical development case, not a random test set or a ne
 ## Input and version
 
 Sample `s00084_b561c4feb886`, 43 spectral peaks, and 10 candidate source slots. Reference structure: `N#CC=CC=CC#N`.
-**Legacy binned input**: `position_ids` retains its historical encoding. The current CLI explicitly rejects this format; renaming the field does not make it runnable.
+The display input pairs each m/z in `input_ids` with its `intensity` at the same index. All 43 raw linear intensities come from `Agent-Harness/test.json` on its original scale (base peak m/z 77 at 999, m/z 104 at 538). The historical run used binned `position_ids`.
 These materials present the saved historical process. They are neither a resumable checkpoint nor a complete verbatim session transcript.
 
 ## Ten source slots
