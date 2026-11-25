@@ -23,11 +23,10 @@ Browse the [case-study index](case_studies/README.en.md) without installing the 
 
 | Case | What it illustrates | Limits of the recorded result |
 |---|---|---|
-| [Hexa-2,4-dienedinitrile](case_studies/hexa-2,4-dienedinitrile/README.en.md) | Multi-round exploration and restoration of the historical best structure | Historical scoring used binned intensities; recorded Top1 matches the reference, but the run is incomplete |
 | [Butyl butanoate](case_studies/butyl-butanoate/README.en.md) | Service failure, retry, and generation of the reference structure | Reference structure is second in the displayed ranking; the retry is also incomplete |
 | [Trimethylpentylsilane](case_studies/trimethylpentylsilane/README.en.md) | Silicon-containing structure edits and tied scores | Reference structure is sixth in display order and tied for first by evidence score; the run is incomplete |
 
-The three main Agent stages preserve **62 trials**, including rejected and unselected trials; the initial service failures are documented separately. These are historical development cases explicitly authorized for public release. They retain their original scores and incomplete status and do not establish the current version's accuracy. The hexa-2,4-dienedinitrile display input uses raw intensities from `Agent-Harness/test.json`. Its trajectory and ranking come from the historical binned-intensity run.
+The two main Agent stages preserve **42 trials**, including rejected and unselected trials; the initial service failures are documented separately. These are historical development cases explicitly authorized for public release. They retain their original scores and incomplete status and do not establish the current version's accuracy.
 
 ## Installation and quick start
 
@@ -154,14 +153,14 @@ The score measures rule-supported intensity coverage, **not the probability that
 
 Multiple evidence paths do not count the same peak more than once. For tied highest scores, source-candidate counts and canonical SMILES order determine the displayed Top1 while preserving the ties. Display order adds no evidence score and does not establish a unique identity. If all scores are zero, no supported Top1 is reported. See [scoring and evaluation](docs/scoring.en.md) for the full definitions and treatment of incomplete runs.
 
-The full research dataset and derived subsets are not distributed. Only the three historical cases explicitly authorized for release are exceptions. Raw `runs/`, credentials, caches, and local generated artifacts remain local. Public users can run synthetic examples or read historical cases to inspect the process; neither constitutes an independent performance benchmark.
+The full research dataset and derived subsets are not distributed. Only the two historical cases explicitly authorized for release are exceptions. Raw `runs/`, credentials, caches, and local generated artifacts remain local. Public users can run synthetic examples or read historical cases to inspect the process; neither constitutes an independent performance benchmark.
 
 ## Repository guide
 
 | Directory | Contents |
 |---|---|
 | [src/gcms_agent/](src/gcms_agent/) | Chemical tools, fragment evidence, scoring, Harness integration, workflows, and reports |
-| [case_studies/](case_studies/README.en.md) | Workflows and trajectories for three authorized public cases |
+| [case_studies/](case_studies/README.en.md) | Workflows and trajectories for two authorized public cases |
 | [data/examples/](data/examples/README.en.md) | Runnable synthetic inputs and separate demonstration labels |
 | [configs/](configs/README.en.md) | Service configuration, runtime parameters, budgets, and scheduling |
 | [skills/](skills/README.en.md) | Model skills, MoleCode syntax, and on-demand references |
@@ -174,6 +173,6 @@ The full research dataset and derived subsets are not distributed. Only the thre
 
 Original project code and documentation are licensed under the [MIT License](LICENSE), with the copyright notice `Copyright (c) 2026 刘昌霖`. Commercial use, modification, and redistribution are permitted subject to retaining the copyright and license notices.
 
-The project depends on and references Anthropic's Claude Agent SDK for Python; its MIT license and copyright notice are retained separately. See [third-party notices](THIRD_PARTY_NOTICES.md) for the SDK/Claude Code CLI distinction, MoleCode provenance, and other third-party materials. The three real-case bundles in `case_studies/` are excluded from the MIT grant for project code and documentation; their public-release scope is described in the [case-study index](case_studies/README.en.md). Private research data are not distributed; see the [data guide](data/README.en.md).
+The project depends on and references Anthropic's Claude Agent SDK for Python; its MIT license and copyright notice are retained separately. See [third-party notices](THIRD_PARTY_NOTICES.md) for the SDK/Claude Code CLI distinction, MoleCode provenance, and other third-party materials. The two real-case bundles in `case_studies/` are excluded from the MIT grant for project code and documentation; their public-release scope is described in the [case-study index](case_studies/README.en.md). Private research data are not distributed; see the [data guide](data/README.en.md).
 
 This page reflects the code and configuration reviewed on 2026-11-18. Configuration files and their loaded values are authoritative for defaults.

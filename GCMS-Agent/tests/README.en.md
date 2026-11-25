@@ -86,7 +86,7 @@ Real API availability, model-identification performance, usage, and costs requir
 
 [test_case_study_export.py](unit/test_case_study_export.py) uses temporary synthetic files to verify freeze hashes, path boundaries, sensitive fields, unknown usage, and atom-ID-aware deduplication. It also checks file hashes, object references, all trial counts, source slots, and incomplete statuses in public [case_studies/](../case_studies/README.en.md). It does not read private `runs/` or the full research dataset.
 
-Maintainers with the original three run directories can also execute `scripts/export_case_studies.py --check` to reconstruct public bundles from frozen sources and compare them byte for byte. This source-record check is excluded from default pytest because original run directories are not distributed.
+Maintainers with the two original run directories can also execute `scripts/export_case_studies.py --check` to reconstruct public bundles from frozen sources and compare them byte for byte. This source-record check is excluded from default pytest because original run directories are not distributed.
 
 ## Caches and maintenance
 

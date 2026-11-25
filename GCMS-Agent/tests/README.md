@@ -86,7 +86,7 @@ $env:PYTHONIOENCODING = 'utf-8'
 
 [test_case_study_export.py](unit/test_case_study_export.py)使用临时构造文件验证冻结哈希、路径边界、敏感字段、未知费用与原子编号去重。另检查已公开 [case_studies/](../case_studies/README.md) 的文件哈希、对象引用、全部试验数量、来源槽位与未完成状态；不读取私有 `runs/` 或完整研究数据。
 
-维护者持有原始三例运行目录时，还可执行 `scripts/export_case_studies.py --check`，从原始冻结记录重建公开包并逐字节比较。这项源记录复核不加入默认 pytest，因为公开仓库不包含原始运行目录。
+维护者持有原始两例运行目录时，还可执行 `scripts/export_case_studies.py --check`，从原始冻结记录重建公开包并逐字节比较。这项源记录复核不加入默认 pytest，因为公开仓库不包含原始运行目录。
 
 ## 缓存与维护
 

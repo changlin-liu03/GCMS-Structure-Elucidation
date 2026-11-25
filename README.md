@@ -58,7 +58,7 @@ The Agent's data preparation utility expects an already compatible source schema
 ## Examples and validation scope
 
 - [Synthetic examples](GCMS-Agent/data/examples/README.en.md) demonstrate the offline Agent workflow without private data or model calls.
-- [Three public historical case studies](GCMS-Agent/case_studies/README.en.md) preserve inputs, structure edits, results and provenance. Their main Agent runs were incomplete; they illustrate development trajectories, not current-version accuracy. The hexa-2,4-dienedinitrile display input uses raw linear intensities. Its trajectory, scores, and ranking come from the historical run with binned intensities.
+- [Two public historical case studies](GCMS-Agent/case_studies/README.en.md) preserve inputs, structure edits, results and provenance. Their main Agent runs were incomplete; they illustrate development trajectories, not current-version accuracy.
 - The existing GCMS-Agent release audit records 398 passing offline tests and successful baseline runs on two synthetic examples in its documented environment. This is a recorded module validation, not a new end-to-end validation of the two-stage workflow.
 - Full DiffGCMS training and inference require external data and weights. They were not rerun for this combined repository publication.
 
@@ -69,6 +69,6 @@ Each module retains its own license and third-party notices:
 - DiffGCMS: [LICENSE](DiffGCMS/LICENSE), [third-party notices](DiffGCMS/THIRD_PARTY_NOTICES.md), and [research references](DiffGCMS/references.bib).
 - GCMS-Agent: [LICENSE](GCMS-Agent/LICENSE) and [third-party notices](GCMS-Agent/THIRD_PARTY_NOTICES.md), including SDK and MoleCode provenance.
 
-These files describe the scope of the included code and retained upstream notices. Model weights, external datasets and the three historical case-study bundles have separate terms or exclusions described in the module documentation; the code licenses do not relicense those materials. Private research datasets, credentials, local environments, raw runs and generated outputs are excluded from this repository.
+These files describe the scope of the included code and retained upstream notices. Model weights, external datasets and the two historical case-study bundles have separate terms or exclusions described in the module documentation; the code licenses do not relicense those materials. Private research datasets, credentials, local environments, raw runs and generated outputs are excluded from this repository.
 
 For research use, retain the applicable upstream acknowledgements and follow the citation guidance in each module.

@@ -25,20 +25,10 @@ runs/
 # Generated outputs and historical prompt snapshots stay local.
 /output/
 
-# Only the three reviewed case-study bundles are public; raw runs stay ignored.
+# Only the two reviewed case-study bundles are public; raw runs stay ignored.
 /case_studies/*
 !/case_studies/README.md
 !/case_studies/README.en.md
-!/case_studies/hexa-2,4-dienedinitrile/
-/case_studies/hexa-2,4-dienedinitrile/*
-!/case_studies/hexa-2,4-dienedinitrile/README.md
-!/case_studies/hexa-2,4-dienedinitrile/README.en.md
-!/case_studies/hexa-2,4-dienedinitrile/input.json
-!/case_studies/hexa-2,4-dienedinitrile/reference.json
-!/case_studies/hexa-2,4-dienedinitrile/trajectory.json
-!/case_studies/hexa-2,4-dienedinitrile/result.json
-!/case_studies/hexa-2,4-dienedinitrile/provenance.json
-!/case_studies/hexa-2,4-dienedinitrile/trajectory.png
 !/case_studies/butyl-butanoate/
 /case_studies/butyl-butanoate/*
 !/case_studies/butyl-butanoate/README.md

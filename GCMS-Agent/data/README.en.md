@@ -2,13 +2,13 @@
 
 **English** | [简体中文](README.md)
 
-The full research dataset is private and is not distributed with the GitHub repository. Apart from three explicitly authorized historical cases, this restriction also covers derived pilot subsets, individual cases, labels, selection manifests, and data copies. Public runnable examples are in [examples/](examples/README.en.md); they are independently constructed rather than extracted from research data.
+The full research dataset is private and is not distributed with the GitHub repository. Apart from two explicitly authorized historical cases, this restriction also covers derived pilot subsets, individual cases, labels, selection manifests, and data copies. Public runnable examples are in [examples/](examples/README.en.md); they are independently constructed rather than extracted from research data.
 
-## Three authorized real-case exceptions
+## Two authorized real-case exceptions
 
-The data holder explicitly authorized publication of spectra, candidate structures, reference answers, and edit histories for [Hexa-2,4-dienedinitrile, Butyl butanoate, and Trimethylpentylsilane](../case_studies/README.en.md). Field-selected materials are stored separately in `case_studies/`. This does not remove ignore rules for `data/raw_linear_v1/`, raw `runs/`, or other data, and does not authorize distribution of the full dataset.
+The data holder explicitly authorized publication of spectra, candidate structures, reference answers, and edit histories for [Butyl butanoate and Trimethylpentylsilane](../case_studies/README.en.md). Field-selected materials are stored separately in `case_studies/`. This does not remove ignore rules for `data/raw_linear_v1/`, raw `runs/`, or other data, and does not authorize distribution of the full dataset.
 
-All three display inputs use raw linear intensities. The values for hexa-2,4-dienedinitrile come from `Agent-Harness/test.json`. Its trajectory, scores, and ranking come from the historical binned-intensity run. The main Agent run in each case is incomplete; the bundles retain that status and failures/retries. The synthetic `data/examples/` files serve a different purpose from these real historical cases.
+Both display inputs use raw linear intensities. The main Agent run in each case is incomplete; the bundles retain that status and failures/retries. The synthetic `data/examples/` files serve a different purpose from these real historical cases.
 
 ## Directory roles
 

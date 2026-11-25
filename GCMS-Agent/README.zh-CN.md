@@ -21,11 +21,10 @@
 
 | 案例 | 展示重点 | 历史结果边界 |
 |---|---|---|
-| [2,4-己二烯二腈](case_studies/hexa-2,4-dienedinitrile/README.md) | 多轮探索与历史最佳恢复 | 历史评分使用分箱强度；保存 Top1 命中，但整体未完成 |
 | [丁酸正丁酯](case_studies/butyl-butanoate/README.md) | 服务失败、重试和参考结构生成 | 参考结构展示第 2；重试仍未完成 |
 | [三甲基正戊基硅烷](case_studies/trimethylpentylsilane/README.md) | 含硅结构编辑与同分排名 | 参考结构展示第 6、证据并列第 1；未完成 |
 
-三个主要 Agent 阶段保留 **62 条试验**，包括拒绝和未选中项，另记录初次服务失败。它们是获准公开的历史开发案例，保留原始评分和未完成状态，不作为当前版本准确率的证明。2,4-己二烯二腈的展示输入使用 `Agent-Harness/test.json` 中的原始强度，轨迹和排名来自历史分箱强度实验。
+两个主要 Agent 阶段保留 **42 条试验**，包括拒绝和未选中项，另记录初次服务失败。它们是获准公开的历史开发案例，保留原始评分和未完成状态，不作为当前版本准确率的证明。
 
 ## 安装与快速开始
 
@@ -151,14 +150,14 @@ confidence_score = 100 × score
 
 同一峰不因存在多条路径而重复计分。最高分并列时，来源候选数量及 canonical SMILES 次序用于选择展示 Top1，保留并列关系；展示次序不增加证据分，也不证明唯一身份。全部零分时不输出有支持的 Top1。完整定义和未完成运行的评估口径见[评分与评估](docs/scoring.md)。
 
-完整研究数据及派生子集不随仓库发布；仅三个明确获准公开的历史案例作为例外。原始 `runs/`、凭据、缓存和本地生成产物继续保留本地。公开读者可使用人工示例运行项目，或阅读历史案例了解真实过程；两者均不构成独立性能基准。
+完整研究数据及派生子集不随仓库发布；仅两个明确获准公开的历史案例作为例外。原始 `runs/`、凭据、缓存和本地生成产物继续保留本地。公开读者可使用人工示例运行项目，或阅读历史案例了解真实过程；两者均不构成独立性能基准。
 
 ## 目录与进一步阅读
 
 | 目录 | 内容 |
 |---|---|
 | [src/gcms_agent/](src/gcms_agent/) | 化学工具、碎片证据、评分、Harness、工作流与报告 |
-| [case_studies/](case_studies/README.md) | 三个获准公开案例的流程与轨迹 |
+| [case_studies/](case_studies/README.md) | 两个获准公开案例的流程与轨迹 |
 | [data/examples/](data/examples/README.md) | 可直接运行的人工输入和独立演示标签 |
 | [configs/](configs/README.md) | 服务配置、运行参数、预算与调度 |
 | [skills/](skills/README.md) | 模型技能、MoleCode 语法及按需参考 |
@@ -171,6 +170,6 @@ confidence_score = 100 × score
 
 本项目原创代码与说明文档采用 [MIT License](LICENSE)，版权署名为 `Copyright (c) 2026 刘昌霖`。允许商业使用、修改和再分发，使用时须保留版权及许可声明。
 
-项目依赖并参考 Anthropic 的 Claude Agent SDK for Python；其 MIT 许可与版权声明另行保留。SDK 与 Claude Code CLI 的条款边界、MoleCode 来源及其他第三方材料见[第三方说明](THIRD_PARTY_NOTICES.md)。`case_studies/` 中三个真实案例的展示包不纳入上述代码与文档的 MIT 授权；其公开范围见[案例说明](case_studies/README.md)。私有研究数据不随仓库发布，详见[数据说明](data/README.md)。
+项目依赖并参考 Anthropic 的 Claude Agent SDK for Python；其 MIT 许可与版权声明另行保留。SDK 与 Claude Code CLI 的条款边界、MoleCode 来源及其他第三方材料见[第三方说明](THIRD_PARTY_NOTICES.md)。`case_studies/` 中两个真实案例的展示包不纳入上述代码与文档的 MIT 授权；其公开范围见[案例说明](case_studies/README.md)。私有研究数据不随仓库发布，详见[数据说明](data/README.md)。
 
 本文按 2026-11-18 的代码与配置整理，默认参数以配置文件及其加载结果为准。

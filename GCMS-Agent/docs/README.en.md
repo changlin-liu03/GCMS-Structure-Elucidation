@@ -18,7 +18,7 @@ These documents describe the repository implementation. Model statements, rule m
 ## Usage entry points
 
 - [English homepage](../README.md) / [中文首页](../README.zh-CN.md): project purpose and execution.
-- [Case studies](../case_studies/README.en.md): three authorized historical cases, including all trials and incomplete statuses.
+- [Case studies](../case_studies/README.en.md): two authorized historical cases, including all trials and incomplete statuses.
 - [Data guide](../data/README.en.md) and [public synthetic examples](../data/examples/README.en.md): input format, label isolation, and an offline workflow without private data.
 - [Configuration guide](../configs/README.en.md): base configuration and economy overrides, monetary limits, timeouts, and scheduling.
 - [Script guide](../scripts/README.en.md): offline utilities, local mock-service checks, and live-model entry points.
@@ -32,4 +32,4 @@ The four technical documents above, the configuration, data, script, test, skill
 
 Public examples and default tests can run without the private research dataset. Passing tests establishes that checked program behavior satisfies the assertions; it does not independently validate the Agent's real identification accuracy, full-dataset cost, or speed. Comparisons of live-model performance should freeze a common version and data split and report complete results under the [evaluation contract](scoring.en.md#evaluation).
 
-Apart from the three separately authorized case-study bundles, private inputs, derived subsets, labels, experimental outputs, and historical research records are not public. This technical-documentation directory does not duplicate those data or grant permission to download or redistribute private data.
+Apart from the two separately authorized case-study bundles, private inputs, derived subsets, labels, experimental outputs, and historical research records are not public. This technical-documentation directory does not duplicate those data or grant permission to download or redistribute private data.

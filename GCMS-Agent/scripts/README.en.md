@@ -68,7 +68,7 @@ The latter two support `--data-root` and `--ask-key` and reject destinations alr
 
 ## Public case-study export
 
-[export_case_studies.py](export_case_studies.py) handles only the three fixed cases authorized for publication, producing [case_studies/](../case_studies/README.en.md) from local frozen records. Export requires the original `runs/` and `Agent-Harness/test.json` for the raw hexa-2,4-dienedinitrile spectrum. Use `--raw-source` to specify its location. The script verifies frozen hashes, selects fields, deduplicates scientific objects, and retains every recorded trial and incomplete status. It makes no model calls, does not rescore results, and does not read the full private dataset or session workspaces.
+[export_case_studies.py](export_case_studies.py) handles only the two fixed cases authorized for publication, producing [case_studies/](../case_studies/README.en.md) from local frozen records. Export requires the original `runs/`. The script verifies frozen hashes, selects fields, deduplicates scientific objects, and retains every recorded trial and incomplete status. It makes no model calls, does not rescore results, and does not read the full private dataset or session workspaces.
 
 The project Python environment, RDKit, and Pillow are required. Initial export requires an absent destination. `--check` rebuilds in memory and compares existing public files byte for byte without overwriting them. Cross-platform fonts and drawing dependencies may change image bytes; strict comparison applies to the same export environment.
 
@@ -81,9 +81,9 @@ Public readers can inspect the cases without the original run directories. Sourc
 ## Historical archive
 
 - [pilot20_20261103_04](archive/pilot20_20261103_04/README.md): 10 early budget, execution, reporting, and quality-audit scripts; some entry points incur charges.
-- [legacy_checks](archive/legacy_checks/README.md): old-receipt replay and fixed case84 reranking; neither calls a model, but both depend on historical files currently absent.
+- [legacy_checks](archive/legacy_checks/README.md): old-receipt replay; it makes no model calls and depends on historical files currently absent.
 
-Archiving categorizes purpose; it does not establish compatibility with the current protocol or restore historical inputs. Archive maintenance adapted relocated project paths and added a main entry point for case84 reranking. Historical original source remains defined by frozen experiment snapshots. The public version also replaces private case-ID defaults in two validation scripts with explicit local selection parameters; see the archive guide.
+Archiving categorizes purpose; it does not establish compatibility with the current protocol or restore historical inputs. Archive maintenance adapted relocated project paths. Historical original source remains defined by frozen experiment snapshots. The public version also replaces private case-ID defaults in two validation scripts with explicit local selection parameters; see the archive guide.
 
 ## Test dependencies
 
