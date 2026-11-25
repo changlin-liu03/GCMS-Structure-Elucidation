@@ -15,13 +15,13 @@ Local raw data -> Trusted preparation -> Label-free inputs -> Python workflow
                        `-> Separate labels -> Post-run evaluator <- Saved predictions
 ```
 
-[Data preparation](../src/gcms_agent/data/prepare.py) separates source data into inference inputs and labels and records source hashes, input hashes, and intensity encoding. The [input loader](../src/gcms_agent/data/loader.py) accepts only allowlisted fields and rejects unknown fields such as `true_smiles`. Private data remain local. The public [synthetic examples](../data/examples/README.en.md) are independently constructed and are not benchmarks based on measured spectra.
+[Data preparation](../src/gcms_agent/data/prepare.py) separates source data into inference inputs and labels and records source hashes, input hashes, and intensity encoding. The [input loader](../src/gcms_agent/data/loader.py) accepts only allowlisted fields and rejects unknown fields such as `true_smiles`. Private data remain local. The public [synthetic examples](../data/examples/README.md) are independently constructed and are not benchmarks based on measured spectra.
 
 The [runner](../src/gcms_agent/workflow/runner.py) provides two main execution paths: `baseline` directly validates and scores candidates without model calls or structure edits; `agent` explores candidates through model-tool sessions. Different spectra are currently processed sequentially. Within a spectrum, equivalent candidates share computation while all original source slots are retained in the output.
 
 ## Model and tool boundaries
 
-The [Harness client](../src/gcms_agent/harness/client.py) uses the Claude Agent SDK and native CLI to access the configured compatible model service. Model names, thinking settings, and cost parameters are described in the [configuration guide](../configs/README.en.md). Model identifiers returned by the service are recorded; an alias is not an immutable model-weight version.
+The [Harness client](../src/gcms_agent/harness/client.py) uses the Claude Agent SDK and native CLI to access the configured compatible model service. Model names, thinking settings, and cost parameters are described in the [configuration guide](../configs/README.md). Model identifiers returned by the service are recorded; an alias is not an immutable model-weight version.
 
 SDK configuration disables default tools, automatic native-skill loading, personal settings sources, and session persistence. Only project-registered MCP tools are exposed. Each session has a separate working directory and `CLAUDE_CONFIG_DIR`. This limits the tools exposed to the model; it is not an operating-system process sandbox.
 
@@ -60,7 +60,7 @@ The [budget ledger](../src/gcms_agent/workflow/budget.py) accounts for final usa
 
 Request attempts and effective-session counts are separate. An attempt may be exempt from the effective-session count only for specific auditable connection errors with known zero usage and no tool or trial execution. The receipt is retained, and a separate connection-failure limit applies. Missing receipts or unknown usage do not qualify for exemption. See [transport-error classification](../src/gcms_agent/harness/transport.py).
 
-Neither the base configuration nor economy sets a default total monetary limit; economy also has no default per-spectrum monetary limit. Limits can be configured explicitly. Reserved cost, generation limits, SDK turns, analysis-call counts, and candidate rounds are distinct controls; see the [configuration guide](../configs/README.en.md). Known output-limit errors, service errors, and exhausted resources must not be interpreted as chemical convergence.
+Neither the base configuration nor economy sets a default total monetary limit; economy also has no default per-spectrum monetary limit. Limits can be configured explicitly. Reserved cost, generation limits, SDK turns, analysis-call counts, and candidate rounds are distinct controls; see the [configuration guide](../configs/README.md). Known output-limit errors, service errors, and exhausted resources must not be interpreted as chemical convergence.
 
 ## Results and scientific limitations
 

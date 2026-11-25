@@ -1,33 +1,35 @@
-# 技术文档导航
+# Technical documentation
 
-[English](README.en.md) | **简体中文**
+**English** | [简体中文](README.zh-CN.md)
 
-本目录说明 GC–EI–MS Agent 的当前实现与科学边界。运行时从源码、配置、技能与规则资源加载行为，不读取本目录作为模型提示或配置。文档不包含私有数据案例、历史实验结果或旧提示词快照。
+This directory describes the current GC–EI–MS Agent implementation and its scientific limitations. Runtime behavior is loaded from source code, configuration, skills, and rule resources; this directory is not read as model prompts or configuration. It contains no private-data cases, historical experimental results, or old prompt snapshots.
 
-## 阅读顺序
+## Reading order
 
-| 文档 | 解决的问题 |
+| Document | Questions it addresses |
 |---|---|
-| [系统架构与信任边界](architecture.md) | 数据如何流转、模型能调用哪些工具、宿主如何隔离标签与管理状态 |
-| [MoleCode 与合法结构契约](molecode_contract.md) | 待修复图与合法分子的区别、编辑能力、立体化学与产物验证边界 |
-| [编辑验收与停止条件](editing_and_stopping.md) | 提案怎样分析和提交、探索与最佳结果怎样分离、何时停止及如何恢复 |
-| [评分与评估](scoring.md) | 原始线性强度如何计分、并列怎样处理、结果怎样独立评估 |
+| [Architecture and trust boundaries](architecture.en.md) | How data flow, which tools the model can call, and how the host isolates labels and manages state |
+| [MoleCode and valid-structure contract](molecode_contract.en.md) | Graphs awaiting repair versus valid molecules, editing capabilities, stereochemistry, and product-validation limits |
+| [Edit acceptance and stopping](editing_and_stopping.en.md) | Analysis and submission of proposals, separation of exploration and best results, stopping, and recovery |
+| [Scoring and evaluation](scoring.en.md) | Scoring raw linear intensities, resolving ties, and evaluating results independently |
 
-这些说明以仓库实现为依据，不把模型自述、规则匹配或人工示例视为实验确证。涉及默认数值时，以配置文件及其加载结果为准。
+These documents describe the repository implementation. Model statements, rule matches, and synthetic examples are not treated as experimental confirmation. Default values are defined by configuration files and their loaded values.
 
-## 使用入口
+## Usage entry points
 
-- [中文首页](../README.zh-CN.md) / [English](../README.md)：项目用途和运行方式。
-- [真实案例展示](../case_studies/README.md)：两个获准公开的历史案例，保留全部试验及未完成状态。
-- [数据说明](../data/README.md)与[公开人工示例](../data/examples/README.md)：输入格式、标签隔离及不依赖私有数据的离线体验。
-- [配置说明](../configs/README.md)：基础配置与 economy 覆盖关系、金额上限、超时和调度。
-- [脚本说明](../scripts/README.md)：离线工具、本地模拟服务检查及真实模型入口。
-- [测试说明](../tests/README.md)：构造样本、模拟客户端和教学示例检查的运行方式与边界。
-- [技能说明](../skills/README.md)：宿主显式加载的技能及按需参考。
-- [规则资源说明](../resources/README.md)：规则策略、适用条件和来源。
+- [English homepage](../README.md) / [中文首页](../README.zh-CN.md): project purpose and execution.
+- [Case studies](../case_studies/README.md): two authorized historical cases, including all trials and incomplete statuses.
+- [Data guide](../data/README.md) and [public synthetic examples](../data/examples/README.md): input format, label isolation, and an offline workflow without private data.
+- [Configuration guide](../configs/README.md): base configuration and economy overrides, monetary limits, timeouts, and scheduling.
+- [Script guide](../scripts/README.md): offline utilities, local mock-service checks, and live-model entry points.
+- [Test guide](../tests/README.md): synthetic samples, mock clients, and checks of instructional examples.
+- [Skill guide](../skills/README.md): explicitly loaded host-managed skills and on-demand references.
+- [Rule-resource guide](../resources/README.md): rule policies, applicability conditions, and sources.
 
-## 验证与发布范围
+The four technical documents above, the configuration, data, script, test, skill, and resource guides, and the public case-study narratives have English and Chinese versions. Runtime skill text, on-demand references, instructional examples, and original model explanations retain their recorded language, mostly Chinese.
 
-公开示例和默认测试可在没有私有研究数据的环境中运行。测试通过证明相应程序行为满足断言，不代表 Agent 的真实识别准确率、全量费用或速度已获得独立验证。需要比较真实模型效果时，应冻结同一版本及数据划分，按[评估约定](scoring.md#evaluation)报告完整结果。
+## Validation and publication scope
 
-除另列的两个获准公开案例展示包外，私有输入、派生子集、标签、实验输出及历史研究记录不公开；本技术文档目录不重复保存这些数据。本文不提供私有数据的下载或分发许可。
+Public examples and default tests can run without the private research dataset. Passing tests establishes that checked program behavior satisfies the assertions; it does not independently validate the Agent's real identification accuracy, full-dataset cost, or speed. Comparisons of live-model performance should freeze a common version and data split and report complete results under the [evaluation contract](scoring.en.md#evaluation).
+
+Apart from the two separately authorized case-study bundles, private inputs, derived subsets, labels, experimental outputs, and historical research records are not public. This technical-documentation directory does not duplicate those data or grant permission to download or redistribute private data.

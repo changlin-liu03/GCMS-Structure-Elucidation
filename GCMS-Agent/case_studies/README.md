@@ -1,8 +1,8 @@
-# 公开案例展示
+# Case studies
 
-[English](README.en.md) | **简体中文**
+**English** | [简体中文](README.zh-CN.md)
 
-| 分子 | 最终结果 |
+| Molecule | Final result |
 |---|---|
-| [丁酸正丁酯](butyl-butanoate/README.md) | 参考结构排名第 2。 |
-| [三甲基正戊基硅烷](trimethylpentylsilane/README.md) | 参考结构与另外 5 个候选按证据评分并列第 1，在结果列表中列第 6。 |
+| [Butyl butanoate](butyl-butanoate/README.md) | The reference structure ranked second. |
+| [Trimethylpentylsilane](trimethylpentylsilane/README.md) | The reference structure tied with five other candidates for first by evidence score and appeared sixth in the results list. |

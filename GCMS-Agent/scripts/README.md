@@ -1,12 +1,12 @@
-# 脚本使用说明
+# Script guide
 
-[English](README.en.md) | **简体中文**
+**English** | [简体中文](README.zh-CN.md)
 
-本目录提供数据准备、离线检查、真实模型验证和历史实验工具。常规批量推理、基线和独立评估使用项目 CLI，见[项目中文首页](../README.zh-CN.md)。脚本不会被默认工作流自动执行。
+This directory provides data preparation, offline checks, live-model validation, and historical experiment utilities. Use the project CLI for ordinary batch inference, baselines, and independent evaluation; see the [project homepage](../README.md). Scripts are not executed automatically by the default workflow.
 
-## 运行前提
+## Prerequisites
 
-先安装项目运行依赖；测试还需要 pytest。以下命令在项目根目录的 PowerShell 中执行，显式指定本仓库源码，避免已有环境导入其他目录的项目副本。
+Install runtime dependencies first; tests also require pytest. Run these commands in PowerShell from the repository root, explicitly selecting this checkout to avoid importing a different copy from an existing environment.
 
 ```powershell
 $env:PYTHONPATH = (Resolve-Path ./src).Path
@@ -14,28 +14,28 @@ $env:PYTHONDONTWRITEBYTECODE = '1'
 $env:PYTHONIOENCODING = 'utf-8'
 ```
 
-先按[根目录安装说明](../README.zh-CN.md#从零安装)建立独立环境并可编辑安装项目。示例使用该 `.venv` 的 Python，也可替换成安装了依赖的解释器。数据文件、历史实验结果和本地凭据需自行准备；仅取得源码不代表这些输入已经存在。
+Follow the [installation guide](../README.md#install-from-scratch) to create an isolated environment and install the project in editable mode. Examples use that `.venv` interpreter; another interpreter with the dependencies installed may be substituted. Data files, historical results, and local credentials must be supplied separately. Obtaining source code does not supply those inputs.
 
-## 离线数据与化学工具
+## Offline data and chemistry tools
 
-以下脚本不调用模型，但部分会写文件。
+These scripts do not call a model, but some write files.
 
-| 脚本 | 输入与前提 | 输出与边界 |
+| Script | Inputs and prerequisites | Outputs and limitations |
 |---|---|---|
-| [prepare_development_cases.py](prepare_development_cases.py) | 已准备的数据目录及原始源文件；核对源文件哈希。默认数据目录为 `data/raw_linear_v1/`，源文件为项目上级的 `test.json` | 写入单例输入、单例标签、工程子集及选择清单；会覆盖对应子集文件。单例默认索引 0，工程子集为 85、120、294、313，均从 0 开始。读取标签用于导出，选样按固定索引进行 |
-| [economy_pilot.py](economy_pilot.py) `prepare` | 隔离后的无标签推理输入；按候选数、峰数、重原子数和合法性分层抽样 | 写指定输出 JSON 和同名 `.manifest.json`；默认 20 条、随机种子 20261103，不执行后续推理 |
-| [economy_pilot.py](economy_pilot.py) `report` | 一个或多个运行目录中的 `logs/budget.json`、结果与运行清单；可传抽样清单 | 打印费用报告，可用 `--output` 保存。费用外推有完整性与用量条件；默认总体规模 1490，可用 `--population` 修改；使用代码中的价格快照，不是实时账单 |
-| [validate_dataset.py](validate_dataset.py) | 无标签推理输入 | 检查候选合法性和分子图往返，默认写 `runs/dataset_validation.json`；用 `--output` 改路径 |
-| [validate_molecode_skill.py](validate_molecode_skill.py) | 仓库内实际技能 Markdown 与 `tests/fixtures/molecode_skill_cases.json` | 打印教学案例验证结果，不写实验结果；验证文档与工具一致性，不衡量模型推理准确率 |
-| [validate_silicon_rules.py](validate_silicon_rules.py) | `--input`、`--labels`、`--old-policy`、`--output` 均必填；新旧规则的新增启用项必须恰好是脚本预期的含硅规则 | 在新目录写规则副本、选择清单、逐例比较和汇总；包含历史 case870 开发集约定。标签仅用于离线诊断，结果不是独立外部基准 |
+| [prepare_development_cases.py](prepare_development_cases.py) | Prepared data directory and original source file; verifies the source hash. Defaults: `data/raw_linear_v1/` and `test.json` above the project | Writes single-case inputs/labels, engineering subset, and selection manifest, overwriting the corresponding subset files. Default single-case index: 0; engineering indices: 85, 120, 294, 313, all indexed from 0. Reads labels for export; selection uses fixed indices |
+| [economy_pilot.py](economy_pilot.py) `prepare` | Isolated label-free inference inputs; stratifies by candidate count, peak count, heavy-atom count, and validity | Writes the requested JSON and a matching `.manifest.json`; defaults to 20 samples and seed 20261103; does not start inference |
+| [economy_pilot.py](economy_pilot.py) `report` | `logs/budget.json`, results, and manifests from one or more run directories; optional sampling manifest | Prints a cost report, optionally saved with `--output`. Extrapolation requires adequate completeness and usage records. Default population: 1490, adjustable with `--population`. Uses code-defined price snapshots, not live invoices |
+| [validate_dataset.py](validate_dataset.py) | Label-free inference input | Checks candidate validity and graph round trips; defaults to `runs/dataset_validation.json`, adjustable with `--output` |
+| [validate_molecode_skill.py](validate_molecode_skill.py) | Actual repository skill Markdown and `tests/fixtures/molecode_skill_cases.json` | Prints instructional-example validation without writing experimental results; checks document/tool consistency, not model reasoning accuracy |
+| [validate_silicon_rules.py](validate_silicon_rules.py) | Requires `--input`, `--labels`, `--old-policy`, and `--output`; newly enabled rules must exactly match the expected silicon rules | Writes rule copies, selection manifest, per-case comparisons, and summary into a new directory. Includes the historical case870 development-set convention. Labels are for offline diagnostics; results are not an independent external benchmark |
 
-除明确拒绝已有目标目录的脚本外，输出文件可能被覆盖；运行时选用适当的新输出路径。开发子集与历史开发案例不能当作未接触的留出测试集。
+Unless a script explicitly rejects an existing destination, output files may be overwritten. Select appropriate new output paths. Development subsets and historical development cases must not be treated as untouched holdout test sets.
 
 ```powershell
-# 只验证技能教学示例，不依赖完整实验数据。
+# Validate instructional examples only; the full experimental dataset is unnecessary.
 ./.venv/Scripts/python.exe -B scripts/validate_molecode_skill.py
 
-# 查看有参数解析器的入口，不运行数据准备或验证。
+# Show help for entry points with argument parsers, without preparing or validating data.
 ./.venv/Scripts/python.exe -B scripts/prepare_development_cases.py --help
 ./.venv/Scripts/python.exe -B scripts/economy_pilot.py prepare --help
 ./.venv/Scripts/python.exe -B scripts/economy_pilot.py report --help
@@ -43,51 +43,51 @@ $env:PYTHONIOENCODING = 'utf-8'
 ./.venv/Scripts/python.exe -B scripts/validate_silicon_rules.py --help
 ```
 
-## 本地模拟服务检查
+## Local mock-service checks
 
-| 脚本 | 检查内容 | 运行条件与输出 |
+| Script | Checks | Requirements and output |
 |---|---|---|
-| [validate_thinking_transport.py](validate_thinking_transport.py) | SDK/CLI 实际发出的 thinking、模型、输出限制等白名单字段 | 启动 `127.0.0.1` 模拟 Messages 服务，使用假凭据；需要可运行的 Claude Agent SDK/CLI。打印结果，可用 `--output` 保存 |
-| [validate_progress_watchdog.py](validate_progress_watchdog.py) | 输出截断、无进展、会话字符上限等中断场景 | 同样使用本地模拟服务及假凭据；需要 SDK/CLI、子进程和本地监听权限。打印结果，可用 `--output` 保存 |
+| [validate_thinking_transport.py](validate_thinking_transport.py) | Allowlisted fields actually sent by the SDK/CLI, including thinking, model, and output limits | Starts a mock Messages service on `127.0.0.1` with fake credentials; requires a working Claude Agent SDK/CLI. Prints results, optionally saved with `--output` |
+| [validate_progress_watchdog.py](validate_progress_watchdog.py) | Interrupt scenarios such as output truncation, no progress, and session character limits | Also uses a local mock service and fake credentials; requires the SDK/CLI, subprocess execution, and local listening permissions. Prints results, optionally saved with `--output` |
 
-两者不调用真实模型服务，但与只使用 Python 模拟对象的默认 pytest 不同，会启动实际 CLI 子进程。检查结果反映本机安装版本的传输和取消行为，不是模型质量或实际费用结论。
+Neither calls a live model service. Unlike default pytest checks based only on Python mocks, they start real CLI subprocesses. Results characterize transport and cancellation behavior of locally installed versions, not model quality or actual cost.
 
-## 真实模型入口
+## Live-model entry points
 
-以下入口会发起真实模型请求，需要 `DEEPSEEK_API_KEY`，可能产生费用。运行前检查[配置说明](../configs/README.md)及本地模型、服务和预算设置。
+These entry points make real model requests, require `DEEPSEEK_API_KEY`, and may incur charges. Check the [configuration guide](../configs/README.md) and local model, service, and budget settings first.
 
-| 脚本 | 用途与输入 | 输出与配置 |
+| Script | Purpose and input | Output and configuration |
 |---|---|---|
-| [probe.py](probe.py) | 使用内置乙醇案例检查真实工具调用链 | 固定写入 `runs/probe/result.json`，重复运行会覆盖；单次回复上限 8192 tokens，最多 8 工具轮次，直接调用 Harness，不经过批量预算与时段调度 |
-| [run_single_miss.py](run_single_miss.py) | 读取当前数据目录中的固定单例与选择清单，核对源文件及输入哈希后运行 | `--output` 必填，采用 economy 配置；支持 `--thinking`、`--max-output-tokens`、`--allow-peak`。预测冻结后才加载标签评估；文件名沿用历史命名，当前准备工具不按真值重新筛选 |
-| [validate_economy_profile.py](validate_economy_profile.py) | 读取当前数据目录中的 `engineering_pilot.json`，默认由四条开发案例构成 | `--output` 必填，采用 economy 配置；可用 `--budget-cny` 指定正数费用上限。输出运行结果和 `engineering_report.json`，不据此宣称全量准确率或费用达标 |
+| [probe.py](probe.py) | Uses a built-in ethanol case to check the live tool-call chain | Always writes `runs/probe/result.json`, overwriting on repetition. A single-response limit of 8192 tokens and at most 8 tool turns; calls Harness directly, bypassing batch-budget and time-window scheduling |
+| [run_single_miss.py](run_single_miss.py) | Reads the fixed single case and selection manifest from the current data directory; verifies source and input hashes | Requires `--output`; uses economy. Supports `--thinking`, `--max-output-tokens`, and `--allow-peak`. Labels are loaded for evaluation only after freezing predictions. The historical filename is retained; current preparation does not reselect cases using ground truth |
+| [validate_economy_profile.py](validate_economy_profile.py) | Reads `engineering_pilot.json` from the current data directory, normally containing four development cases | Requires `--output`; uses economy. `--budget-cny` sets a positive monetary limit. Writes results and `engineering_report.json`; does not establish full-dataset accuracy or cost targets |
 
-后两个入口支持 `--data-root` 和 `--ask-key`，并拒绝目标目录中已有 `manifest.json` 的情况；应使用新输出目录。未显式指定费用上限时，以配置为准，不能仅凭脚本名称推定存在固定金额上限。
+The latter two support `--data-root` and `--ask-key` and reject destinations already containing `manifest.json`; use a new output directory. If no monetary limit is explicitly supplied, configuration applies. A script's name does not imply a fixed monetary cap.
 
-`probe.py` 没有命令行参数解析器，**不要用 `probe.py --help` 检查帮助**，它仍会执行真实调用。查看其说明应阅读本文或源码。`validate_molecode_skill.py` 也没有参数解析器，直接执行的是离线验证。
+`probe.py` has no argument parser: **do not run `probe.py --help` to inspect help**, because it still makes a live call. Read this guide or its source instead. `validate_molecode_skill.py` also has no argument parser; running it directly performs offline validation.
 
-## 公开案例导出
+## Public case-study export
 
-[export_case_studies.py](export_case_studies.py)仅处理已获准公开的两个固定案例，从本地冻结记录生成 [case_studies/](../case_studies/README.md)。需要原始 `runs/`；脚本先核对冻结哈希，按字段选择材料，去重科学对象并保留所有已记录试验和未完成状态。不调用模型、不重新评分，也不读取整个私有数据集或会话工作区。
+[export_case_studies.py](export_case_studies.py) handles only the two fixed cases authorized for publication, producing [case_studies/](../case_studies/README.md) from local frozen records. Export requires the original `runs/`. The script verifies frozen hashes, selects fields, deduplicates scientific objects, and retains every recorded trial and incomplete status. It makes no model calls, does not rescore results, and does not read the full private dataset or session workspaces.
 
-需要项目 Python 环境、RDKit 和 Pillow。首次导出要求目标目录不存在；`--check` 在内存中重建并与现有公开文件逐字节比较，不覆盖文件。跨平台字体/绘图依赖可能改变图片字节，严格比较适用于相同导出环境。
+The project Python environment, RDKit, and Pillow are required. Initial export requires an absent destination. `--check` rebuilds in memory and compares existing public files byte for byte without overwriting them. Cross-platform fonts and drawing dependencies may change image bytes; strict comparison applies to the same export environment.
 
 ```powershell
 ./.venv/Scripts/python.exe -B scripts/export_case_studies.py --check
 ```
 
-公开读者可直接查看案例，无需持有原始运行目录。`provenance.json` 中的原始文件哈希用于来源追溯，不代替历史源码快照或完整模型实验复现。
+Public readers can inspect the cases without the original run directories. Source hashes in `provenance.json` support traceability; they do not replace historical source snapshots or full model-experiment reproduction.
 
-## 历史归档
+## Historical archive
 
-- [pilot20_20261103_04](archive/pilot20_20261103_04/README.md)：10 个早期预算、运行、报告和质量审计脚本，部分运行入口可产生费用。
-- [legacy_checks](archive/legacy_checks/README.md)：旧回执回放，不调用模型，但依赖当前不存在的历史文件。
+- [pilot20_20261103_04](archive/pilot20_20261103_04/README.md): 10 early budget, execution, reporting, and quality-audit scripts; some entry points incur charges.
+- [legacy_checks](archive/legacy_checks/README.md): old-receipt replay; it makes no model calls and depends on historical files currently absent.
 
-归档是用途分类，不表示这些脚本与当前协议兼容，也不表示恢复了历史输入。此次整理只适配移动后的项目路径；历史原始源码应以实验冻结快照为准。公开版本另将两份验证脚本的私有案例编号默认值改为显式本地选择参数，详见归档说明。
+Archiving categorizes purpose; it does not establish compatibility with the current protocol or restore historical inputs. Archive maintenance adapted relocated project paths. Historical original source remains defined by frozen experiment snapshots. The public version also replaces private case-ID defaults in two validation scripts with explicit local selection parameters; see the archive guide.
 
-## 测试依赖
+## Test dependencies
 
-`economy_pilot.py`、`prepare_development_cases.py`、`validate_molecode_skill.py` 以及归档中的 `run_economy_validation.py` 仍被测试调用。测试使用构造数据、临时目录或函数级检查，不会运行归档的付费主入口。对应关系见[测试说明](../tests/README.md)。
+Tests still call `economy_pilot.py`, `prepare_development_cases.py`, `validate_molecode_skill.py`, and archived `run_economy_validation.py`. They use synthetic data, temporary directories, and function-level checks without invoking paid archive entry points. See the [test guide](../tests/README.md) for the dependency mapping.
 
 ```powershell
 ./.venv/Scripts/python.exe -B -m pytest -q -p no:cacheprovider

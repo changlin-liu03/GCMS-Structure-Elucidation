@@ -2,7 +2,7 @@
 
 **English** | [简体中文](editing_and_stopping.md)
 
-This document first describes the default `case_batch` workflow. Configuration defaults and overrides are covered in the [configuration guide](../configs/README.en.md). Differences in the older `legacy` mode are described at the end.
+This document first describes the default `case_batch` workflow. Configuration defaults and overrides are covered in the [configuration guide](../configs/README.md). Differences in the older `legacy` mode are described at the end.
 
 ## Trials and formal submissions
 
@@ -60,7 +60,7 @@ If an output or turn error occurs after a verified submission, the submission ma
 
 ## Session and monetary limits
 
-Default economy sessions allow at most 6 SDK turns, with 1 reserved for submission, and at most 4 analysis calls. Queries, submissions, and control logic may reduce the actual number of analysis calls. A spectrum allows at most two concurrent batches and defaults to 8 effective sessions. See the [configuration guide](../configs/README.en.md) for the meaning of each count.
+Default economy sessions allow at most 6 SDK turns, with 1 reserved for submission, and at most 4 analysis calls. Queries, submissions, and control logic may reduce the actual number of analysis calls. A spectrum allows at most two concurrent batches and defaults to 8 effective sessions. See the [configuration guide](../configs/README.md) for the meaning of each count.
 
 Total and per-spectrum monetary limits are unset by default. They are enabled only through `--budget-cny` or the corresponding configuration. Cost reservations are scheduling estimates, and unknown usage retains an estimate; these are not hard provider billing caps. `max_output_tokens: null` uses CLI/service defaults rather than allowing unlimited output. `offpeak_only` stops new sessions during peak hours and saves progress; it does not schedule automatic background resumption.
 

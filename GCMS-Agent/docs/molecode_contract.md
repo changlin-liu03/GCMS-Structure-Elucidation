@@ -68,4 +68,4 @@ MoleCode 用节点与边呈现这些结构：同位素写在原子标签中（�
 
 ## 可重复检查
 
-[教学案例](../skills/molecode-graph-reasoning/examples/)使用独立构造的结构检查图语法、结构事实和编辑结果；[验证脚本](../scripts/validate_molecode_skill.py)读取实际 Markdown 与 fixture，默认 pytest 已包含该检查。运行方式和验证边界见[测试说明](../tests/README.md)。这些检查不测量真实模型的结构识别准确率。
+[教学案例](../skills/molecode-graph-reasoning/examples/)使用独立构造的结构检查图语法、结构事实和编辑结果；[验证脚本](../scripts/validate_molecode_skill.py)读取实际 Markdown 与 fixture，默认 pytest 已包含该检查。运行方式和验证边界见[测试说明](../tests/README.zh-CN.md)。这些检查不测量真实模型的结构识别准确率。

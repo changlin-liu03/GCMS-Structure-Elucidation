@@ -1,13 +1,15 @@
-# 历史离线检查脚本
+# Archived offline replay check
 
-该脚本从 `scripts/` 根目录归档到此处，用于保留旧实验的检查方法。它不调用模型，但依赖当前工作区中不存在的历史输入，不能作为当前数据的验证入口。
+**English** | [简体中文](README.zh-CN.md)
 
-| 脚本 | 历史用途 | 固定输入与输出 |
+This script was moved here from `scripts/` to preserve the replay procedure for an earlier experiment. It runs offline and requires historical inputs absent from this repository.
+
+| Script | Purpose | Inputs and output |
 |---|---|---|
-| [validate_economy_replay.py](validate_economy_replay.py) | 将旧候选提案回放到批审工具和工作流，比较最终结构与评分；不读取评估标签 | 输入：`runs/single_top10_miss_nothinking_v2/` 的检查点和旧 `data/inference/single_top10_miss.json`；输出：`runs/economy_offline_validation/replay.json` |
+| [validate_economy_replay.py](validate_economy_replay.py) | Replay saved candidate proposals through the batch-review tools and workflow, then compare final structures and scores without reading evaluation labels. | Reads checkpoints from `runs/single_top10_miss_nothinking_v2/` and inputs from `data/inference/single_top10_miss.json`. Writes `runs/economy_offline_validation/replay.json`. |
 
-路径均相对项目根目录，而不是本归档目录。回放输出可能被覆盖。脚本无命令行参数解析器，`--help` 不会显示帮助，而是执行主流程；请阅读源码了解约定。
+Paths are relative to the GCMS-Agent project root. Running the script can overwrite the replay output. It has no command-line parser: invoking it with `--help` starts the replay. Read the source before running it.
 
-这是依赖特定历史协议和结果的检查程序，而非通用的当前版本重放工具。即使补回旧文件，也需要确认数据、协议、规则和运行环境兼容；整理本身没有验证历史实验可以重现，也没有更改断言来适配当前结果。历史逐字节原版应查对应实验的冻结源码快照。
+Replay depends on the historical protocol and results. Check data, protocol, rules, and environment compatibility when restoring old files. Archiving did not establish reproducibility or relax the original assertions. For byte-exact historical code, consult the experiment’s frozen source snapshot.
 
-当前工具入口见[脚本说明](../../README.md)。
+See the [scripts guide](../../README.md) for current entry points.

@@ -13,16 +13,16 @@
 | `baseline` | 对输入候选进行确定性验证、评分和排序 | 无需 API 密钥，不调用模型或编辑结构 |
 | `agent` | 模型审阅候选、试验修改并提交；宿主验证和保存结果 | 需要配置模型服务和 API 密钥，会产生调用费用 |
 
-[真实案例](#真实案例过程展示) · [安装](#从零安装) · [离线示例](#运行公开示例) · [运行-agent](#运行-agent) · [技术文档](docs/README.md)
+[真实案例](#真实案例过程展示) · [安装](#从零安装) · [离线示例](#运行公开示例) · [运行-agent](#运行-agent) · [技术文档](docs/README.zh-CN.md)
 
 ## 真实案例过程展示
 
-无需安装即可阅读[案例导航](case_studies/README.md)。每例包含输入、独立参考标签、结构变化图、逐轮修改、全部工具试验、精简结果与来源校验。
+无需安装即可阅读[案例导航](case_studies/README.zh-CN.md)。每例包含输入、独立参考标签、结构变化图、逐轮修改、全部工具试验、精简结果与来源校验。
 
 | 案例 | 展示重点 | 历史结果边界 |
 |---|---|---|
-| [丁酸正丁酯](case_studies/butyl-butanoate/README.md) | 服务失败、重试和参考结构生成 | 参考结构展示第 2；重试仍未完成 |
-| [三甲基正戊基硅烷](case_studies/trimethylpentylsilane/README.md) | 含硅结构编辑与同分排名 | 参考结构展示第 6、证据并列第 1；未完成 |
+| [丁酸正丁酯](case_studies/butyl-butanoate/README.zh-CN.md) | 服务失败、重试和参考结构生成 | 参考结构展示第 2；重试仍未完成 |
+| [三甲基正戊基硅烷](case_studies/trimethylpentylsilane/README.zh-CN.md) | 含硅结构编辑与同分排名 | 参考结构展示第 6、证据并列第 1；未完成 |
 
 两个主要 Agent 阶段保留 **42 条试验**，包括拒绝和未选中项，另记录初次服务失败。它们是获准公开的历史开发案例，保留原始评分和未完成状态，不作为当前版本准确率的证明。
 
@@ -59,11 +59,11 @@ Remove-Item Env:PYTHONPATH -ErrorAction SilentlyContinue
 
 `[test]` 声明离线测试需要的 pytest；固定环境清单也包含它。Pillow 是生成结构图和公开案例图片的直接依赖。构建工具由 pip 单独解析，当前清单未锁定安装包哈希。
 
-基线和离线测试无需运行模型。真实 Agent 运行还需要服务配置和 API 密钥；当前 Windows SDK 安装包带有原生 `claude.exe`，未设置 `cli_path` 时由 SDK 查找。自定义可执行文件的配置见 [configs/README.md](configs/README.md)。
+基线和离线测试无需运行模型。真实 Agent 运行还需要服务配置和 API 密钥；当前 Windows SDK 安装包带有原生 `claude.exe`，未设置 `cli_path` 时由 SDK 查找。自定义可执行文件的配置见 [configs/README.md](configs/README.zh-CN.md)。
 
 ### 运行公开示例
 
-先完成安装，在仓库根目录的 PowerShell 中执行。两个[人工构造示例](data/examples/README.md)可直接体验流程，无需私有数据和 API 密钥。它们不是实测谱，也不用于衡量模型性能。每次运行使用尚不存在的输出目录。
+先完成安装，在仓库根目录的 PowerShell 中执行。两个[人工构造示例](data/examples/README.zh-CN.md)可直接体验流程，无需私有数据和 API 密钥。它们不是实测谱，也不用于衡量模型性能。每次运行使用尚不存在的输出目录。
 
 ```powershell
 $env:PYTHONIOENCODING = 'utf-8'
@@ -85,7 +85,7 @@ $env:PYTHONDONTWRITEBYTECODE = '1'
 
 完成离线示例后，可用同一人工输入检查真实模型流程。将 [.env.example](.env.example) 的内容复制到仓库根目录的本地 `.env`，填写 `DEEPSEEK_API_KEY`；若已有 `.env`，直接编辑，保留已有内容。也可以通过进程环境变量提供密钥，进程变量优先。
 
-先核对 [model.yaml](configs/model.yaml) 的服务与模型设置。仓库当前记录 `deepseek-flash[1m]`、`thinking: true`、`effort: low`；服务可用性及实际计费需以你的服务账户为准。模型接入与 SDK 启动详见[配置说明](configs/README.md)。
+先核对 [model.yaml](configs/model.yaml) 的服务与模型设置。仓库当前记录 `deepseek-flash[1m]`、`thinking: true`、`effort: low`；服务可用性及实际计费需以你的服务账户为准。模型接入与 SDK 启动详见[配置说明](configs/README.zh-CN.md)。
 
 ```powershell
 # 会调用真实模型。显式设置 10 元调度预算，使用新的输出目录。
@@ -98,7 +98,7 @@ $env:PYTHONDONTWRITEBYTECODE = '1'
 .\.venv\Scripts\python.exe -B -m gcms_agent.cli resume data\examples\inference.json --output runs\public_agent_example --budget-cny 10
 ```
 
-Agent 默认使用 `economy`，同一谱图最多并行两批。其 `offpeak_only: true` 会在本地配置判定的高峰时段停止启动新会话并记录 `offpeak_wait`，需要在允许时段显式恢复，不会后台定时续跑。基础配置默认不设总金额上限；示例中的预算是宿主调度估算，不是服务商的硬账单上限。详见[预算与调度](configs/README.md#调度预算与特殊值)及[恢复约定](docs/editing_and_stopping.md#resume)。
+Agent 默认使用 `economy`，同一谱图最多并行两批。其 `offpeak_only: true` 会在本地配置判定的高峰时段停止启动新会话并记录 `offpeak_wait`，需要在允许时段显式恢复，不会后台定时续跑。基础配置默认不设总金额上限；示例中的预算是宿主调度估算，不是服务商的硬账单上限。详见[预算与调度](configs/README.zh-CN.md#调度预算与特殊值)及[恢复约定](docs/editing_and_stopping.md#resume)。
 
 ## 工作流程
 
@@ -139,7 +139,7 @@ flowchart TD
 
 ## 输入、评分与使用边界
 
-输入为原始 EI 质谱和十个候选，使用 `input_ids`、`intensity`、`generated` 与 `sample_id` 等字段。峰强保留原始线性尺度，不做基峰归一化、对数变换或重新分箱；旧 `position_ids` 格式拒绝进入当前运行流程。参考标签单独存放，仅在独立评估时使用。格式和自有数据准备见[数据说明](data/README.md)。
+输入为原始 EI 质谱和十个候选，使用 `input_ids`、`intensity`、`generated` 与 `sample_id` 等字段。峰强保留原始线性尺度，不做基峰归一化、对数变换或重新分箱；旧 `position_ids` 格式拒绝进入当前运行流程。参考标签单独存放，仅在独立评估时使用。格式和自有数据准备见[数据说明](data/README.zh-CN.md)。
 
 ```text
 score = 规则支持峰的原始强度之和 / 全部观测峰的原始强度之和
@@ -157,19 +157,19 @@ confidence_score = 100 × score
 | 目录 | 内容 |
 |---|---|
 | [src/gcms_agent/](src/gcms_agent/) | 化学工具、碎片证据、评分、Harness、工作流与报告 |
-| [case_studies/](case_studies/README.md) | 两个获准公开案例的流程与轨迹 |
-| [data/examples/](data/examples/README.md) | 可直接运行的人工输入和独立演示标签 |
-| [configs/](configs/README.md) | 服务配置、运行参数、预算与调度 |
-| [skills/](skills/README.md) | 模型技能、MoleCode 语法及按需参考 |
-| [resources/](resources/README.md) | 固定 EI 规则、适用条件和来源 |
-| [docs/](docs/README.md) | 架构、结构契约、编辑验收、评分及科学边界 |
-| [scripts/](scripts/README.md) | 数据准备、验证、实验与案例导出脚本 |
-| [tests/](tests/README.md) | 单元、集成及端到端离线验证 |
+| [case_studies/](case_studies/README.zh-CN.md) | 两个获准公开案例的流程与轨迹 |
+| [data/examples/](data/examples/README.zh-CN.md) | 可直接运行的人工输入和独立演示标签 |
+| [configs/](configs/README.zh-CN.md) | 服务配置、运行参数、预算与调度 |
+| [skills/](skills/README.zh-CN.md) | 模型技能、MoleCode 语法及按需参考 |
+| [resources/](resources/README.zh-CN.md) | 固定 EI 规则、适用条件和来源 |
+| [docs/](docs/README.zh-CN.md) | 架构、结构契约、编辑验收、评分及科学边界 |
+| [scripts/](scripts/README.zh-CN.md) | 数据准备、验证、实验与案例导出脚本 |
+| [tests/](tests/README.zh-CN.md) | 单元、集成及端到端离线验证 |
 
 ## 许可与第三方资料
 
 本项目原创代码与说明文档采用 [MIT License](LICENSE)，版权署名为 `Copyright (c) 2026 刘昌霖`。允许商业使用、修改和再分发，使用时须保留版权及许可声明。
 
-项目依赖并参考 Anthropic 的 Claude Agent SDK for Python；其 MIT 许可与版权声明另行保留。SDK 与 Claude Code CLI 的条款边界、MoleCode 来源及其他第三方材料见[第三方说明](THIRD_PARTY_NOTICES.md)。`case_studies/` 中两个真实案例的展示包不纳入上述代码与文档的 MIT 授权；其公开范围见[案例说明](case_studies/README.md)。私有研究数据不随仓库发布，详见[数据说明](data/README.md)。
+项目依赖并参考 Anthropic 的 Claude Agent SDK for Python；其 MIT 许可与版权声明另行保留。SDK 与 Claude Code CLI 的条款边界、MoleCode 来源及其他第三方材料见[第三方说明](THIRD_PARTY_NOTICES.md)。`case_studies/` 中两个真实案例的展示包不纳入上述代码与文档的 MIT 授权；其公开范围见[案例说明](case_studies/README.zh-CN.md)。私有研究数据不随仓库发布，详见[数据说明](data/README.zh-CN.md)。
 
 本文按 2026-11-18 的代码与配置整理，默认参数以配置文件及其加载结果为准。

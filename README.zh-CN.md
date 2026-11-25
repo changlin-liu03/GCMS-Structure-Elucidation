@@ -42,7 +42,7 @@ cd GCMS-Structure-Elucidation
 
 ## 两阶段的数据衔接
 
-DiffGCMS 预测输出与当前 Agent 输入格式不同，详见 [DiffGCMS 数据规范](DiffGCMS/docs/data.zh-CN.md)及 [Agent 数据规范](GCMS-Agent/data/README.md)。
+DiffGCMS 预测输出与当前 Agent 输入格式不同，详见 [DiffGCMS 数据规范](DiffGCMS/docs/data.zh-CN.md)及 [Agent 数据规范](GCMS-Agent/data/README.zh-CN.md)。
 
 | 字段 | DiffGCMS 预测输出 | 当前 Agent 输入 |
 |---|---|---|
@@ -57,8 +57,8 @@ Agent 的数据准备工具要求源文件已经符合其字段约定，并非 D
 
 ## 示例与验证范围
 
-- [人工构造示例](GCMS-Agent/data/examples/README.md)可演示离线 Agent 流程，无需私有数据或模型调用。
-- [两个公开历史案例](GCMS-Agent/case_studies/README.md)保留输入、结构编辑、结果与来源记录。其主要 Agent 运行均未完成，用于展示开发轨迹，不代表当前版本的识别准确率。
+- [人工构造示例](GCMS-Agent/data/examples/README.zh-CN.md)可演示离线 Agent 流程，无需私有数据或模型调用。
+- [两个公开历史案例](GCMS-Agent/case_studies/README.zh-CN.md)保留输入、结构编辑、结果与来源记录。其主要 Agent 运行均未完成，用于展示开发轨迹，不代表当前版本的识别准确率。
 - GCMS-Agent 已有发布审查记录了在其文档环境下 398 项离线测试通过、两个人工示例基线流程成功。这是已有模块验证记录，不是本次对两阶段流程重新进行的端到端验证。
 - 完整 DiffGCMS 训练与推理需要外部数据和权重；本次合并发布未重新运行这些实验。
 

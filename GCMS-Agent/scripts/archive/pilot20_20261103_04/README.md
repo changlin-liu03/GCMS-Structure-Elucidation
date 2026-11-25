@@ -1,26 +1,28 @@
-# 历史 pilot20 实验脚本
+# Archived pilot20 experiment scripts
 
-这些脚本服务于 2026-11-03 至 2026-11-04 的节费、可靠性与 pilot20 实验。2026-11-05 从 `scripts/` 根目录移入此处，修正项目根路径、源码打包路径和测试引用；预算、评分及实验验收逻辑不变。
+**English** | [简体中文](README.zh-CN.md)
 
-| 脚本 | 历史用途 |
+These scripts supported the cost, reliability, and 20-case experiments on November 3–4, 2026. On November 5 they moved here from `scripts/`. The move updated project paths, source packaging, and test references while preserving the budget, scoring, and acceptance logic.
+
+| Script | Purpose |
 |---|---|
-| `run_economy_validation.py` | 分阶段运行及共享预算控制 |
-| `continue_pilot20_cases.py` | 指定案例的后续运行 |
-| `resume_pilot20_observed.py` | 带观测记录的续跑 |
-| `validate_reliability_v3.py` | v3 可靠性验证 |
-| `validate_submission_v31.py` | v31 提交验证 |
-| `run_pilot20_v31.py` | v31 的 20 条案例实验 |
-| `report_pilot20.py` | 冻结预测及生成评估报告 |
-| `report_pilot20_interrupted.py` | 中断实验的阶段性报告 |
-| `audit_pilot20_v31_quality.py` | 结构、碎裂证据与排名质量审计 |
-| `analyze_pilot20_v31_cost.py` | 费用分解与历史对照 |
+| `run_economy_validation.py` | Run validation in stages under a shared budget |
+| `continue_pilot20_cases.py` | Continue selected cases |
+| `resume_pilot20_observed.py` | Resume a run with observation logging |
+| `validate_reliability_v3.py` | Validate v3 reliability |
+| `validate_submission_v31.py` | Validate v31 submissions |
+| `run_pilot20_v31.py` | Run the v31 experiment on 20 cases |
+| `report_pilot20.py` | Freeze predictions and generate an evaluation report |
+| `report_pilot20_interrupted.py` | Report interim results for an interrupted run |
+| `audit_pilot20_v31_quality.py` | Audit structures, fragmentation evidence, and ranking quality |
+| `analyze_pilot20_v31_cost.py` | Break down costs and compare them with historical runs |
 
-同组脚本保留在一个目录，直接运行文件时可解析彼此的导入。当前日常运行使用项目 CLI 和 `scripts/` 根目录入口；此归档不会被工作流自动执行。归档中的运行脚本可能发起付费调用，不要为检查归档完整性执行它们的主函数。
+The scripts share a directory so they can import each other when run directly. Use the project CLI or the top-level `scripts/` entry points for routine work. The workflow does not run these archived scripts automatically. Some make paid model calls, so avoid invoking their main functions to check the archive.
 
-脚本仍引用原来的 `data/` 和 `runs/` 路径。历史结果、账本、待结算记录、检查点和 `tested_source.zip` 未移动或修改。归档脚本做过路径适配，不等同于当时逐字节冻结的源码；需要原版本时应查阅对应实验的原始快照。源码已变化时，不绕过历史版本校验恢复旧实验。
+The scripts refer to their original `data/` and `runs/` paths. The move preserved historical results, ledgers, pending settlements, checkpoints, and `tested_source.zip`. Use the frozen source snapshot for the exact code used in an experiment. Keep version checks enabled when resuming historical runs.
 
-## 私有案例选择
+## Selecting private cases
 
-公开版本不包含历史私有案例编号。`validate_reliability_v3.py` 的预检及执行需通过 `--sample-ids` 显式提供三个本地案例编号，顺序为轮次限制、输出限制、非法结构修复；`validate_submission_v31.py` 使用 `--sample-id`。不提供选择时，在读取数据或账本、创建运行锁和调用模型前退出。
+The public scripts omit private case identifiers. For preflight checks and execution, pass three local identifiers to `validate_reliability_v3.py` via `--sample-ids`, in this order: round limit, output limit, invalid-structure repair. For `validate_submission_v31.py`, pass one identifier with `--sample-id`. Without a selection, these commands exit before reading data or ledgers, creating a run lock, or calling a model.
 
-`--evaluate` 从已经冻结的运行输入恢复选择，不接受上述选择参数。仍须通过原有输入、源码和脚本指纹检查；参数化后的脚本不能强行评估旧快照。修改未恢复缺失的历史数据，也未将归档脚本改为当前公开示例入口。
+Evaluation with `--evaluate` restores the selection from the frozen inputs and rejects selection arguments. It still checks input, source, and script fingerprints. The parameterized scripts cannot override these checks to evaluate an old snapshot. Historical inputs are still required. For current public examples, use the project CLI.

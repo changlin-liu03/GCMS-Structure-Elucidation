@@ -11,11 +11,11 @@ runs/
 # Only the reviewed documentation and independently authored examples are public.
 /data/*
 !/data/README.md
-!/data/README.en.md
+!/data/README.zh-CN.md
 !/data/examples/
 /data/examples/*
 !/data/examples/README.md
-!/data/examples/README.en.md
+!/data/examples/README.zh-CN.md
 !/data/examples/inference.json
 !/data/examples/labels.json
 
@@ -28,11 +28,11 @@ runs/
 # Only the two reviewed case-study bundles are public; raw runs stay ignored.
 /case_studies/*
 !/case_studies/README.md
-!/case_studies/README.en.md
+!/case_studies/README.zh-CN.md
 !/case_studies/butyl-butanoate/
 /case_studies/butyl-butanoate/*
 !/case_studies/butyl-butanoate/README.md
-!/case_studies/butyl-butanoate/README.en.md
+!/case_studies/butyl-butanoate/README.zh-CN.md
 !/case_studies/butyl-butanoate/input.json
 !/case_studies/butyl-butanoate/reference.json
 !/case_studies/butyl-butanoate/trajectory.json
@@ -42,7 +42,7 @@ runs/
 !/case_studies/trimethylpentylsilane/
 /case_studies/trimethylpentylsilane/*
 !/case_studies/trimethylpentylsilane/README.md
-!/case_studies/trimethylpentylsilane/README.en.md
+!/case_studies/trimethylpentylsilane/README.zh-CN.md
 !/case_studies/trimethylpentylsilane/input.json
 !/case_studies/trimethylpentylsilane/reference.json
 !/case_studies/trimethylpentylsilane/trajectory.json

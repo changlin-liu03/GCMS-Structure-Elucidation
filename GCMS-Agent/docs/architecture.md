@@ -15,13 +15,13 @@ GC–EI–MS Agent 由 Python 宿主控制执行。模型负责读取候选、�
                          └─ 独立标签 → 运行结束后的独立评估器 ← 保存的预测
 ```
 
-[数据准备](../src/gcms_agent/data/prepare.py)将源数据拆分为推理输入与标签，记录源哈希、输入哈希及强度编码。[输入加载器](../src/gcms_agent/data/loader.py)只接受白名单字段，拒绝 `true_smiles` 等未知字段。私有数据仅在本地使用；公开的[人工示例](../data/examples/README.md)独立构造，不是实测性能基准。
+[数据准备](../src/gcms_agent/data/prepare.py)将源数据拆分为推理输入与标签，记录源哈希、输入哈希及强度编码。[输入加载器](../src/gcms_agent/data/loader.py)只接受白名单字段，拒绝 `true_smiles` 等未知字段。私有数据仅在本地使用；公开的[人工示例](../data/examples/README.zh-CN.md)独立构造，不是实测性能基准。
 
 [运行器](../src/gcms_agent/workflow/runner.py)提供两条主要执行路径：`baseline` 直接验证和评分候选，不调用模型、不编辑结构；`agent` 使用模型工具会话探索候选。不同谱图当前依次处理；同一谱图内先合并等价候选计算，再保留所有原始来源槽位输出。
 
 ## 模型与工具边界
 
-[Harness 客户端](../src/gcms_agent/harness/client.py)通过 Claude Agent SDK 与原生 CLI 访问配置中的兼容模型服务。模型名称、思考设置和费用参数见[配置说明](../configs/README.md)；服务返回的型号会被记录，别名不等于不可变的模型权重版本。
+[Harness 客户端](../src/gcms_agent/harness/client.py)通过 Claude Agent SDK 与原生 CLI 访问配置中的兼容模型服务。模型名称、思考设置和费用参数见[配置说明](../configs/README.zh-CN.md)；服务返回的型号会被记录，别名不等于不可变的模型权重版本。
 
 SDK 配置禁用默认工具、原生技能自动加载、个人设置来源与会话持久化，仅开放项目注册的 MCP 工具。会话使用独立工作目录和 `CLAUDE_CONFIG_DIR`；这限定了暴露给模型的工具能力，不是操作系统级进程沙箱。
 
@@ -60,7 +60,7 @@ SDK 配置禁用默认工具、原生技能自动加载、个人设置来源与�
 
 请求尝试数与有效会话计数分开。只有审计能确认的特定连接错误、已知零用量且无工具或试验执行，才可能豁免有效会话计数；原回执仍保留，另受连接失败上限约束。无回执或未知用量不能据此豁免。判定见[传输错误分类](../src/gcms_agent/harness/transport.py)。
 
-当前基础配置和 economy 均不设默认总金额上限，economy 也不设单谱金额上限；可以显式配置限制。预留金额、生成上限、SDK turn、分析调用次数和候选轮次是不同控制量，见[配置说明](../configs/README.md)。已知输出超限、服务错误或资源结束不应被解释为化学收敛。
+当前基础配置和 economy 均不设默认总金额上限，economy 也不设单谱金额上限；可以显式配置限制。预留金额、生成上限、SDK turn、分析调用次数和候选轮次是不同控制量，见[配置说明](../configs/README.zh-CN.md)。已知输出超限、服务错误或资源结束不应被解释为化学收敛。
 
 ## 结果与科学边界
 

@@ -1,44 +1,44 @@
-# Agent 技能目录
+# Agent skill directory
 
-[English](README.en.md) | **简体中文**
+**English** | [简体中文](README.zh-CN.md)
 
-本目录是 GC–EI–MS Agent 的运行时提示资料，由 Python 宿主显式加载。它不是需要用户另行安装到个人助手目录的插件包。
+This directory contains runtime prompt materials for the GC–EI–MS Agent, explicitly loaded by the Python host. It is not a plugin package that users must install separately in a personal assistant directory.
 
-## 技能职责
+## Skill responsibilities
 
-| 技能 | 职责 | 配套资料 |
+| Skill | Responsibility | Supporting materials |
 |---|---|---|
-| [gcms-input-audit](gcms-input-audit/SKILL.md) | 输入、原始峰强与元数据边界 | 无独立参考文件 |
-| [molecode-graph-reasoning](molecode-graph-reasoning/SKILL.md) | 分子图语法、邻接与结构读取、编辑边界 | 3 份参考、3 份教学示例、上游许可 |
-| [ei-fragment-evidence](ei-fragment-evidence/SKILL.md) | 规则支持证据、守恒与未解释机制 | 证据边界、硅规则边界 |
-| [constrained-structure-edit](constrained-structure-edit/SKILL.md) | 试验、正式提交、验收和停止 | 批审协议、验收与停止 |
-| [rerank-and-explain](rerank-and-explain/SKILL.md) | 分数、并列 Top1 和解释边界 | 无独立参考文件 |
+| [gcms-input-audit](gcms-input-audit/SKILL.md) | Input, raw peak intensities, and metadata boundaries | No separate reference files |
+| [molecode-graph-reasoning](molecode-graph-reasoning/SKILL.md) | Molecular graph syntax, adjacency and structure reading, and editing boundaries | 3 references, 3 instructional examples, and an upstream license |
+| [ei-fragment-evidence](ei-fragment-evidence/SKILL.md) | Rule-supported evidence, conservation, and unexplained mechanisms | Evidence boundaries and silicon-rule boundaries |
+| [constrained-structure-edit](constrained-structure-edit/SKILL.md) | Trials, committed changes, acceptance, and stopping | Batch-review protocol, acceptance, and stopping |
+| [rerank-and-explain](rerank-and-explain/SKILL.md) | Scores, tied Top1 results, and explanation boundaries | No separate reference files |
 
-## 加载与调用
+## Loading and invocation
 
-[SkillLibrary](../src/gcms_agent/harness/skill_loader.py) 固定加载上述五份 `SKILL.md`，正文经 [prompts.py](../src/gcms_agent/harness/prompts.py) 拼入系统提示词。YAML front matter 也随文件全文进入提示词，并非自动发现或路由机制。
+[SkillLibrary](../src/gcms_agent/harness/skill_loader.py) loads the five fixed `SKILL.md` files above. Their full contents are incorporated into the system prompt by [prompts.py](../src/gcms_agent/harness/prompts.py). YAML front matter is included as part of the file text; it is not an automatic discovery or routing mechanism.
 
-每个技能的 `references/` 与 `examples/` 下直接包含的 Markdown 文件注册为 `read_reference` 可用资料。当前共 10 份，调用使用相对 `skills/` 的完整 `reference_id`，例如 `molecode-graph-reasoning/references/syntax.md`。参考正文不会全部预先放入提示词；模型可根据已公布的 ID 按需读取。保持既有目录与文件名可避免破坏引用。
+Markdown files directly inside each skill's `references/` and `examples/` directories are registered as materials available through `read_reference`. There are currently 10 such files. Calls use the full `reference_id` relative to `skills/`, for example `molecode-graph-reasoning/references/syntax.md`. Reference bodies are not all placed in the prompt in advance; the model can read them on demand using the published IDs. Preserve existing directory and file names to avoid breaking references.
 
-本 README 和 `UPSTREAM_LICENSE.txt` 不会作为技能正文或 `read_reference` 资料加载。宿主的运行指纹仍覆盖 `skills/` 中的文件，因此维护文档也会改变版本指纹。
+Neither directory README nor `UPSTREAM_LICENSE.txt` is loaded as skill text or a `read_reference` resource. The host's run fingerprints still cover files in `skills/`, so documentation maintenance also changes version fingerprints.
 
-## 工具与科学边界
+## Tools and scientific boundaries
 
-- 默认批审使用 `analyze_proposals` 试验副本、`submit_reviews` 正式提交。一次分析调用每候选最多三个替代提案；一次会话可在额度内多次分析；最终每候选最多提交三个试验引用。单个提案的原子编辑操作项数不限。
-- 旧单候选模式使用 `validate_proposal` / `analyze_proposal` / `submit_review`。教学 JSON 展示操作参数，批审调用需按示例开头说明补全外层结构；工具 schema 以当前会话为准。
-- 分数是规则支持的原始强度覆盖率，不是身份正确概率。最高分并列时，来源候选数量参与展示 Top1 的选择，不增加证据分，也不取消并列关系。
-- 接受新的合法探索结构不要求分数提高；宿主分别保存当前探索图和历史最佳结果。实际验收、排序与停止由程序决定，技能文字不替代程序检查。
-- 教学结构不含实验谱峰，不提供当前案例的质谱证据；不得将实验答案或评估标签写入技能。
+- Default batch review uses `analyze_proposals` to test copies and `submit_reviews` to commit changes. Each analysis call accepts at most three alternative proposals per candidate. A session can make multiple analysis calls within its allowance; the final submission accepts at most three trial references per candidate. There is no limit on the number of atom-edit operations within an individual proposal.
+- Legacy single-candidate mode uses `validate_proposal` / `analyze_proposal` / `submit_review`. Instructional JSON shows operation arguments; batch calls require the outer structure described at the beginning of each example. The tool schema in the current session is authoritative.
+- The score is rule-supported raw-intensity coverage, not the probability that an identity is correct. When the highest scores are tied, the number of source candidates helps select the displayed Top1; it neither increases the evidence score nor removes the tie.
+- Accepting a new valid exploration structure does not require an improved score. The host stores the current exploration graph and the historical best result separately. Actual acceptance, ranking, and stopping are determined by the program; skill text does not replace program checks.
+- Instructional structures contain no experimental spectral peaks and supply no mass-spectral evidence for the current case. Do not put experimental answers or evaluation labels into skills.
 
-## 来源与维护
+## Provenance and maintenance
 
-MoleCode 的历史来源与本地适配见 [provenance.md](molecode-graph-reasoning/references/provenance.md)，保留的上游许可见 [UPSTREAM_LICENSE.txt](molecode-graph-reasoning/UPSTREAM_LICENSE.txt)。历史本机参考目录不是运行依赖；未记录的上游 commit/tag 不推测补填。
+See [provenance.md](molecode-graph-reasoning/references/provenance.md) for MoleCode's historical sources and local adaptations, and [UPSTREAM_LICENSE.txt](molecode-graph-reasoning/UPSTREAM_LICENSE.txt) for the retained upstream license. Historical local reference directories are not runtime dependencies. Do not guess missing upstream commit/tag identifiers.
 
-维护提示词时应同步核对工具字段、分数语义、提案额度和停止条件。不要仅为文档语言统一而直接翻译运行时技能；正文或按需参考的文字变化可能影响模型行为，应与普通项目说明的翻译分开验证。
+When maintaining prompts, check tool fields, score semantics, proposal limits, and stopping conditions together. Do not translate runtime skills solely to make documentation languages uniform: changes to skill bodies or on-demand references may affect model behavior and should be validated separately from translations of ordinary project documentation. This English guide describes the existing skills; linked runtime skill bodies, references, and instructional examples retain their original language.
 
-## 离线验证
+## Offline validation
 
-在项目根目录执行，明确使用当前仓库源码，避免已有环境导入其他项目副本：
+Run from the project root, explicitly using this checkout's source to avoid importing another project copy from an existing environment:
 
 ```powershell
 $env:PYTHONPATH = (Resolve-Path ./src).Path
@@ -47,6 +47,6 @@ $env:PYTHONDONTWRITEBYTECODE = '1'
 ./.venv/Scripts/python.exe -B -m pytest -q -p no:cacheprovider tests/integration/test_harness.py tests/integration/test_batch_tools.py tests/unit/test_ranking_interpretation.py tests/unit/test_top1_report.py tests/unit/test_nitrile_rules_and_exploration.py tests/end_to_end/test_case_batch.py
 ```
 
-教学验证程序读取三份示例中的分子图与 JSON，核验 11 个案例的结构事实、往返保真及预期接受/拒绝结果，不调用模型、不读取实验标签。通过这些检查说明教学资料与工具兼容，不能据此断言模型理解能力或识别准确率提升。
+The instructional validator reads molecular graphs and JSON from three example documents. It checks structural facts, round-trip fidelity, and expected acceptance/rejection outcomes for 11 cases without calling a model or reading experimental labels. Passing these checks establishes compatibility between the instructional materials and tools; it does not establish improved model comprehension or identification accuracy.
 
-修改后应使用新运行目录，并保留旧实验的原始结果及版本校验。已有输出提示词快照不会自动更新，运行时以源码和本目录实际拼接内容为准。
+Use a new run directory after changes and retain original results and version checks for earlier experiments. Existing output prompt snapshots are not updated automatically; runtime prompts are assembled from the actual source and contents of this directory.

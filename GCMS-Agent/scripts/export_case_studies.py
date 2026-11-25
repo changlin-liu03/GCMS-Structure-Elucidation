@@ -29,11 +29,7 @@ CASES = (
      "main": "agent", "focus": "c01", "trials": 16,
      "title": "含硅结构编辑与并列排名"},
 )
-ORIGINAL_PROVENANCE_SHA256 = {
-    "butyl-butanoate": "e2c625ad194dfe62e7a4d56202a48fe5dac4181316c3575d03ceb53929b36a46",
-    "trimethylpentylsilane": "6a8b42a719cf616bc1c3fa76443cfb5006010817dcc22fe22f0531048b2c413b",
-}
-FILES = ("README.md", "README.en.md", "input.json", "reference.json", "trajectory.json",
+FILES = ("README.zh-CN.md", "README.md", "input.json", "reference.json", "trajectory.json",
          "result.json", "provenance.json", "trajectory.png")
 VALIDATION_FIELDS = ("valid", "errors", "canonical_smiles", "formula", "exact_mass",
                      "nominal_mass", "composition", "hydrogen_count", "formal_charge",
@@ -300,7 +296,7 @@ def case_markdown(case, inputs, reference, results, trace, pool, *, english=Fals
     main_trace = trace[case["main"]]
     focus = main_trace["candidates"][case["focus"]]
     lines = [f"# {case['name_en']}: {TITLES_EN[case['id']]}" if english else f"# {case['name_zh']}：{case['title']}", "",
-      t("[English](README.en.md) | **简体中文**", "**English** | [简体中文](README.md)"), "",
+      t("[English](README.md) | **简体中文**", "**English** | [简体中文](README.zh-CN.md)"), "",
       t(NOTES[case["id"]], NOTES_EN[case["id"]]), "",
       t("这是获准公开的历史开发案例，不是随机测试集或当前版本的新实验。模型文字按原记录保留，为模型提出的解释，不代表实验确认的机理。未重新运行模型、验证化学路径或重算分数。", "This is an authorized historical development case, not a random test set or a new experiment with the current version. Model summaries, reasons, and operation explanations below remain in their original language (mostly Chinese), with only Markdown escaping applied. They are model-proposed explanations, not experimentally confirmed mechanisms. No model was rerun, chemical pathway revalidated, or score recalculated."), "",
       t("## 文件与阅读顺序", "## Files and reading order"), "",
@@ -349,7 +345,7 @@ def case_markdown(case, inputs, reference, results, trace, pool, *, english=Fals
       t("原始输入和标签与源文件语义一致。公开轨迹是字段筛选和对象去重后的派生材料，provenance.json 单独记录公开文件哈希；原冻结清单仅说明导出时本地原文件核验通过，不表示公开文件与原始整份结果逐字节相同。", "Input and labels retain the semantics of their source files. Public trajectories are derived materials with selected fields and deduplicated objects. `provenance.json` records public-file hashes separately. The original frozen inventories show that local source files passed verification at export time; public files are not byte-for-byte copies of the complete original results."),
       t("只包含已记录的工具调用元数据、试验与正式说明，不包含隐藏思考正文、原始会话流、凭据、个人路径或 CLI 缓存。无法从这些摘要补出未记录的推理过程。", "Only recorded tool-call metadata, trials, and submitted explanations are included. Hidden reasoning text, raw session streams, credentials, personal paths, and CLI caches are excluded. Unrecorded reasoning cannot be reconstructed from these summaries."),
       t("完整历史源码不在本包中，只有原记录指纹，不能声称具备逐字节重现旧模型实验的全部条件。", "The bundle contains recorded fingerprints, not the complete historical source code. It does not provide all conditions needed to reproduce historical model experiments byte for byte."), "",
-      t("返回[案例导航](../README.md)。", "Return to the [case-study index](../README.en.md)."), ""]
+      t("返回[案例导航](../README.zh-CN.md)。", "Return to the [case-study index](../README.md)."), ""]
     return "\n".join(lines).encode("utf-8")
 
 
@@ -379,8 +375,8 @@ def export_case(root, case):
     result = {"schema_version": "case_study_v1", "main_stage": case["main"], "stages": results}
     contents = {"input.json": encode(inputs), "reference.json": encode(reference),
                 "trajectory.json": encode(trajectory), "result.json": encode(result)}
-    contents["README.md"] = case_markdown(case, inputs, reference, results, traces, pool)
-    contents["README.en.md"] = case_markdown(case, inputs, reference, results, traces, pool, english=True)
+    contents["README.zh-CN.md"] = case_markdown(case, inputs, reference, results, traces, pool)
+    contents["README.md"] = case_markdown(case, inputs, reference, results, traces, pool, english=True)
     contents["trajectory.png"] = render_figure(case, focus_steps(main_trace, case["focus"], pool), pool)
     provenance = {"schema_version": "case_study_v1", "source_directory": "runs/" + case["source"],
         "publication_scope": "Owner-authorized exception for this case only; other research data remains private.",
@@ -395,11 +391,6 @@ def export_case(root, case):
         "exported_files_sha256": {name: digest(raw) for name, raw in sorted(contents.items())},
         "checksum_scope": "All other files in this case directory; provenance.json excludes itself to avoid recursive hashing.",
         "reproduction_limit": "A source fingerprint is not a source snapshot. Historical model results are not promised reproducible with current code."}
-    # Attribute an exact reproduction of an existing release to its original exporter.
-    actual_exporter = provenance["exporter"]["sha256"]
-    provenance["exporter"]["sha256"] = "fc35e9b08ce2df8598ffa2db35c0188210a292cad1d711a7f8895b71e15ca8a0"
-    if digest(encode(provenance)) != ORIGINAL_PROVENANCE_SHA256.get(case["id"]):
-        provenance["exporter"]["sha256"] = actual_exporter
     contents["provenance.json"] = encode(provenance)
     for name, raw in contents.items():
         if name.endswith(".json"): check_public(json.loads(raw))
@@ -409,28 +400,28 @@ def export_case(root, case):
 
 INDEX = """# 公开案例展示
 
-[English](README.en.md) | **简体中文**
+[English](README.md) | **简体中文**
 
 | 分子 | 最终结果 |
 |---|---|
-| [丁酸正丁酯](butyl-butanoate/README.md) | 参考结构排名第 2。 |
-| [三甲基正戊基硅烷](trimethylpentylsilane/README.md) | 参考结构与另外 5 个候选按证据评分并列第 1，在结果列表中列第 6。 |
+| [丁酸正丁酯](butyl-butanoate/README.zh-CN.md) | 参考结构排名第 2。 |
+| [三甲基正戊基硅烷](trimethylpentylsilane/README.zh-CN.md) | 参考结构与另外 5 个候选按证据评分并列第 1，在结果列表中列第 6。 |
 """
 
 
 INDEX_EN = """# Case studies
 
-**English** | [简体中文](README.md)
+**English** | [简体中文](README.zh-CN.md)
 
 | Molecule | Final result |
 |---|---|
-| [Butyl butanoate](butyl-butanoate/README.en.md) | The reference structure ranked second. |
-| [Trimethylpentylsilane](trimethylpentylsilane/README.en.md) | The reference structure tied with five other candidates for first by evidence score and appeared sixth in the results list. |
+| [Butyl butanoate](butyl-butanoate/README.md) | The reference structure ranked second. |
+| [Trimethylpentylsilane](trimethylpentylsilane/README.md) | The reference structure tied with five other candidates for first by evidence score and appeared sixth in the results list. |
 """
 
 
 def build(root):
-    bundle = {"README.md": INDEX.encode("utf-8"), "README.en.md": INDEX_EN.encode("utf-8")}
+    bundle = {"README.zh-CN.md": INDEX.encode("utf-8"), "README.md": INDEX_EN.encode("utf-8")}
     for case in CASES:
         for name, raw in export_case(root, case).items():
             bundle[f"{case['id']}/{name}"] = raw

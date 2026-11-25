@@ -68,4 +68,4 @@ Validation results do not automatically register a formal scoring rule. Current 
 
 ## Repeatable checks
 
-[Instructional examples](../skills/molecode-graph-reasoning/examples/) use independently constructed structures to check graph syntax, structural facts, and edit outcomes. The [validation script](../scripts/validate_molecode_skill.py) reads the actual Markdown and fixtures; this check is included in the default pytest suite. See the [test guide](../tests/README.en.md) for execution and scope. These checks do not measure a live model's structure-identification accuracy.
+[Instructional examples](../skills/molecode-graph-reasoning/examples/) use independently constructed structures to check graph syntax, structural facts, and edit outcomes. The [validation script](../scripts/validate_molecode_skill.py) reads the actual Markdown and fixtures; this check is included in the default pytest suite. See the [test guide](../tests/README.md) for execution and scope. These checks do not measure a live model's structure-identification accuracy.

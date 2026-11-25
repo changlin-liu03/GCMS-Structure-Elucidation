@@ -10,7 +10,7 @@ The implementation is in [rule_engine.py](../../src/gcms_agent/fragmentation/rul
 and [silicon.py](../../src/gcms_agent/fragmentation/silicon.py);
 [rules.json](rules.json) selects enabled templates and resource limits. Editing
 descriptive text cannot override the program's chemical conditions. Resource
-provenance and version-record usage are explained in the [directory README](../README.en.md).
+provenance and version-record usage are explained in the [directory README](../README.md).
 
 ## Rule index
 

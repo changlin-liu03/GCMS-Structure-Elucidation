@@ -46,4 +46,4 @@ Python 依赖通过 [pyproject.toml](pyproject.toml) 和 [requirements.lock](req
 
 ## 数据与案例
 
-私有研究数据不随仓库分发。`case_studies/` 中两个真实案例的整个展示包（包括谱图、候选、参考标签、轨迹、结果、说明及图片）不纳入根目录代码与文档的 MIT 授权。其已获准公开的范围见[案例说明](case_studies/README.md)和[数据说明](data/README.md)，不据此授予额外再利用许可或完整数据集的分发许可。独立人工构造的 `data/examples/` 示例按本项目 MIT 许可提供。
+私有研究数据不随仓库分发。`case_studies/` 中两个真实案例的整个展示包（包括谱图、候选、参考标签、轨迹、结果、说明及图片）不纳入根目录代码与文档的 MIT 授权。其已获准公开的范围见[案例说明](case_studies/README.zh-CN.md)和[数据说明](data/README.zh-CN.md)，不据此授予额外再利用许可或完整数据集的分发许可。独立人工构造的 `data/examples/` 示例按本项目 MIT 许可提供。

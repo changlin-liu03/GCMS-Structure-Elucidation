@@ -100,14 +100,15 @@ def test_public_bundle_integrity_and_full_trial_inventory(case):
         export.check_public(json.loads(p.read_text(encoding="utf-8")))
     inputs = json.loads((folder / "input.json").read_text(encoding="utf-8"))
     assert "true_smiles" not in inputs[0]
-    assert ("position_ids" in inputs[0]) == case["legacy"]
-    chinese = (folder / "README.md").read_text(encoding="utf-8")
-    english = (folder / "README.en.md").read_text(encoding="utf-8")
-    assert "[English](README.en.md)" in chinese
-    assert "[简体中文](README.md)" in english
+    assert "position_ids" not in inputs[0]
+    assert inputs[0]["conditions"]["intensity_encoding"] == "raw_linear"
+    chinese = (folder / "README.zh-CN.md").read_text(encoding="utf-8")
+    english = (folder / "README.md").read_text(encoding="utf-8")
+    assert "[English](README.md)" in chinese
+    assert "[简体中文](README.zh-CN.md)" in english
     assert "provisional/incomplete" in english
     assert "original language" in english
-    assert "../README.en.md" in english
+    assert "../README.md" in english
     # Translation must not omit trials or alter any data row in the tables.
     def data_rows(document):
         rows = []

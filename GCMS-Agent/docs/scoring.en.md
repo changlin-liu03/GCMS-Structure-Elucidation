@@ -12,7 +12,7 @@ Inputs must be nonempty arrays of equal length. Each m/z must be a unique positi
 
 `lower` / `upper` are compatibility fields and both equal the raw input intensity. No measurement-error model is provided; point values do not imply error-free experiments. Legacy binned `position_ids` inputs are explicitly rejected and must be prepared again from original intensity data into a new directory. Renaming bin IDs as linear intensities is not a valid conversion.
 
-See the [data guide](../data/README.en.md) for input format and public synthetic examples. The maximum intensity or normalization convention of any particular dataset does not override the interface contract or establish that input intensities are absolute instrument counts.
+See the [data guide](../data/README.md) for input format and public synthetic examples. The maximum intensity or normalization convention of any particular dataset does not override the interface contract or establish that input intensities are absolute instrument counts.
 
 ## Evidence eligible for scoring
 
@@ -108,4 +108,4 @@ Implementations are in [metrics.py](../src/gcms_agent/evaluation/metrics.py) and
 
 A complete experimental report should also include processing rates, failure types, costs and unknown usage, timing definitions, and data splits. Small development samples, synthetic examples, and offline mock tests do not establish live-model accuracy or full-dataset cost. Any later fitting of scoring parameters or probability calibration should use independent development data, ensuring that spectra of the same molecule do not appear in both development and final-test groups.
 
-Baseline and evaluation commands requiring no private data are provided in the [public examples](../data/examples/README.en.md). Raw inputs, labels, and individual results from the real dataset are not distributed with these technical documents.
+Baseline and evaluation commands requiring no private data are provided in the [public examples](../data/examples/README.md). Raw inputs, labels, and individual results from the real dataset are not distributed with these technical documents.

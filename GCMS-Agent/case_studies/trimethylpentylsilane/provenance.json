@@ -419,7 +419,7 @@
   },
   "exporter": {
     "path": "scripts/export_case_studies.py",
-    "sha256": "fc35e9b08ce2df8598ffa2db35c0188210a292cad1d711a7f8895b71e15ca8a0",
+    "sha256": "0f1d0c804b91d850670fa97526b048cf05554d3a46ff3175a36834a11e806268",
     "python": "3.10.19",
     "rdkit": "2022.09.5",
     "pillow": "12.1.1"
@@ -432,8 +432,8 @@
     "Provide Chinese and English editorial narratives; retain model-authored text in its original language."
   ],
   "exported_files_sha256": {
-    "README.en.md": "2356ad8f4646424c629e8a5a137a7220001ef2f136d40bd83cbda3ba02063585",
-    "README.md": "0a0053de6e93a9ff2f1e5a2a668553cd2b6ea26ccc09398af5296b4936cf152f",
+    "README.md": "ef53bbf7cef77c3c7948e0f17a6408247f9161f2fdcced9675ccae9f116c7035",
+    "README.zh-CN.md": "f4dff35a2ec9f075de5e5ece7fb76cefd5bcd2c499d0418331a550484b2c1a97",
     "input.json": "8ff8acf9ee2307912fe26fec0fac72603c0b6e388fa1052359a854997c11fe82",
     "reference.json": "26f6b041ab0c86e09beb763dc95a45fba87164b6885e0937edeb207b1c9ab5cd",
     "result.json": "a1e5ba9367a88082562d0a7de3fbb7560f174c165a34d043343ce3114db96969",

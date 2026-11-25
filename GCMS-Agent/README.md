@@ -13,18 +13,18 @@ The model accesses controlled tools through the Claude Agent SDK/Harness. The Py
 | `baseline` | Deterministic validation, scoring, and ranking of input candidates | No API key, model calls, or structure edits |
 | `agent` | Model review, edit trials, and submissions; host validation and persistence | A configured model service and API key; model calls incur charges |
 
-[Case studies](#case-studies) · [Installation](#install-from-scratch) · [Offline examples](#run-the-public-examples) · [Run the agent](#run-the-agent) · [Technical documentation](docs/README.en.md)
+[Case studies](#case-studies) · [Installation](#install-from-scratch) · [Offline examples](#run-the-public-examples) · [Run the agent](#run-the-agent) · [Technical documentation](docs/README.md)
 
 The homepage, core technical documentation, configuration, data, script, and test guides, and public case-study narratives are available in English and Chinese. Original model explanations in the case studies retain their recorded language. Skill and resource directory guides are also bilingual. Runtime skill text, on-demand references, instructional examples, and generated explanatory reports retain their original language, mostly Chinese.
 
 ## Case studies
 
-Browse the [case-study index](case_studies/README.en.md) without installing the project. Each case includes input data, separate reference labels, structure-change figures, round-by-round edits, all tool trials, compact results, and provenance checks.
+Browse the [case-study index](case_studies/README.md) without installing the project. Each case includes input data, separate reference labels, structure-change figures, round-by-round edits, all tool trials, compact results, and provenance checks.
 
 | Case | What it illustrates | Limits of the recorded result |
 |---|---|---|
-| [Butyl butanoate](case_studies/butyl-butanoate/README.en.md) | Service failure, retry, and generation of the reference structure | Reference structure is second in the displayed ranking; the retry is also incomplete |
-| [Trimethylpentylsilane](case_studies/trimethylpentylsilane/README.en.md) | Silicon-containing structure edits and tied scores | Reference structure is sixth in display order and tied for first by evidence score; the run is incomplete |
+| [Butyl butanoate](case_studies/butyl-butanoate/README.md) | Service failure, retry, and generation of the reference structure | Reference structure is second in the displayed ranking; the retry is also incomplete |
+| [Trimethylpentylsilane](case_studies/trimethylpentylsilane/README.md) | Silicon-containing structure edits and tied scores | Reference structure is sixth in display order and tied for first by evidence score; the run is incomplete |
 
 The two main Agent stages preserve **42 trials**, including rejected and unselected trials; the initial service failures are documented separately. These are historical development cases explicitly authorized for public release. They retain their original scores and incomplete status and do not establish the current version's accuracy.
 
@@ -62,11 +62,11 @@ Installation verification on 2026-11-18 used a fresh Windows / Python 3.10.19 en
 
 The `[test]` extra declares pytest; it is also included in the pinned environment file. Pillow is a direct dependency for structure plots and case-study images. Build tools are resolved separately by pip, and the current requirements file does not pin artifact hashes.
 
-Baseline execution and offline tests do not invoke a model. Live Agent runs require service configuration and an API key. The pinned Windows SDK package includes a native `claude.exe`, which the SDK locates when `cli_path` is unset. See the [configuration guide](configs/README.en.md) for a custom executable path.
+Baseline execution and offline tests do not invoke a model. Live Agent runs require service configuration and an API key. The pinned Windows SDK package includes a native `claude.exe`, which the SDK locates when `cli_path` is unset. See the [configuration guide](configs/README.md) for a custom executable path.
 
 ### Run the public examples
 
-Complete installation first, then run these commands in PowerShell from the repository root. Two [independently constructed synthetic examples](data/examples/README.en.md) demonstrate the workflow without private data or an API key. They are not measured spectra or model-performance benchmarks. Use a new output directory for each run.
+Complete installation first, then run these commands in PowerShell from the repository root. Two [independently constructed synthetic examples](data/examples/README.md) demonstrate the workflow without private data or an API key. They are not measured spectra or model-performance benchmarks. Use a new output directory for each run.
 
 ```powershell
 $env:PYTHONIOENCODING = 'utf-8'
@@ -88,7 +88,7 @@ Start with the Markdown reports and PNG structure/spectrum plots in `runs/public
 
 After the offline examples, you can use the same synthetic input to check the live model workflow. Copy the contents of [.env.example](.env.example) into a local `.env` at the repository root and set `DEEPSEEK_API_KEY`. If `.env` already exists, edit it while preserving its existing contents. A process environment variable can also supply the key and takes precedence.
 
-Review the endpoint and model settings in [model.yaml](configs/model.yaml) first. The repository currently records `deepseek-flash[1m]`, `thinking: true`, and `effort: low`; check service availability and actual pricing with your provider account. See the [configuration guide](configs/README.en.md) for model integration and SDK startup.
+Review the endpoint and model settings in [model.yaml](configs/model.yaml) first. The repository currently records `deepseek-flash[1m]`, `thinking: true`, and `effort: low`; check service availability and actual pricing with your provider account. See the [configuration guide](configs/README.md) for model integration and SDK startup.
 
 ```powershell
 # Makes live model calls. Set an explicit CNY 10 scheduling budget and use a new directory.
@@ -101,7 +101,7 @@ Review the endpoint and model settings in [model.yaml](configs/model.yaml) first
 .\.venv\Scripts\python.exe -B -m gcms_agent.cli resume data\examples\inference.json --output runs\public_agent_example --budget-cny 10
 ```
 
-Agent runs default to `economy`, with at most two concurrent batches for the same spectrum. Its `offpeak_only: true` setting stops new sessions during locally configured peak hours and records `offpeak_wait`. Resume explicitly during an allowed period; no background scheduler restarts the run. The base configuration has no default total monetary cap. The example budget is a host-side scheduling estimate, not a provider-enforced billing limit. See [budget and scheduling](configs/README.en.md#scheduling-budgets-and-special-values) and [resume requirements](docs/editing_and_stopping.en.md#resume).
+Agent runs default to `economy`, with at most two concurrent batches for the same spectrum. Its `offpeak_only: true` setting stops new sessions during locally configured peak hours and records `offpeak_wait`. Resume explicitly during an allowed period; no background scheduler restarts the run. The base configuration has no default total monetary cap. The example budget is a host-side scheduling estimate, not a provider-enforced billing limit. See [budget and scheduling](configs/README.md#scheduling-budgets-and-special-values) and [resume requirements](docs/editing_and_stopping.en.md#resume).
 
 ## Workflow
 
@@ -142,7 +142,7 @@ Resource limits or service interruptions retain a `provisional/incomplete` statu
 
 ## Inputs, scoring, and limitations
 
-Inputs contain a raw EI spectrum and ten candidates, using fields such as `input_ids`, `intensity`, `generated`, and `sample_id`. Intensities retain their original linear scale, without base-peak normalization, log transforms, or rebinning. The current workflow rejects the legacy `position_ids` format. Reference labels are stored separately and used only for independent evaluation. See the [data guide](data/README.en.md) for the schema and preparation of your own data.
+Inputs contain a raw EI spectrum and ten candidates, using fields such as `input_ids`, `intensity`, `generated`, and `sample_id`. Intensities retain their original linear scale, without base-peak normalization, log transforms, or rebinning. The current workflow rejects the legacy `position_ids` format. Reference labels are stored separately and used only for independent evaluation. See the [data guide](data/README.md) for the schema and preparation of your own data.
 
 ```text
 score = sum of raw intensities of rule-supported peaks / sum of raw intensities of all observed peaks
@@ -160,19 +160,19 @@ The full research dataset and derived subsets are not distributed. Only the two 
 | Directory | Contents |
 |---|---|
 | [src/gcms_agent/](src/gcms_agent/) | Chemical tools, fragment evidence, scoring, Harness integration, workflows, and reports |
-| [case_studies/](case_studies/README.en.md) | Workflows and trajectories for two authorized public cases |
-| [data/examples/](data/examples/README.en.md) | Runnable synthetic inputs and separate demonstration labels |
-| [configs/](configs/README.en.md) | Service configuration, runtime parameters, budgets, and scheduling |
-| [skills/](skills/README.en.md) | Model skills, MoleCode syntax, and on-demand references |
-| [resources/](resources/README.en.md) | Fixed EI rules, applicability conditions, and sources |
-| [docs/](docs/README.en.md) | Architecture, molecular contracts, edit acceptance, scoring, and scientific limitations |
-| [scripts/](scripts/README.en.md) | Data preparation, validation, experiments, and case-study export |
-| [tests/](tests/README.en.md) | Offline unit, integration, and end-to-end checks |
+| [case_studies/](case_studies/README.md) | Workflows and trajectories for two authorized public cases |
+| [data/examples/](data/examples/README.md) | Runnable synthetic inputs and separate demonstration labels |
+| [configs/](configs/README.md) | Service configuration, runtime parameters, budgets, and scheduling |
+| [skills/](skills/README.md) | Model skills, MoleCode syntax, and on-demand references |
+| [resources/](resources/README.md) | Fixed EI rules, applicability conditions, and sources |
+| [docs/](docs/README.md) | Architecture, molecular contracts, edit acceptance, scoring, and scientific limitations |
+| [scripts/](scripts/README.md) | Data preparation, validation, experiments, and case-study export |
+| [tests/](tests/README.md) | Offline unit, integration, and end-to-end checks |
 
 ## License and third-party materials
 
 Original project code and documentation are licensed under the [MIT License](LICENSE), with the copyright notice `Copyright (c) 2026 刘昌霖`. Commercial use, modification, and redistribution are permitted subject to retaining the copyright and license notices.
 
-The project depends on and references Anthropic's Claude Agent SDK for Python; its MIT license and copyright notice are retained separately. See [third-party notices](THIRD_PARTY_NOTICES.md) for the SDK/Claude Code CLI distinction, MoleCode provenance, and other third-party materials. The two real-case bundles in `case_studies/` are excluded from the MIT grant for project code and documentation; their public-release scope is described in the [case-study index](case_studies/README.en.md). Private research data are not distributed; see the [data guide](data/README.en.md).
+The project depends on and references Anthropic's Claude Agent SDK for Python; its MIT license and copyright notice are retained separately. See [third-party notices](THIRD_PARTY_NOTICES.md) for the SDK/Claude Code CLI distinction, MoleCode provenance, and other third-party materials. The two real-case bundles in `case_studies/` are excluded from the MIT grant for project code and documentation; their public-release scope is described in the [case-study index](case_studies/README.md). Private research data are not distributed; see the [data guide](data/README.md).
 
 This page reflects the code and configuration reviewed on 2026-11-18. Configuration files and their loaded values are authoritative for defaults.
